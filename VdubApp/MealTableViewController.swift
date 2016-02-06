@@ -10,10 +10,28 @@ import UIKit
 
 class MealTableViewController: UITableViewController {
 
+    var menu: [String:[String]]?
+    
+    
+    var keys: [String]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        menu = [String: [String]]()
+        menu!["daily sidebars"]=["sliced provolone", "roast beef", "tomatoes"]
+        menu!["main menu"]=["pancakes", "scrambled eggs and bacon", "hash browns", "french toast", "sausage patties"]
+        //TODO: initialize keys and menu
+        keys = Array(menu!.keys)
         
+        print("\(menu)")
+        
+        self.tableView.registerClass(UITableViewCell().classForCoder, forCellReuseIdentifier: "reuseIdentifier")
+        
+        //after api loads
+        self.tableView.reloadData()
+        
+        //
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -30,23 +48,49 @@ class MealTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        print("hellow")
+        if let k = keys {
+            print(k.count)
+            return k.count
+            
+        }
         return 0 // TODO: get from network call ("Chef's Corner" etc.)
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let m = menu {
+            if let k = keys {
+                print(m[k[section]]!.count)
+                return m[k[section]]!.count
+            }
+        }
         return 0 // TODO: get from network call (pass in number of section)
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        
+        if let m = menu {
+            if let k = keys {
+                let sectionItems = m[k[indexPath.section]]
+                cell.textLabel!.text = sectionItems![indexPath.row]
+                print(sectionItems![indexPath.row])
+            }
+        }
 
         // Configure the cell...
 
         return cell
     }
-    */
-
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if let k = keys {
+            return k[section]
+        }
+        return ""
+    }
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
