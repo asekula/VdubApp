@@ -13,12 +13,16 @@ class MealTableViewController: UITableViewController {
     var menu: [String:[String]]?
     var keys: [String]?
     var meal: Int = 0
+    var connection: MenuNSURLSession = MenuNSURLSession()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //Fixes top allignment.
         tableView.contentInset = UIEdgeInsetsMake(20.0, 0.0, 0.0, 0.0)
+        
+        connection.setMyQuery("menu?client_id=e5e5e5f6-f300-48f9-ab95-c57d6c731cba&eatery=vdub&day=10")
+        connection.data_request()
         
         menu = [String: [String]]()
         
@@ -36,7 +40,7 @@ class MealTableViewController: UITableViewController {
         //TODO: initialize keys and menu
         keys = Array(menu!.keys)
         
-        print("\(menu)")
+        //print("\(menu)")
         
         self.tableView.registerClass(UITableViewCell().classForCoder, forCellReuseIdentifier: "reuseIdentifier")
         
@@ -60,7 +64,7 @@ class MealTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        print("hellow")
+        //print("hellow")
         if let k = keys {
             print(k.count)
             return k.count
@@ -72,7 +76,7 @@ class MealTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let m = menu {
             if let k = keys {
-                print(m[k[section]]!.count)
+                //print(m[k[section]]!.count)
                 return m[k[section]]!.count
             }
         }
@@ -87,7 +91,7 @@ class MealTableViewController: UITableViewController {
             if let k = keys {
                 let sectionItems = m[k[indexPath.section]]
                 cell.textLabel!.text = sectionItems![indexPath.row]
-                print(sectionItems![indexPath.row])
+                //print(sectionItems![indexPath.row])
             }
         }
 
