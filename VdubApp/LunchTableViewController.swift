@@ -11,7 +11,7 @@ import UIKit
 class LunchTableViewController: MealTableViewController {
     
     override func viewDidLoad() {
-        meal = 1 
+        meal = 1
         super.viewDidLoad()
     }
 }
