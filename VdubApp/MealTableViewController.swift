@@ -11,16 +11,28 @@ import UIKit
 class MealTableViewController: UITableViewController {
 
     var menu: [String:[String]]?
-    
-    
     var keys: [String]?
+    var meal: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        //Fixes top allignment.
+        tableView.contentInset = UIEdgeInsetsMake(20.0, 0.0, 0.0, 0.0)
+        
         menu = [String: [String]]()
-        menu!["daily sidebars"]=["sliced provolone", "roast beef", "tomatoes"]
-        menu!["main menu"]=["pancakes", "scrambled eggs and bacon", "hash browns", "french toast", "sausage patties"]
+        
+        if meal == 0 {
+            menu!["daily sidebars"]=["sliced provolone", "roast beef", "tomatoes"]
+            menu!["main menu"]=["pancakes", "scrambled eggs and bacon", "hash browns", "french toast", "sausage patties"]
+        } else if meal == 1 {
+            menu!["daily sidebars"]=["sliced asdasdasdasd", "roast beef", "tomatoes"]
+            menu!["main menu"]=["pancakes", "scrambled eggs and bacon", "hash browns", "french toast", "sausage patties"]
+        } else {
+            menu!["daily sidebars"]=["sliced provolone", "roast beef", "tomatoes"]
+            menu!["main menu"]=["pancasdasdasdasdasdakes", "scrambled eggs and bacon", "hash browns", "french toast", "sausage patties"]
+            
+        }
         //TODO: initialize keys and menu
         keys = Array(menu!.keys)
         

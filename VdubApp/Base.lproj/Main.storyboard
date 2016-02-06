@@ -27,7 +27,7 @@
         <!--Breakfast-->
         <scene sceneID="Gh3-DX-1Us">
             <objects>
-                <tableViewController title="Breakfast" id="5nE-js-Plx" customClass="MealTableViewController" customModule="VdubApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Breakfast" id="5nE-js-Plx" customClass="BreakfastTableViewController" customModule="VdubApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="0uN-UL-SMl">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -59,12 +59,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="On2-wK-ptS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-205" y="-634"/>
+            <point key="canvasLocation" x="-77" y="-565"/>
         </scene>
         <!--Lunch-->
         <scene sceneID="tHO-lN-N1M">
             <objects>
-                <tableViewController title="Lunch" id="vzF-fY-ai8" customClass="MealTableViewController" customModule="VdubApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Lunch" id="vzF-fY-ai8" customClass="LunchTableViewController" customModule="VdubApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Dmk-s0-xRG">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -101,7 +101,7 @@
         <!--Dinner-->
         <scene sceneID="jBB-LO-tKW">
             <objects>
-                <tableViewController title="Dinner" id="HQF-5N-KI1" customClass="MealTableViewController" customModule="VdubApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Dinner" id="HQF-5N-KI1" customClass="DinnerTableViewController" customModule="VdubApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="KIi-DL-tPL">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

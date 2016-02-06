@@ -1,5 +1,5 @@
 //
-//  BreakfastTableViewController.swift
+//  LunchTableViewController.swift
 //  VdubApp
 //
 //  Created by Alex on 2/6/16.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-class BreakfastTableViewController: MealTableViewController {
+class LunchTableViewController: MealTableViewController {
     
     override func viewDidLoad() {
-        meal = 0
+        meal = 1
         super.viewDidLoad()
     }
 }
