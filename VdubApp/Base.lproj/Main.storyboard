@@ -55,7 +55,7 @@
                             <outlet property="delegate" destination="5nE-js-Plx" id="t5H-Iq-gdD"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Breakfast" id="iYL-YF-WyX"/>
+                    <tabBarItem key="tabBarItem" title="Breakfast" image="breakfast" id="iYL-YF-WyX"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="On2-wK-ptS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -92,7 +92,7 @@
                             <outlet property="delegate" destination="vzF-fY-ai8" id="tG0-jC-JhU"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Lunch" id="xHx-Tm-W1v"/>
+                    <tabBarItem key="tabBarItem" title="Lunch" image="lunch" id="xHx-Tm-W1v"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I98-9g-hsk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -129,11 +129,16 @@
                             <outlet property="delegate" destination="HQF-5N-KI1" id="lbb-P8-qt3"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Dinner" id="uDx-N6-Ofp"/>
+                    <tabBarItem key="tabBarItem" title="Dinner" image="dinner" id="uDx-N6-Ofp"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gLc-WU-eJ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-299" y="946"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="breakfast" width="25" height="25"/>
+        <image name="dinner" width="25" height="25"/>
+        <image name="lunch" width="25" height="25"/>
+    </resources>
 </document>
