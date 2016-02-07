@@ -25,6 +25,7 @@ class MenuSingleton {
         } else {
             print("Not yet implemented.")
         }
+        //print("set menu \(vdubMenu)")
     }
     
     func getMenu(eatery: NSInteger, meal: NSInteger) -> [String:JSON] {
