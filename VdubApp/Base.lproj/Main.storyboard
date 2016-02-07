@@ -242,7 +242,7 @@
         <!--Notifications-->
         <scene sceneID="tqq-vZ-3Ds">
             <objects>
-                <tableViewController modalTransitionStyle="crossDissolve" id="SOV-pi-Ck6" sceneMemberID="viewController">
+                <tableViewController modalTransitionStyle="crossDissolve" id="SOV-pi-Ck6" customClass="FavFoodTableViewController" customModule="VdubApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="6WZ-sV-FIl">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
