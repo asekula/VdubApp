@@ -16,6 +16,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        let appColorRed = UIColor(red: 0.8, green: 0.0, blue: 0.0, alpha: 1.0)
+        let appColorRedLITE = UIColor(red: 235/255, green: 181/255, blue: 184/255, alpha:1.0)
+        let appColorLightBrown = UIColor(red: 213/255, green: 207/255, blue: 207/255, alpha: 1.0)
+        let appColorDarkBrown = UIColor(red: 57/255, green: 30/255, blue: 27/255, alpha: 1.0)
+        
+        // UIView.appearance().backgroundColor = appColorLightBrown
+        
+        UITabBar.appearance().tintColor = appColorLightBrown
+        UITabBar.appearance().barTintColor = appColorDarkBrown
+        
+        UISegmentedControl.appearance().tintColor = appColorDarkBrown
+        UISegmentedControl.appearance().backgroundColor = appColorLightBrown
+        
+        UITableViewHeaderFooterView.appearance().tintColor = appColorRedLITE
+        
+        UINavigationBar.appearance().barTintColor = appColorDarkBrown
+        UINavigationBar.appearance().barStyle = UIBarStyle.Black
+        
         return true
     }
 

@@ -69,7 +69,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9pg-Na-8M1" id="MLE-wS-qEp">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jsf-0h-ICN">
@@ -106,7 +106,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hVe-ll-hd9" id="VzH-o3-0LA">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="1" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lFb-Se-sgV">
@@ -140,10 +140,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="nYn-UP-ils">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nYn-UP-ils" id="fUP-DM-ChL">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -156,11 +156,12 @@
                     <navigationItem key="navigationItem" title="Root View Controller" id="zHm-CI-iNr"/>
                     <connections>
                         <segue destination="Rfe-ld-gR4" kind="presentation" id="6Tb-35-j1Q"/>
+                        <segue destination="H1v-0L-f7f" kind="presentation" id="bPG-bj-coP"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LIN-61-4ao" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="130" y="1742"/>
+            <point key="canvasLocation" x="154" y="1760"/>
         </scene>
         <!--About-->
         <scene sceneID="6tu-HP-QKJ">
@@ -173,6 +174,14 @@
                     <view key="view" contentMode="scaleToFill" id="Pda-Lh-MYR">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="THIS is the about page..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPG-og-omZ">
+                                <rect key="frame" x="166" y="259" width="189" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
@@ -180,22 +189,41 @@
             </objects>
             <point key="canvasLocation" x="-501" y="2574"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="Y3C-Cj-7bo">
+            <objects>
+                <viewController id="H1v-0L-f7f" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gt1-3B-phO"/>
+                        <viewControllerLayoutGuide type="bottom" id="odG-De-YIG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Dqp-6u-DIT">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kve-kI-Cpy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="249" y="2597"/>
+        </scene>
         <!--More-->
         <scene sceneID="hBq-fw-dKw">
             <objects>
-                <navigationController storyboardIdentifier="55" title="More" navigationBarHidden="YES" id="cGn-vX-Fb2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="More" id="m1Z-Kn-czn"/>
+                <navigationController storyboardIdentifier="55" title="More" id="cGn-vX-Fb2" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="More" image="more" id="m1Z-Kn-czn"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2rS-kg-GLU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="pNi-aG-Jck" kind="relationship" relationship="rootViewController" id="aTU-fD-NzT"/>
+                        <segue destination="pNi-aG-Jck" kind="relationship" relationship="rootViewController" id="i0w-in-xFe"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ega-B7-IMs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-730" y="1642"/>
+            <point key="canvasLocation" x="-974" y="1670"/>
         </scene>
         <!--Dinner-->
         <scene sceneID="jBB-LO-tKW">
@@ -210,11 +238,11 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ti2-cv-lv4" id="IkV-7d-Ttq">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J2t-cg-LWi">
-                                            <rect key="frame" x="8" y="6" width="584" height="32"/>
+                                            <rect key="frame" x="-188" y="-10" width="584" height="32"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -239,5 +267,7 @@
         <image name="breakfast" width="25" height="25"/>
         <image name="dinner" width="25" height="25"/>
         <image name="lunch" width="25" height="25"/>
+        <image name="more" width="25" height="25"/>
     </resources>
+    <color key="tintColor" red="0.80000000000000004" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>
