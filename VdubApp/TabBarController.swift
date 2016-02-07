@@ -22,7 +22,8 @@ class TabBarController: UITabBarController {
                     // makes sure that the view is initalized so we can set the meal
                     mvc.tableView.reloadData()
                     // sets the correct meal for the ALL dining halls
-                    mvc.diningHall = sender.selectedSegmentIndex
+                    let s = sender as? UISegmentedControl
+                    mvc.diningHall = s!.selectedSegmentIndex
                 }
             }
         default: break

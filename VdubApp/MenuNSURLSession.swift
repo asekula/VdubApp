@@ -16,13 +16,8 @@ class MenuNSURLSession: NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate
     
     func setMyQuery(query:NSString) {
         self.query = host + (query as String)
-<<<<<<< HEAD
+
         //print(query)
-        /* var url =  NSURLRequest( URL: self.query )
-        var conn = NSURLConnection(request: url, delegate: self, startImmediately: true) */
-=======
-        print(query)
->>>>>>> 75ac59a7cfcba10278be8b783d74cefb2046222a
     }
     
     func data_request() {
@@ -32,11 +27,10 @@ class MenuNSURLSession: NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate
         
         let task = session.dataTaskWithRequest(request, completionHandler: {(data, response, error) in
             if let d = data {
-<<<<<<< HEAD
                 //self.replyData = r.Respons
                 // NSJSONSerialization.JSONObjectWithData(d, options: NSJSONReadingOptions.AllowFragments)
                 //print(data)
-=======
+
                 let json = JSON(data: d)
                 let arrRep = json["menus"].arrayValue
                 print("Array Representation: ")
@@ -52,7 +46,6 @@ class MenuNSURLSession: NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate
                 }
                 
                 //Future goal: Print to file?
->>>>>>> 75ac59a7cfcba10278be8b783d74cefb2046222a
             }
             else {
                 print("Could not get data. Error: ")
