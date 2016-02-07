@@ -45,6 +45,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <outlet property="segmentedControl" destination="m5c-Lf-z1V" id="BF7-4t-oou"/>
                         <segue destination="5nE-js-Plx" kind="relationship" relationship="viewControllers" id="ewO-a6-gG0"/>
                         <segue destination="vzF-fY-ai8" kind="relationship" relationship="viewControllers" id="BRE-xZ-rrz"/>
                         <segue destination="HQF-5N-KI1" kind="relationship" relationship="viewControllers" id="rMC-hg-9Ad"/>
@@ -159,7 +160,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LIN-61-4ao" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="128" y="1736"/>
+            <point key="canvasLocation" x="130" y="1742"/>
         </scene>
         <!--About-->
         <scene sceneID="6tu-HP-QKJ">
@@ -182,7 +183,7 @@
         <!--More-->
         <scene sceneID="hBq-fw-dKw">
             <objects>
-                <navigationController title="More" navigationBarHidden="YES" id="cGn-vX-Fb2" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="55" title="More" navigationBarHidden="YES" id="cGn-vX-Fb2" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="More" id="m1Z-Kn-czn"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2rS-kg-GLU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

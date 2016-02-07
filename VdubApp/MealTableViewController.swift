@@ -15,7 +15,7 @@ class MealTableViewController: UITableViewController {
     var meal: Int = 0
     var diningHall = 0 {
         didSet {
-            print("dininghall = \(diningHall)")
+            print("dininghall = \(diningHall) and meal = \(meal)")
             connection.setMyQuery("menu?client_id=e5e5e5f6-f300-48f9-ab95-c57d6c731cba&eatery=vdub&day=10")
             connection.data_request()
             

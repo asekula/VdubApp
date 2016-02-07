@@ -9,7 +9,8 @@
 import UIKit
 
 class TabBarController: UITabBarController {
-
+    
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     @IBAction func diningHallChange(sender: AnyObject) {
         switch(self.selectedViewController) {
@@ -18,10 +19,10 @@ class TabBarController: UITabBarController {
             for vc in VCs {
                 let mealvc = vc as? MealTableViewController
                 if let mvc = mealvc {
+                    // makes sure that the view is initalized so we can set the meal
+                    mvc.tableView.reloadData()
+                    // sets the correct meal for the ALL dining halls
                     mvc.diningHall = sender.selectedSegmentIndex
-                    print("changed mvc \(mvc.meal)")
-                } else {
-                    print("nil vc")
                 }
             }
         default: break
@@ -29,7 +30,6 @@ class TabBarController: UITabBarController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view.
     }
 
@@ -38,6 +38,15 @@ class TabBarController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
+        let tabBarItems = tabBar.items
+        if tabBarItems!.indexOf(item) == 3 {
+            segmentedControl.hidden = true
+        } else {
+            segmentedControl.hidden = false
+        }
+    }
+
 
     
     // MARK: - Navigation
