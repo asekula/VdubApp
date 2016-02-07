@@ -12,19 +12,13 @@ class DiningHoursViewController: UIViewController {
     
     @IBOutlet var webView: UIWebView!
     
-    var urlpath = NSBundle.mainBundle().pathForResource("hours", ofType: "html");
-    
-    func loadAddressURL(){
-        // TODO: Figure out why.
-        let requesturl = NSURL.fileURLWithPath(urlpath!)
-        let request = NSURLRequest(URL: requesturl)
-        webView.loadRequest(request)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadAddressURL()
+        let bundle = NSBundle.mainBundle()
+        let url = bundle.URLForResource("home", withExtension: "html");
+        var request = NSURLRequest(URL: url!);
+        webView.loadRequest(request)
     }
 
     override func didReceiveMemoryWarning() {

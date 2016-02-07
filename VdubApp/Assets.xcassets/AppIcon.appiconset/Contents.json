@@ -1,8 +1,9 @@
 {
   "images" : [
     {
-      "idiom" : "iphone",
       "size" : "29x29",
+      "idiom" : "iphone",
+      "filename" : "Icon-Small-1.png",
       "scale" : "1x"
     },
     {
@@ -155,12 +156,14 @@
     {
       "size" : "29x29",
       "idiom" : "watch",
+      "filename" : "Icon-Small@3x-1.png",
       "role" : "companionSettings",
       "scale" : "3x"
     },
     {
       "size" : "40x40",
       "idiom" : "watch",
+      "filename" : "Icon-41.png",
       "scale" : "2x",
       "role" : "appLauncher",
       "subtype" : "38mm"
@@ -178,6 +181,12 @@
       "scale" : "2x",
       "role" : "quickLook",
       "subtype" : "42mm"
+    },
+    {
+      "size" : "256x256",
+      "idiom" : "mac",
+      "filename" : "iTunesArtwork-1.png",
+      "scale" : "2x"
     },
     {
       "size" : "512x512",
