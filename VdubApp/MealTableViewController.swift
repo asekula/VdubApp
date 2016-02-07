@@ -31,28 +31,55 @@ class MealTableViewController: UITableViewController {
     
     @IBAction func dayBack(sender: AnyObject) {
         if dayOffSet > 0 {
-            dayOffSet -= 1
-            if dateIndex == 0 {
-                dateIndex = 7
-            }
-            dateIndex -= 1
             forwardButton.enabled = true
+            for vc in (self.navigationController?.tabBarController?.viewControllers)! {
+                if let nav = vc as? UINavigationController, let mvc = nav.viewControllers.first as? MealTableViewController
+                {
+                    mvc.forwardButton.enabled = true
+                    mvc.dayOffSet -= 1
+                    mvc.dateIndex -= 1
+                    if mvc.dateIndex == -1 {
+                        mvc.dateIndex = 6
+                    }
+                    
+                }
+            }
         }
         if dayOffSet == 0 {
             backButton.enabled = false
+            for vc in (self.navigationController?.tabBarController?.viewControllers)! {
+                if let nav = vc as? UINavigationController, let mvc = nav.viewControllers.first as? MealTableViewController
+                {
+                    mvc.backButton.enabled = false
+                }
+            }
         }
     }
     @IBAction func dayForward(sender: AnyObject) {
         if dayOffSet < 4 {
-            dayOffSet += 1
-            if dateIndex == 7 {
-                dateIndex = 0
-            }
-            dateIndex += 1
+            //dayOffSet += 1
             backButton.enabled = true
+            for vc in (self.navigationController?.tabBarController?.viewControllers)! {
+                if let nav = vc as? UINavigationController, let mvc = nav.viewControllers.first as? MealTableViewController
+                {
+                    mvc.backButton.enabled = true
+                    mvc.dayOffSet += 1
+                    mvc.dateIndex += 1
+                    if mvc.dateIndex == 7 {
+                        mvc.dateIndex = 0
+                    }
+                    
+                }
+            }
         }
         if dayOffSet >= 4 {
             forwardButton.enabled = false
+            for vc in (self.navigationController?.tabBarController?.viewControllers)! {
+                if let nav = vc as? UINavigationController, let mvc = nav.viewControllers.first as? MealTableViewController
+                {
+                    mvc.forwardButton.enabled = false
+                }
+            }
         }
     }
     
@@ -70,16 +97,41 @@ class MealTableViewController: UITableViewController {
                 dateIndex = 6
             }
             if dateIndex - 1 == -1 {
-                backButton.title = "<Sat"
+                //backButton.title = "<Sat"
+                for vc in (self.navigationController?.tabBarController?.viewControllers)! {
+                    if let nav = vc as? UINavigationController, let mvc = nav.viewControllers.first as? MealTableViewController
+                    {
+                        mvc.backButton.title = "<Sat"
+                    }
+                }
+                
             } else {
-                backButton.title =  "<"+daysOfWeek[dateIndex - 1]
+                //backButton.title =  "<"+daysOfWeek[dateIndex - 1]
+                for vc in (self.navigationController?.tabBarController?.viewControllers)! {
+                    if let nav = vc as? UINavigationController, let mvc = nav.viewControllers.first as? MealTableViewController
+                    {
+                        mvc.backButton.title =  "<"+daysOfWeek[dateIndex - 1]
+                    }
+                }
             }
             if dateIndex + 1 == 7 {
-                forwardButton.title = "Sun>"
-            } else {
-                forwardButton.title = daysOfWeek[dateIndex + 1]+">"
-            }
+                for vc in (self.navigationController?.tabBarController?.viewControllers)! {
+                    if let nav = vc as? UINavigationController, let mvc = nav.viewControllers.first as? MealTableViewController
+                    {
+                        mvc.forwardButton.title = "Sun>"
+                    }
+                }
 
+            } else {
+                for vc in (self.navigationController?.tabBarController?.viewControllers)! {
+                    if let nav = vc as? UINavigationController, let mvc = nav.viewControllers.first as? MealTableViewController
+                    {
+                        mvc.forwardButton.title = daysOfWeek[dateIndex + 1]+">"
+                    }
+                }
+
+            }
+            print("meal is \(meal)")
         }
     }
     var dayOffSet = 0 {
@@ -150,8 +202,18 @@ class MealTableViewController: UITableViewController {
                 //print("MEAL \(meal)")
                 let tm = MenuSingleton.sharedInstance.rattyMenu
                 //print(tm)
-                if weekend && meal > 0 { meal -= 1 }
-                theMenu = tm[meal].dictionaryValue
+                if weekend && meal > 0 { //meal -= 1
+                    print("changing meal")
+                    print("weekend? \(weekend)")
+                    print("day #? \(day)")
+                    print("dayoffset?\(dayOffSet)")
+                    
+                    theMenu = tm[meal-1].dictionaryValue
+                    
+                }
+                else {
+                    theMenu = tm[meal].dictionaryValue
+                }
             }
             //print(theMenu)
             for key in theMenu.keys {
@@ -209,7 +271,21 @@ class MealTableViewController: UITableViewController {
         menu = [String: [String]]()
         
         backButton.enabled = false
+        for vc in (self.navigationController?.tabBarController?.viewControllers)! {
+            if let nav = vc as? UINavigationController, let mvc = nav.viewControllers.first as? MealTableViewController
+            {
+                mvc.backButton.enabled = false
+            }
+        }
+        
+        
         forwardButton.enabled = true
+        for vc in (self.navigationController?.tabBarController?.viewControllers)! {
+            if let nav = vc as? UINavigationController, let mvc = nav.viewControllers.first as? MealTableViewController
+            {
+                mvc.forwardButton.enabled = true
+            }
+        }
         
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "EEEE"
@@ -235,6 +311,8 @@ class MealTableViewController: UITableViewController {
         let tabBar = self.navigationController!.tabBarController! as! TabBarController
         self.navigationItem.titleView = tabBar.segmentedControl
         diningHall = tabBar.segmentedControl.selectedSegmentIndex
+        backButton.enabled = true
+        forwardButton.enabled = true
     }
     override func viewWillDisappear(animated: Bool) {
         super.viewWillAppear(animated)

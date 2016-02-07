@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -201,8 +202,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notifications (DO NOT CLICK IF YOU WANT TO LIVE)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCM-RS-3n0">
-                                                    <rect key="frame" x="8" y="11" width="405" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notifications (Coming Soon!)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCM-RS-3n0">
+                                                    <rect key="frame" x="8" y="11" width="220" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -271,7 +272,7 @@
                             <outlet property="delegate" destination="SOV-pi-Ck6" id="sZw-wr-idr"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Notifications" prompt="Add or remove menu items" id="ZsB-uj-Wvv">
+                    <navigationItem key="navigationItem" title="Notifications" prompt="COMING SOON!!" id="ZsB-uj-Wvv">
                         <barButtonItem key="backBarButtonItem" title="Back" id="zOG-e8-JPj"/>
                     </navigationItem>
                 </tableViewController>
@@ -291,11 +292,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ev3-qm-2Y7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="19" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ev3-qm-2Y7">
                                 <rect key="frame" x="0.0" y="72" width="600" height="223"/>
                                 <attributedString key="attributedText">
                                     <fragment>
                                         <string key="content">eat@brown © 2016
+
+Joe Romano
+Alex Sekula
+Brendan Walsh
 
 thanks to Valentin Perez and Nate Parrott
 for the incredible help and support
@@ -356,12 +361,18 @@ made with </string>
                                 <attributedString key="attributedText"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="515-vN-3k1">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="515-vN-3k1">
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ED2-FM-ca4" firstAttribute="top" secondItem="515-vN-3k1" secondAttribute="bottom" id="0s5-Ci-AjN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="515-vN-3k1" secondAttribute="trailing" constant="-20" id="2c5-FA-lR7"/>
+                            <constraint firstItem="515-vN-3k1" firstAttribute="leading" secondItem="Ygy-ps-UeA" secondAttribute="leadingMargin" constant="-20" id="Qdd-IT-HwC"/>
+                            <constraint firstItem="515-vN-3k1" firstAttribute="top" secondItem="WkF-xG-nf7" secondAttribute="bottom" id="nDd-3k-vF2"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Dining Hours" id="8ew-Yl-7RG">
                         <barButtonItem key="backBarButtonItem" title="Back" id="vi2-Yd-htC"/>
@@ -372,7 +383,7 @@ made with </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x99-lk-uGl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-724.79999999999995" y="1997.4666666666667"/>
+            <point key="canvasLocation" x="-725" y="1997"/>
         </scene>
         <!--Lunch-->
         <scene sceneID="ysd-8Z-8dC">
@@ -483,7 +494,7 @@ made with </string>
         <image name="breakfast" width="25" height="25"/>
         <image name="dinner" width="25" height="25"/>
         <image name="lunch" width="25" height="25"/>
-        <image name="more" width="25" height="25"/>
+        <image name="more" width="24" height="24"/>
     </resources>
     <color key="tintColor" red="0.80000000000000004" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>
