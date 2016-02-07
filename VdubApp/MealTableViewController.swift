@@ -52,12 +52,10 @@ class MealTableViewController: UITableViewController {
         //Fixes top allignment.
         tableView.contentInset = UIEdgeInsetsMake(20.0, 0.0, 0.0, 0.0)
         
-<<<<<<< HEAD
         diningHall = 0
         //if let theNav = super.view.viewWithTag(50) as? UISegmentedControl {
             //diningHall = theNav.titleForSegmentAtIndex(theNav.selectedSegmentIndex)!
         //}
-=======
         if MenuSingleton.sharedInstance.rattyMenu {
             
         }
@@ -79,7 +77,6 @@ class MealTableViewController: UITableViewController {
         }
         //TODO: initialize keys and menu
         keys = Array(menu!.keys)
->>>>>>> 75ac59a7cfcba10278be8b783d74cefb2046222a
         
         
         //
