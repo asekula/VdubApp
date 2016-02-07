@@ -98,7 +98,7 @@ class MealTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //Fixes top allignment.
-        tableView.contentInset = UIEdgeInsetsMake(0.0, 0.0, 50.0, 0.0)
+        tableView.contentInset = UIEdgeInsetsMake(0.0, 0.0, 48.0, 0.0)
         
         //if let theNav = super.view.viewWithTag(50) as? UISegmentedControl {
             //diningHall = theNav.titleForSegmentAtIndex(theNav.selectedSegmentIndex)!
