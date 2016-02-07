@@ -32,9 +32,13 @@ class MenuNSURLSession: NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate
                 //print(data)
 
                 let json = JSON(data: d)
-                let arrRep = json["menus"].arrayValue
+                var arrRep = json["menus"].arrayValue
                 //print("Array Representation: ")
                 //print(arrRep)
+                if arrRep.count == 0 {
+                    arrRep = [ ["eatery":"vdub"] ]
+                }
+                
                 
                 let eatery = arrRep[0].dictionaryValue["eatery"]
                 if (eatery == "ratty") {
