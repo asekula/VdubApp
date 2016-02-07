@@ -24,9 +24,16 @@ class MealTableViewController: UITableViewController {
             //connection.setMyQuery("vdub&day=10") //TODO: day
             //connection.data_request()
             let restOfUrl: String
+            
+            let date = NSDate()
+            let calendar = NSCalendar.currentCalendar()
+            let weekend = calendar.isDateInWeekend(date)
+            let components = calendar.components([.Day , .Month , .Year], fromDate: date)
+            let day = components.day
+            
             if diningHall == 0 {
                 print("staring url vdub request")
-                restOfUrl = "vdub&day=10"
+                restOfUrl = "vdub&day=\(day)"
                 if MenuSingleton.sharedInstance.vdubMenu[0].stringValue == "I" {
                     connection.setMyQuery(restOfUrl) //TODO: day
                     connection.data_request()
@@ -37,7 +44,7 @@ class MealTableViewController: UITableViewController {
                 }
             } else {
                 print("staring url ratty request")
-                restOfUrl = "ratty&day=10"
+                restOfUrl = "ratty&day=\(day)"
                 if MenuSingleton.sharedInstance.rattyMenu[0].stringValue == "I" {
                     connection.setMyQuery(restOfUrl) //TODO: day
                     connection.data_request()
@@ -56,16 +63,27 @@ class MealTableViewController: UITableViewController {
                 if meal > 0 {
                     tempMeal += 1
                 }
-                theMenu = MenuSingleton.sharedInstance.vdubMenu[tempMeal].dictionaryValue
-                    
+                let tm = MenuSingleton.sharedInstance.vdubMenu
+                //print(tm.count)
+                if tm.count == 1 {
+                    theMenu = ["Closed": JSON(arrayLiteral: ["closed", "a"])]
+                } else {
+                    theMenu = tm[tempMeal].dictionaryValue
+                }
+                
             } else {
-                theMenu = MenuSingleton.sharedInstance.rattyMenu[meal].dictionaryValue
+                //print("MEAL \(meal)")
+                let tm = MenuSingleton.sharedInstance.rattyMenu
+                //print(tm)
+                if weekend && meal > 0 { meal -= 1 }
+                theMenu = tm[meal].dictionaryValue
             }
             //print(theMenu)
             for key in theMenu.keys {
                 //print(theMenu[key])
                 //print(theMenu[key]!.arrayValue.debugDescription)
                 let jsonMenuItems = theMenu[key]!.arrayValue
+                //print("COUNT \(jsonMenuItems)")
                 if jsonMenuItems.count > 1 {
                     //print(jsonMenuItems)
                     var stringArr = [String]()
@@ -98,7 +116,7 @@ class MealTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //Fixes top allignment.
-        tableView.contentInset = UIEdgeInsetsMake(0.0, 0.0, 48.0, 0.0)
+        //tableView.contentInset = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)
         
         
         //if let theNav = super.view.viewWithTag(50) as? UISegmentedControl {
@@ -130,6 +148,7 @@ class MealTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         let tabBar = self.navigationController!.tabBarController! as! TabBarController
         self.navigationItem.titleView = tabBar.segmentedControl
+        diningHall = tabBar.segmentedControl.selectedSegmentIndex
     }
     override func viewWillDisappear(animated: Bool) {
         super.viewWillAppear(animated)
