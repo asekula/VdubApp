@@ -176,6 +176,14 @@ class MealTableViewController: UITableViewController {
         return ""
     }
     
+    // THIS makes headers the right color pls don't touch
+    override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+        //recast your view as a UITableViewHeaderFooterView
+        header.contentView.backgroundColor = UIColor(red: 0.81, green: 0.0, blue: 0.0, alpha: 1.0)
+        header.textLabel!.textColor = UIColor.whiteColor() //make the text white
+        header.alpha = 0.68 //make the header transparent
+    }
     
     
     /*
