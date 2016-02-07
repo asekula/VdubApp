@@ -100,6 +100,7 @@ class MealTableViewController: UITableViewController {
         //Fixes top allignment.
         tableView.contentInset = UIEdgeInsetsMake(0.0, 0.0, 48.0, 0.0)
         
+        
         //if let theNav = super.view.viewWithTag(50) as? UISegmentedControl {
             //diningHall = theNav.titleForSegmentAtIndex(theNav.selectedSegmentIndex)!
         //}
@@ -123,6 +124,16 @@ class MealTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        let tabBar = self.navigationController!.tabBarController! as! TabBarController
+        self.navigationItem.titleView = tabBar.segmentedControl
+    }
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationItem.titleView = nil
     }
 
     override func didReceiveMemoryWarning() {
@@ -176,6 +187,14 @@ class MealTableViewController: UITableViewController {
         return ""
     }
     
+    // THIS makes headers the right color pls don't touch
+    override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
+        //recast your view as a UITableViewHeaderFooterView
+        header.contentView.backgroundColor = UIColor(red: 0.81, green: 0.0, blue: 0.0, alpha: 1.0)
+        header.textLabel!.textColor = UIColor.whiteColor() //make the text white
+        header.alpha = 0.68 //make the header transparent
+    }
     
     
     /*

@@ -13,20 +13,16 @@ class TabBarController: UITabBarController {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     @IBAction func diningHallChange(sender: AnyObject) {
-        switch(self.selectedViewController) {
-        case is MealTableViewController:
-            let VCs = self.viewControllers!
-            for vc in VCs {
-                let mealvc = vc as? MealTableViewController
-                if let mvc = mealvc {
+        if let nav = selectedViewController as? UINavigationController, let mvc = nav.viewControllers.first as? MealTableViewController
+        {
+                //if let mvc = mealVC {
                     // makes sure that the view is initalized so we can set the meal
-                    mvc.tableView.reloadData()
+                mvc.tableView.reloadData()
                     // sets the correct meal for the ALL dining halls
-                    let s = sender as? UISegmentedControl
-                    mvc.diningHall = s!.selectedSegmentIndex
-                }
-            }
-        default: break
+                let s = sender as? UISegmentedControl
+                mvc.diningHall = s!.selectedSegmentIndex
+                //}
+            
         }
     }
     override func viewDidLoad() {
@@ -35,6 +31,8 @@ class TabBarController: UITabBarController {
         //    a.diningHall = 0 // Next meal in day
         //}
         // Do any additional setup after loading the view.
+        segmentedControl.layer.cornerRadius = 5;
+        segmentedControl.clipsToBounds = true;
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,7 +40,7 @@ class TabBarController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
+    /* override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
         let tabBarItems = tabBar.items
         if tabBarItems!.indexOf(item) == 3 {
             segmentedControl.hidden = true
@@ -50,6 +48,9 @@ class TabBarController: UITabBarController {
             segmentedControl.hidden = false
         }
     }
+
+*/
+
 
 
     
