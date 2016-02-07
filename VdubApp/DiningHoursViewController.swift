@@ -17,7 +17,7 @@ class DiningHoursViewController: UIViewController {
         
         let bundle = NSBundle.mainBundle()
         let url = bundle.URLForResource("home", withExtension: "html");
-        var request = NSURLRequest(URL: url!);
+        let request = NSURLRequest(URL: url!);
         webView.loadRequest(request)
     }
 
