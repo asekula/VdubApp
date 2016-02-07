@@ -147,7 +147,7 @@
                             <tableViewSection headerTitle="" id="qnf-w5-3Zc">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="7wF-X5-I3W">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="64" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7wF-X5-I3W" id="ILC-sa-nx3">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
@@ -162,18 +162,18 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Rfe-ld-gR4" kind="show" trigger="accessoryAction" id="qT2-dX-Rdq"/>
+                                            <segue destination="Rfe-ld-gR4" kind="show" id="4iV-1H-hE7"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="0ja-73-Zkw">
-                                        <rect key="frame" x="0.0" y="44" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="108" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0ja-73-Zkw" id="Ppd-lG-aR9">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCM-RS-3n0">
-                                                    <rect key="frame" x="8" y="11" width="97" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notifications (DO NOT CLICK IF YOU WANT TO LIVE)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCM-RS-3n0">
+                                                    <rect key="frame" x="8" y="11" width="405" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -181,11 +181,11 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="SOV-pi-Ck6" kind="show" trigger="accessoryAction" id="Tg0-Ca-fjf"/>
+                                            <segue destination="SOV-pi-Ck6" kind="show" id="hQM-oQ-9iF"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="1LZ-OQ-Wcu">
-                                        <rect key="frame" x="0.0" y="88" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="152" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1LZ-OQ-Wcu" id="mz2-3z-a3f">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
@@ -200,7 +200,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="5nM-DZ-5eS" kind="show" trigger="accessoryAction" id="OqY-k0-rxy"/>
+                                            <segue destination="5nM-DZ-5eS" kind="show" id="bkZ-mY-4XV"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -215,27 +215,20 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="RCC-1y-j3N"/>
                     </navigationItem>
                 </tableViewController>
-                <navigationBar contentMode="scaleToFill" id="cyd-T6-uKb">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                    <items>
-                        <navigationItem title="Extras" id="OWL-eg-ToB"/>
-                    </items>
-                </navigationBar>
             </objects>
-            <point key="canvasLocation" x="-1995" y="1338"/>
+            <point key="canvasLocation" x="-1995" y="1330"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Notifications-->
         <scene sceneID="tqq-vZ-3Ds">
             <objects>
-                <tableViewController id="SOV-pi-Ck6" sceneMemberID="viewController">
+                <tableViewController modalTransitionStyle="crossDissolve" id="SOV-pi-Ck6" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="6WZ-sV-FIl">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="c3J-TF-8Im">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="c3J-TF-8Im" id="C6p-Go-bdh">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -248,15 +241,18 @@
                             <outlet property="delegate" destination="SOV-pi-Ck6" id="sZw-wr-idr"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Notifications" prompt="Add or remove menu items" id="ZsB-uj-Wvv">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="zOG-e8-JPj"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t4g-l1-Qad" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2641" y="2246"/>
+            <point key="canvasLocation" x="-1995" y="2110"/>
         </scene>
         <!--About-->
         <scene sceneID="6tu-HP-QKJ">
             <objects>
-                <viewController title="About" id="Rfe-ld-gR4" sceneMemberID="viewController">
+                <viewController title="About" modalTransitionStyle="crossDissolve" id="Rfe-ld-gR4" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HSU-Jd-lOY"/>
                         <viewControllerLayoutGuide type="bottom" id="70G-QK-OH6"/>
@@ -265,24 +261,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="THIS is the about page..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bPG-og-omZ">
-                                <rect key="frame" x="166" y="259" width="189" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ev3-qm-2Y7">
+                                <rect key="frame" x="0.0" y="72" width="600" height="223"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">eat@brown © 2016
+
+thanks to Valentin Perez and Nate Parrott
+for the incredible help and support
+
+made with </string>
+                                        <attributes>
+                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="♥">
+                                        <attributes>
+                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <font key="NSFont" size="17" name="HiraginoSans-W3"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" at hack@brown 2016">
+                                        <attributes>
+                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ev3-qm-2Y7" firstAttribute="centerX" secondItem="Pda-Lh-MYR" secondAttribute="centerX" id="Ar0-lD-4LH"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="About" id="utI-uT-kIS">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="aBC-bc-cFU"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ufm-5Y-eZi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1995" y="2246"/>
+            <point key="canvasLocation" x="-2627" y="2118"/>
         </scene>
-        <!--View Controller-->
+        <!--Dining Hours-->
         <scene sceneID="PDx-2L-iO7">
             <objects>
-                <viewController id="5nM-DZ-5eS" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" id="5nM-DZ-5eS" customClass="DiningHoursViewController" customModule="VdubApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WkF-xG-nf7"/>
                         <viewControllerLayoutGuide type="bottom" id="ED2-FM-ca4"/>
@@ -290,12 +319,30 @@
                     <view key="view" contentMode="scaleToFill" id="Ygy-ps-UeA">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ln9-gn-WIr">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="811"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <attributedString key="attributedText"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="515-vN-3k1">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Dining Hours" id="8ew-Yl-7RG">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="vi2-Yd-htC"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="webView" destination="515-vN-3k1" id="QM6-Gf-bZu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x99-lk-uGl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1353" y="2246"/>
+            <point key="canvasLocation" x="-1359" y="2110"/>
         </scene>
         <!--Lunch-->
         <scene sceneID="ysd-8Z-8dC">
@@ -334,7 +381,7 @@
         <!--More-->
         <scene sceneID="hBq-fw-dKw">
             <objects>
-                <navigationController storyboardIdentifier="55" title="More" navigationBarHidden="YES" id="cGn-vX-Fb2" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="55" title="More" id="cGn-vX-Fb2" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="More" image="more" id="m1Z-Kn-czn"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2rS-kg-GLU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
