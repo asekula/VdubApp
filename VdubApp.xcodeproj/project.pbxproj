@@ -12,6 +12,7 @@
 		CEF0B1061C6726F4003EA6A2 /* DiningHoursViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF0B1051C6726F4003EA6A2 /* DiningHoursViewController.swift */; };
 		CEF0B1081C672C73003EA6A2 /* home.html in Resources */ = {isa = PBXBuildFile; fileRef = CEF0B1071C672C73003EA6A2 /* home.html */; };
 		FA89BACD1C67970E0052700E /* FavFoodTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89BACC1C67970E0052700E /* FavFoodTableViewController.swift */; };
+		FA89BACF1C6797C20052700E /* FavoritesSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89BACE1C6797C20052700E /* FavoritesSingleton.swift */; };
 		FA9025131C66ADBD005469B5 /* MenuSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9025121C66ADBD005469B5 /* MenuSingleton.swift */; };
 		FAE951161C66675400619760 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE951151C66675400619760 /* AppDelegate.swift */; };
 		FAE9511B1C66675500619760 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE951191C66675500619760 /* Main.storyboard */; };
@@ -32,6 +33,7 @@
 		CEF0B1051C6726F4003EA6A2 /* DiningHoursViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiningHoursViewController.swift; sourceTree = "<group>"; };
 		CEF0B1071C672C73003EA6A2 /* home.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = home.html; sourceTree = "<group>"; };
 		FA89BACC1C67970E0052700E /* FavFoodTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavFoodTableViewController.swift; sourceTree = "<group>"; };
+		FA89BACE1C6797C20052700E /* FavoritesSingleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesSingleton.swift; sourceTree = "<group>"; };
 		FA9025121C66ADBD005469B5 /* MenuSingleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuSingleton.swift; sourceTree = "<group>"; };
 		FAE951121C66675400619760 /* VdubApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VdubApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAE951151C66675400619760 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				FAE951351C6694EC00619760 /* MenuNSURLSession.swift */,
 				FA9025121C66ADBD005469B5 /* MenuSingleton.swift */,
 				FA89BACC1C67970E0052700E /* FavFoodTableViewController.swift */,
+				FA89BACE1C6797C20052700E /* FavoritesSingleton.swift */,
 			);
 			path = VdubApp;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 				FA9025131C66ADBD005469B5 /* MenuSingleton.swift in Sources */,
 				FA89BACD1C67970E0052700E /* FavFoodTableViewController.swift in Sources */,
 				FAE951341C668F3C00619760 /* BreakfastTableViewController.swift in Sources */,
+				FA89BACF1C6797C20052700E /* FavoritesSingleton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

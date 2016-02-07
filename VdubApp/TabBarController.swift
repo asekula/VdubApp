@@ -9,7 +9,7 @@
 import UIKit
 
 class TabBarController: UITabBarController {
-    
+    /*
     @IBOutlet weak var backButton: UIButton!
     
     @IBAction func dayForward(sender: AnyObject) {
@@ -30,7 +30,7 @@ class TabBarController: UITabBarController {
                 }
             }
         }
-    }
+    }*/
     
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -69,9 +69,11 @@ class TabBarController: UITabBarController {
         //    a.diningHall = 0 // Next meal in day
         //}
         // Do any additional setup after loading the view.
+        
+        self.navigationController?.navigationBar
         segmentedControl.layer.cornerRadius = 5;
         segmentedControl.clipsToBounds = true;
-        backButton.hidden = true
+        //backButton.hidden = true
     }
 
     override func didReceiveMemoryWarning() {

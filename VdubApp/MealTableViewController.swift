@@ -9,11 +9,79 @@
 import UIKit
 import SwiftyJSON
 
+extension NSDate {
+    func dayOfWeek() -> Int? {
+        if
+            let cal: NSCalendar = NSCalendar.currentCalendar(),
+            let comp: NSDateComponents = cal.components(.Weekday, fromDate: self) {
+                return comp.weekday
+        } else {
+            return nil
+        }
+    }
+}
+
 class MealTableViewController: UITableViewController {
 
+    let daysOfWeek = ["Sun","Mon","Tue","Wed","Thu","Fri", "Sat"]
+    
+    @IBOutlet weak var backButton: UIBarButtonItem!
+    
+    @IBOutlet weak var forwardButton: UIBarButtonItem!
+    
+    @IBAction func dayBack(sender: AnyObject) {
+        if dayOffSet > 0 {
+            dayOffSet -= 1
+            if dateIndex == 0 {
+                dateIndex = 7
+            }
+            dateIndex -= 1
+            forwardButton.enabled = true
+        }
+        if dayOffSet == 0 {
+            backButton.enabled = false
+        }
+    }
+    @IBAction func dayForward(sender: AnyObject) {
+        if dayOffSet < 4 {
+            dayOffSet += 1
+            if dateIndex == 7 {
+                dateIndex = 0
+            }
+            dateIndex += 1
+            backButton.enabled = true
+        }
+        if dayOffSet >= 4 {
+            forwardButton.enabled = false
+        }
+    }
+    
+    
+    
     var menu: [String:[String]]?
     var keys: [String]?
     var meal: Int = 0
+    var dateIndex = 0 {
+        didSet {
+            if dateIndex == 7 {
+                dateIndex = 0
+            }
+            if dateIndex == -1 {
+                dateIndex = 6
+            }
+            if dateIndex - 1 == -1 {
+                backButton.title = "<Sat"
+            } else {
+                backButton.title =  "<"+daysOfWeek[dateIndex - 1]
+            }
+            if dateIndex + 1 == 7 {
+                forwardButton.title = "Sun>"
+            } else {
+                forwardButton.title = daysOfWeek[dateIndex + 1]+">"
+            }
+
+        }
+    }
     var dayOffSet = 0 {
         didSet {
             MenuSingleton.sharedInstance.vdubMenu[0] = "I"
@@ -140,11 +208,18 @@ class MealTableViewController: UITableViewController {
         
         menu = [String: [String]]()
         
+        backButton.enabled = false
+        forwardButton.enabled = true
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        _ = dateFormatter.stringFromDate(NSDate())
+        
+        //dateIndex = NSDate.dayOfWeek(NSDate()) - 1
+        dateIndex = 0
         //TODO: initialize keys and menu
         
         diningHall = 0
-        dayOffSet = 2 // CHANGE AT SOME POINT
-        //
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
