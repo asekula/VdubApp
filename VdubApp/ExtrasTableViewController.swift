@@ -1,5 +1,5 @@
 //
-//  MealTableViewController.swift
+//  ExtrasTableViewController.swift
 //  VdubApp
 //
 //  Created by Joseph Romano on 2/6/16.
@@ -8,58 +8,18 @@
 
 import UIKit
 
-class MealTableViewController: UITableViewController {
+class ExtrasTableViewController: UITableViewController {
+    
+    
 
-    var menu: [String:[String]]?
-    var keys: [String]?
-    var meal: Int = 0
-    var diningHall = 0 {
-        didSet {
-            print("dininghall = \(diningHall) and meal = \(meal)")
-            connection.setMyQuery("menu?client_id=e5e5e5f6-f300-48f9-ab95-c57d6c731cba&eatery=vdub&day=10")
-            connection.data_request()
-            
-            menu = [String: [String]]()
-            
-            if meal == 0 {
-                menu!["daily sidebars"]=["sliced provolone", "roast beef", "tomatoes"]
-                menu!["main menu"]=["pancakes", "scrambled eggs and bacon", "hash browns", "french toast", "sausage patties"]
-            } else if meal == 1 {
-                menu!["daily sidebars"]=["sliced asdasdasdasd", "roast beef", "tomatoes"]
-                menu!["main menu"]=["pancakes", "scrambled eggs and bacon", "hash browns", "french toast", "sausage patties"]
-            } else {
-                menu!["daily sidebars"]=["sliced provolone", "roast beef", "tomatoes"]
-                menu!["main menu"]=["pancasdasdasdasdasdakes", "scrambled eggs and bacon", "hash browns", "french toast", "sausage patties"]
-                
-            }
-            //TODO: initialize keys and menu
-            keys = Array(menu!.keys)
-            
-            //print("\(menu)")
-            
-            self.tableView.registerClass(UITableViewCell().classForCoder, forCellReuseIdentifier: "reuseIdentifier")
-            
-            //after api loads
-            self.tableView.reloadData()
-        }
-    }
-    var connection: MenuNSURLSession = MenuNSURLSession()
-    
-    
+    var diningHall = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //Fixes top allignment.
-        tableView.contentInset = UIEdgeInsetsMake(20.0, 0.0, 0.0, 0.0)
         
-        diningHall = 0
-        //if let theNav = super.view.viewWithTag(50) as? UISegmentedControl {
-            //diningHall = theNav.titleForSegmentAtIndex(theNav.selectedSegmentIndex)!
-        //}
-        
-        
-        //
-        
+        let navigationBar = navigationController!.navigationBar
+        navigationBar.hidden = true
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -75,51 +35,30 @@ class MealTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        //print("hellow")
-        if let k = keys {
-            //print(k.count)
-            return k.count
-            
-        }
-        return 0 // TODO: get from network call ("Chef's Corner" etc.)
-    }
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let m = menu {
-            if let k = keys {
-                //print(m[k[section]]!.count)
-                return m[k[section]]!.count
-            }
-        }
-        return 0 // TODO: get from network call (pass in number of section)
+        // #warning Incomplete implementation, return the number of sections
+        return 0
     }
 
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return 0
+    }
     
+    override func viewWillAppear(animated: Bool) {
+        let navigationBar = navigationController!.navigationBar
+        navigationBar.hidden = true
+    }
+
+    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-        
-        if let m = menu {
-            if let k = keys {
-                let sectionItems = m[k[indexPath.section]]
-                cell.textLabel!.text = sectionItems![indexPath.row]
-                //print(sectionItems![indexPath.row])
-            }
-        }
 
         // Configure the cell...
 
         return cell
     }
-    
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if let k = keys {
-            return k[section]
-        }
-        return ""
-    }
-    
-    
-    
+    */
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
