@@ -38,8 +38,10 @@ class MenuNSURLSession: NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate
                 
                 let eatery = arrRep[0].dictionaryValue["eatery"]
                 if (eatery == "ratty") {
+                    print("connection finish")
                     MenuSingleton.sharedInstance.setMenu(1, menu: arrRep)
                 } else if (eatery == "vdub") {
+                    print("connection finish")
                     MenuSingleton.sharedInstance.setMenu(0, menu: arrRep)
                 } else {
                     print("Unexpected eatery in JSON parse")
@@ -52,7 +54,7 @@ class MenuNSURLSession: NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate
                 print(error)
             }
         });
-        
+        print("starting connection")
         task.resume()
         
     }

@@ -25,18 +25,26 @@ class MealTableViewController: UITableViewController {
             //connection.data_request()
             let restOfUrl: String
             if diningHall == 0 {
+                print("staring url vdub request")
                 restOfUrl = "vdub&day=10"
                 if MenuSingleton.sharedInstance.vdubMenu[0].stringValue == "I" {
                     connection.setMyQuery(restOfUrl) //TODO: day
                     connection.data_request()
                     //print("Set singleton")
+                    while MenuSingleton.sharedInstance.vdubMenu[0].stringValue == "I" {
+                        //Just hang out for a bit
+                    }
                 }
             } else {
+                print("staring url ratty request")
                 restOfUrl = "ratty&day=10"
                 if MenuSingleton.sharedInstance.rattyMenu[0].stringValue == "I" {
                     connection.setMyQuery(restOfUrl) //TODO: day
                     connection.data_request()
                     //print("Set singleton")
+                    while MenuSingleton.sharedInstance.rattyMenu[0].stringValue == "I" {
+                        //Just hang out for a bit
+                    }
                 }
             }
             
@@ -59,7 +67,7 @@ class MealTableViewController: UITableViewController {
                 //print(theMenu[key]!.arrayValue.debugDescription)
                 let jsonMenuItems = theMenu[key]!.arrayValue
                 if jsonMenuItems.count > 1 {
-                    print(jsonMenuItems)
+                    //print(jsonMenuItems)
                     var stringArr = [String]()
                     for jsonVal in jsonMenuItems {
                         if let s = jsonVal.string {
@@ -78,7 +86,9 @@ class MealTableViewController: UITableViewController {
             self.tableView.registerClass(UITableViewCell().classForCoder, forCellReuseIdentifier: "reuseIdentifier")
             
             //after api loads
+            print("reloading data")
             self.tableView.reloadData()
+            
         }
     }
     var connection: MenuNSURLSession = MenuNSURLSession()
