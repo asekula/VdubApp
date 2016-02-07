@@ -17,7 +17,7 @@ class MenuNSURLSession: NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate
     func setMyQuery(query:NSString) {
         self.query = host + (query as String)
 
-        //print(query)
+        print(query)
     }
     
     func data_request() {
@@ -33,13 +33,15 @@ class MenuNSURLSession: NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate
 
                 let json = JSON(data: d)
                 let arrRep = json["menus"].arrayValue
-                print("Array Representation: ")
-                print(arrRep)
+                //print("Array Representation: ")
+                //print(arrRep)
                 
                 let eatery = arrRep[0].dictionaryValue["eatery"]
                 if (eatery == "ratty") {
+                    print("connection finish")
                     MenuSingleton.sharedInstance.setMenu(1, menu: arrRep)
                 } else if (eatery == "vdub") {
+                    print("connection finish")
                     MenuSingleton.sharedInstance.setMenu(0, menu: arrRep)
                 } else {
                     print("Unexpected eatery in JSON parse")
@@ -52,7 +54,7 @@ class MenuNSURLSession: NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate
                 print(error)
             }
         });
-        
+        print("starting connection")
         task.resume()
         
     }

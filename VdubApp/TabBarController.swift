@@ -31,6 +31,9 @@ class TabBarController: UITabBarController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        //if let a = self.selectedViewController as? MealTableViewController {
+        //    a.diningHall = 0 // Next meal in day
+        //}
         // Do any additional setup after loading the view.
     }
 

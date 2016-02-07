@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class MealTableViewController: UITableViewController {
 
@@ -15,24 +16,69 @@ class MealTableViewController: UITableViewController {
     var meal: Int = 0
     var diningHall = 0 {
         didSet {
-            print("dininghall = \(diningHall) and meal = \(meal)")
-            connection.setMyQuery("menu?client_id=e5e5e5f6-f300-48f9-ab95-c57d6c731cba&eatery=vdub&day=10")
-            //connection.data_request()
             
             menu = [String: [String]]()
+            //print("dininghall = \(diningHall) and meal = \(meal)")
             
-            if meal == 0 {
-                menu!["daily sidebars"]=["sliced provolone", "roast beef", "tomatoes"]
-                menu!["main menu"]=["pancakes", "scrambled eggs and bacon", "hash browns", "french toast", "sausage patties"]
-            } else if meal == 1 {
-                menu!["daily sidebars"]=["sliced asdasdasdasd", "roast beef", "tomatoes"]
-                menu!["main menu"]=["pancakes", "scrambled eggs and bacon", "hash browns", "french toast", "sausage patties"]
+            //print("Dining hall set")
+            //connection.setMyQuery("vdub&day=10") //TODO: day
+            //connection.data_request()
+            let restOfUrl: String
+            if diningHall == 0 {
+                print("staring url vdub request")
+                restOfUrl = "vdub&day=10"
+                if MenuSingleton.sharedInstance.vdubMenu[0].stringValue == "I" {
+                    connection.setMyQuery(restOfUrl) //TODO: day
+                    connection.data_request()
+                    //print("Set singleton")
+                    while MenuSingleton.sharedInstance.vdubMenu[0].stringValue == "I" {
+                        //Just hang out for a bit
+                    }
+                }
             } else {
-                menu!["daily sidebars"]=["sliced provolone", "roast beef", "tomatoes"]
-                menu!["main menu"]=["pancasdasdasdasdasdakes", "scrambled eggs and bacon", "hash browns", "french toast", "sausage patties"]
-                
+                print("staring url ratty request")
+                restOfUrl = "ratty&day=10"
+                if MenuSingleton.sharedInstance.rattyMenu[0].stringValue == "I" {
+                    connection.setMyQuery(restOfUrl) //TODO: day
+                    connection.data_request()
+                    //print("Set singleton")
+                    while MenuSingleton.sharedInstance.rattyMenu[0].stringValue == "I" {
+                        //Just hang out for a bit
+                    }
+                }
             }
-            //TODO: initialize keys and menu
+            
+            
+            var theMenu: [String: JSON]
+            
+            if diningHall == 0 {
+                var tempMeal = meal
+                if meal > 0 {
+                    tempMeal += 1
+                }
+                theMenu = MenuSingleton.sharedInstance.vdubMenu[tempMeal].dictionaryValue
+                    
+            } else {
+                theMenu = MenuSingleton.sharedInstance.rattyMenu[meal].dictionaryValue
+            }
+            //print(theMenu)
+            for key in theMenu.keys {
+                //print(theMenu[key])
+                //print(theMenu[key]!.arrayValue.debugDescription)
+                let jsonMenuItems = theMenu[key]!.arrayValue
+                if jsonMenuItems.count > 1 {
+                    //print(jsonMenuItems)
+                    var stringArr = [String]()
+                    for jsonVal in jsonMenuItems {
+                        if let s = jsonVal.string {
+                            stringArr.append(s)
+                        }
+                    }
+                    menu![key] = stringArr
+                    //menu![key] = jsonMenuItems.map { $0.stringValue }
+                }
+            }
+            
             keys = Array(menu!.keys)
             
             //print("\(menu)")
@@ -40,7 +86,9 @@ class MealTableViewController: UITableViewController {
             self.tableView.registerClass(UITableViewCell().classForCoder, forCellReuseIdentifier: "reuseIdentifier")
             
             //after api loads
+            print("reloading data")
             self.tableView.reloadData()
+            
         }
     }
     var connection: MenuNSURLSession = MenuNSURLSession()
@@ -50,9 +98,8 @@ class MealTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //Fixes top allignment.
-        tableView.contentInset = UIEdgeInsetsMake(20.0, 0.0, 0.0, 0.0)
+        tableView.contentInset = UIEdgeInsetsMake(0.0, 0.0, 48.0, 0.0)
         
-        diningHall = 0
         //if let theNav = super.view.viewWithTag(50) as? UISegmentedControl {
             //diningHall = theNav.titleForSegmentAtIndex(theNav.selectedSegmentIndex)!
         //}
@@ -64,21 +111,9 @@ class MealTableViewController: UITableViewController {
         
         menu = [String: [String]]()
         
-        if meal == 0 {
-            menu!["daily sidebars"]=["sliced provolone", "roast beef", "tomatoes"]
-            menu!["main menu"]=["pancakes", "scrambled eggs and bacon", "hash browns", "french toast", "sausage patties"]
-        } else if meal == 1 {
-            menu!["daily sidebars"]=["sliced asdasdasdasd", "roast beef", "tomatoes"]
-            menu!["main menu"]=["pancakes", "scrambled eggs and bacon", "hash browns", "french toast", "sausage patties"]
-        } else {
-            menu!["daily sidebars"]=["sliced provolone", "roast beef", "tomatoes"]
-            menu!["main menu"]=["pancasdasdasdasdasdakes", "scrambled eggs and bacon", "hash browns", "french toast", "sausage patties"]
-            
-        }
         //TODO: initialize keys and menu
-        keys = Array(menu!.keys)
         
-        
+        diningHall = 0
         //
         
         // Uncomment the following line to preserve selection between presentations
@@ -86,6 +121,8 @@ class MealTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
