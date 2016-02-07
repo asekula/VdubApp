@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3B7F9BBBADA6211CECBA0BD5 /* Pods_VdubApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F84F1E7E0FAB4EDAF1E9E01 /* Pods_VdubApp.framework */; };
+		CE3FD37E1C66ACD200A0389F /* ExtrasTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3FD37D1C66ACD200A0389F /* ExtrasTableViewController.swift */; };
 		CECFB3021C6677A300BF57DF /* MealTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECFB3011C6677A300BF57DF /* MealTableViewController.swift */; };
 		FAE951161C66675400619760 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE951151C66675400619760 /* AppDelegate.swift */; };
 		FAE9511B1C66675500619760 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE951191C66675500619760 /* Main.storyboard */; };
@@ -24,6 +25,7 @@
 		1624BF0652011077144810DF /* Pods-VdubApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VdubApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-VdubApp/Pods-VdubApp.release.xcconfig"; sourceTree = "<group>"; };
 		7F84F1E7E0FAB4EDAF1E9E01 /* Pods_VdubApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VdubApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6DD59B2476E03F3BC2B0F57 /* Pods-VdubApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VdubApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VdubApp/Pods-VdubApp.debug.xcconfig"; sourceTree = "<group>"; };
+		CE3FD37D1C66ACD200A0389F /* ExtrasTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtrasTableViewController.swift; sourceTree = "<group>"; };
 		CECFB3011C6677A300BF57DF /* MealTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealTableViewController.swift; sourceTree = "<group>"; };
 		FAE951121C66675400619760 /* VdubApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VdubApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAE951151C66675400619760 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				CECFB3011C6677A300BF57DF /* MealTableViewController.swift */,
 				FAE951151C66675400619760 /* AppDelegate.swift */,
 				FAE951191C66675500619760 /* Main.storyboard */,
+				CE3FD37D1C66ACD200A0389F /* ExtrasTableViewController.swift */,
 				FAE9511C1C66675500619760 /* Assets.xcassets */,
 				FAE9511E1C66675500619760 /* LaunchScreen.storyboard */,
 				FAE951211C66675500619760 /* Info.plist */,
@@ -225,6 +228,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE3FD37E1C66ACD200A0389F /* ExtrasTableViewController.swift in Sources */,
 				FAE9512A1C6689D600619760 /* TabBarController.swift in Sources */,
 				FAE9512E1C668E1700619760 /* LunchTableViewController.swift in Sources */,
 				CECFB3021C6677A300BF57DF /* MealTableViewController.swift in Sources */,

@@ -15,7 +15,7 @@ class MenuNSURLSession: NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate
     
     func setMyQuery(query:NSString) {
         self.query = host + (query as String)
-        print(query)
+        //print(query)
         /* var url =  NSURLRequest( URL: self.query )
         var conn = NSURLConnection(request: url, delegate: self, startImmediately: true) */
     }
@@ -28,8 +28,8 @@ class MenuNSURLSession: NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate
         let task = session.dataTaskWithRequest(request, completionHandler: {(data, response, var error) in
             if let d = data {
                 //self.replyData = r.Respons
-                NSJSONSerialization.JSONObjectWithData(d, options: NSJSONReadingOptions.AllowFragments)
-                print(data)
+                // NSJSONSerialization.JSONObjectWithData(d, options: NSJSONReadingOptions.AllowFragments)
+                //print(data)
             }
             else {
                 print("not found")
