@@ -52,10 +52,34 @@ class MealTableViewController: UITableViewController {
         //Fixes top allignment.
         tableView.contentInset = UIEdgeInsetsMake(20.0, 0.0, 0.0, 0.0)
         
+<<<<<<< HEAD
         diningHall = 0
         //if let theNav = super.view.viewWithTag(50) as? UISegmentedControl {
             //diningHall = theNav.titleForSegmentAtIndex(theNav.selectedSegmentIndex)!
         //}
+=======
+        if MenuSingleton.sharedInstance.rattyMenu {
+            
+        }
+        //connection.setMyQuery("vdub&day=10")
+        //connection.data_request()
+        
+        menu = [String: [String]]()
+        
+        if meal == 0 {
+            menu!["daily sidebars"]=["sliced provolone", "roast beef", "tomatoes"]
+            menu!["main menu"]=["pancakes", "scrambled eggs and bacon", "hash browns", "french toast", "sausage patties"]
+        } else if meal == 1 {
+            menu!["daily sidebars"]=["sliced asdasdasdasd", "roast beef", "tomatoes"]
+            menu!["main menu"]=["pancakes", "scrambled eggs and bacon", "hash browns", "french toast", "sausage patties"]
+        } else {
+            menu!["daily sidebars"]=["sliced provolone", "roast beef", "tomatoes"]
+            menu!["main menu"]=["pancasdasdasdasdasdakes", "scrambled eggs and bacon", "hash browns", "french toast", "sausage patties"]
+            
+        }
+        //TODO: initialize keys and menu
+        keys = Array(menu!.keys)
+>>>>>>> 75ac59a7cfcba10278be8b783d74cefb2046222a
         
         
         //
