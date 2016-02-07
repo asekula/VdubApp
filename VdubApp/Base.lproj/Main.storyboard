@@ -292,7 +292,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="19" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ev3-qm-2Y7">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="25" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ev3-qm-2Y7">
                                 <rect key="frame" x="0.0" y="72" width="600" height="223"/>
                                 <attributedString key="attributedText">
                                     <fragment>
@@ -301,6 +301,10 @@
 Joe Romano
 Alex Sekula
 Brendan Walsh
+
+Andrews Commons WIP:
+Josh Chipman
+Dan Murphy
 
 thanks to Valentin Perez and Nate Parrott
 for the incredible help and support
