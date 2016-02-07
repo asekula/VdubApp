@@ -17,7 +17,7 @@ class MealTableViewController: UITableViewController {
         didSet {
             print("dininghall = \(diningHall) and meal = \(meal)")
             connection.setMyQuery("menu?client_id=e5e5e5f6-f300-48f9-ab95-c57d6c731cba&eatery=vdub&day=10")
-            connection.data_request()
+            //connection.data_request()
             
             menu = [String: [String]]()
             
@@ -56,9 +56,9 @@ class MealTableViewController: UITableViewController {
         //if let theNav = super.view.viewWithTag(50) as? UISegmentedControl {
             //diningHall = theNav.titleForSegmentAtIndex(theNav.selectedSegmentIndex)!
         //}
-        if MenuSingleton.sharedInstance.rattyMenu {
+        //if MenuSingleton.sharedInstance.rattyMenu {
             
-        }
+        //}
         //connection.setMyQuery("vdub&day=10")
         //connection.data_request()
         
