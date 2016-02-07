@@ -21,8 +21,11 @@ class MealTableViewController: UITableViewController {
         //Fixes top allignment.
         tableView.contentInset = UIEdgeInsetsMake(20.0, 0.0, 0.0, 0.0)
         
-        connection.setMyQuery("menu?client_id=e5e5e5f6-f300-48f9-ab95-c57d6c731cba&eatery=vdub&day=10")
-        connection.data_request()
+        if MenuSingleton.sharedInstance.rattyMenu {
+            
+        }
+        //connection.setMyQuery("vdub&day=10")
+        //connection.data_request()
         
         menu = [String: [String]]()
         
