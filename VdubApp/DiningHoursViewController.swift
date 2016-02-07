@@ -10,15 +10,21 @@ import UIKit
 
 class DiningHoursViewController: UIViewController {
     
-    @IBOutlet weak var webView: UIWebView!
+    @IBOutlet var webView: UIWebView!
+    
+    var urlpath = NSBundle.mainBundle().pathForResource("hours", ofType: "html");
+    
+    func loadAddressURL(){
+        // TODO: Figure out why.
+        let requesturl = NSURL.fileURLWithPath(urlpath!)
+        let request = NSURLRequest(URL: requesturl)
+        webView.loadRequest(request)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let localfilePath = NSBundle.mainBundle().URLForResource("hours", withExtension: "html");
-        let myRequest = NSURLRequest(URL: localfilePath!);
-        webView.loadRequest(myRequest);
-        self.view.addSubview(webView)
+        loadAddressURL()
     }
 
     override func didReceiveMemoryWarning() {
