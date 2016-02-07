@@ -11,6 +11,26 @@
                 <tabBarController id="5CF-jW-e0L" customClass="TabBarController" customModule="VdubApp" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Mgy-iv-62u">
                         <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="srB-OH-sA3">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Xls-Qx-bOt">
+                                <rect key="frame" x="20" y="7" width="133" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="dayBack:" destination="5CF-jW-e0L" eventType="touchUpInside" id="f1l-75-LFw"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="82I-go-rn8">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="961-h7-Hec">
+                                <rect key="frame" x="447" y="7" width="133" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Forward"/>
+                                <connections>
+                                    <action selector="dayForward:" destination="5CF-jW-e0L" eventType="touchUpInside" id="cj7-B3-S9r"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="aqz-vd-hui">
@@ -19,6 +39,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <outlet property="backButton" destination="Xls-Qx-bOt" id="eBO-hI-tMP"/>
                         <outlet property="segmentedControl" destination="hFq-le-B8w" id="gdB-h6-CEe"/>
                         <segue destination="0Cj-9L-r3Y" kind="relationship" relationship="viewControllers" id="NUs-oW-6rf"/>
                         <segue destination="zlN-hY-Ory" kind="relationship" relationship="viewControllers" id="40S-55-tNv"/>

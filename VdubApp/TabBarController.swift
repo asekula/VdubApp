@@ -10,6 +10,29 @@ import UIKit
 
 class TabBarController: UITabBarController {
     
+    @IBOutlet weak var backButton: UIButton!
+    
+    @IBAction func dayForward(sender: AnyObject) {
+        if let nav = selectedViewController as? UINavigationController, let mvc = nav.viewControllers.first as? MealTableViewController
+        {
+            backButton.hidden = false
+            mvc.dayOffSet += 1
+        }
+    }
+    
+    @IBAction func dayBack(sender: AnyObject) {
+        if let nav = selectedViewController as? UINavigationController, let mvc = nav.viewControllers.first as? MealTableViewController
+        {
+            if mvc.dayOffSet > 0 {
+                mvc.dayOffSet -= 1
+                if mvc.dayOffSet == 0 {
+                    backButton.hidden = true
+                }
+            }
+        }
+    }
+    
+    
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     @IBAction func diningHallChange(sender: AnyObject) {
@@ -33,7 +56,7 @@ class TabBarController: UITabBarController {
         //print("\(minute) minute")
         
         
-        if (hour > 10 || (hour == 9 && minute > 30)) && hour < 14 {
+        if (hour > 9 || (hour == 9 && minute > 30)) && hour < 14 {
             //select lunch
             self.selectedViewController=self.viewControllers![1]
        
@@ -48,6 +71,7 @@ class TabBarController: UITabBarController {
         // Do any additional setup after loading the view.
         segmentedControl.layer.cornerRadius = 5;
         segmentedControl.clipsToBounds = true;
+        backButton.hidden = true
     }
 
     override func didReceiveMemoryWarning() {
