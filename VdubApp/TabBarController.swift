@@ -22,11 +22,26 @@ class TabBarController: UITabBarController {
                 let s = sender as? UISegmentedControl
                 mvc.diningHall = s!.selectedSegmentIndex
                 //}
-            
         }
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        let hour = NSCalendar.currentCalendar().component(.Hour, fromDate: NSDate())
+        let minute = NSCalendar.currentCalendar().component(.Minute, fromDate: NSDate())
+        
+        //print("\(hour) hour")
+        //print("\(minute) minute")
+        
+        
+        if (hour > 10 || (hour == 9 && minute > 30)) && hour < 14 {
+            //select lunch
+            self.selectedViewController=self.viewControllers![1]
+       
+        } else if hour > 14 {
+            //select dinner
+            self.selectedViewController=self.viewControllers![2]
+        }
+        
         //if let a = self.selectedViewController as? MealTableViewController {
         //    a.diningHall = 0 // Next meal in day
         //}

@@ -14,6 +14,13 @@ class MealTableViewController: UITableViewController {
     var menu: [String:[String]]?
     var keys: [String]?
     var meal: Int = 0
+    var dayOffSet = 0 {
+        didSet {
+            MenuSingleton.sharedInstance.vdubMenu[0] = "I"
+            MenuSingleton.sharedInstance.rattyMenu[0] = "I"
+            diningHall = diningHall + 0 // NOTE: WILL THIS WORK TO REFRESH MENU?
+        }
+    }
     var diningHall = 0 {
         didSet {
             
@@ -25,14 +32,14 @@ class MealTableViewController: UITableViewController {
             //connection.data_request()
             let restOfUrl: String
             
-            let date = NSDate()
             let calendar = NSCalendar.currentCalendar()
-            let weekend = calendar.isDateInWeekend(date)
-            let components = calendar.components([.Day , .Month , .Year], fromDate: date)
+            let newDate = calendar.dateByAddingUnit(.Day, value: dayOffSet, toDate: NSDate(), options: [])
+            let weekend = calendar.isDateInWeekend(newDate!)
+            let components = calendar.components([.Day , .Month , .Year], fromDate: newDate!)
             let day = components.day
             
             if diningHall == 0 {
-                print("staring url vdub request")
+                //print("staring url vdub request")
                 restOfUrl = "vdub&day=\(day)"
                 if MenuSingleton.sharedInstance.vdubMenu[0].stringValue == "I" {
                     connection.setMyQuery(restOfUrl) //TODO: day
@@ -43,7 +50,7 @@ class MealTableViewController: UITableViewController {
                     }
                 }
             } else {
-                print("staring url ratty request")
+                //print("staring url ratty request")
                 restOfUrl = "ratty&day=\(day)"
                 if MenuSingleton.sharedInstance.rattyMenu[0].stringValue == "I" {
                     connection.setMyQuery(restOfUrl) //TODO: day
@@ -104,11 +111,14 @@ class MealTableViewController: UITableViewController {
             self.tableView.registerClass(UITableViewCell().classForCoder, forCellReuseIdentifier: "reuseIdentifier")
             
             //after api loads
-            print("reloading data")
+            //print("reloading data")
             self.tableView.reloadData()
             
         }
     }
+    
+    
+    
     var connection: MenuNSURLSession = MenuNSURLSession()
     
     
@@ -133,6 +143,7 @@ class MealTableViewController: UITableViewController {
         //TODO: initialize keys and menu
         
         diningHall = 0
+        dayOffSet = 2 // CHANGE AT SOME POINT
         //
         
         // Uncomment the following line to preserve selection between presentations
