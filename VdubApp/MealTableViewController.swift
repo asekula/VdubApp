@@ -31,7 +31,7 @@ class MealTableViewController: UITableViewController {
         if dayOffSet > 0 {
             //forwardButton.enabled = true
             dayOffSet -= 1
-            print("DAYOFFSET MINUS ONE")
+            //print("DAYOFFSET MINUS ONE")
         }
         if dayOffSet == 0 {
             //backButton.enabled = false
@@ -41,7 +41,7 @@ class MealTableViewController: UITableViewController {
         if dayOffSet < 4 {
             //backButton.enabled = true
             dayOffSet += 1
-            print("DAYOFFSET PLUS ONE")
+            //print("DAYOFFSET PLUS ONE")
         }
         if dayOffSet == 4 {
             //forwardButton.enabled = false
@@ -171,7 +171,7 @@ class MealTableViewController: UITableViewController {
         
         let dateString = formatter.stringFromDate(newdate!)
         let fullNameArr = dateString.characters.split{$0 == ","}.map(String.init)
-        print(fullNameArr[0])
+        //print(fullNameArr[0])
         
         let myComponents = NSCalendar.currentCalendar().components(.Weekday, fromDate: newdate!)
         let weekDay = myComponents.weekday
