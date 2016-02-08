@@ -82,9 +82,10 @@ class MealTableViewController: UITableViewController {
         }
     }
     
-    var diningHall = 0 {
-        didSet {
-            refresh()
+    var diningHall: Int {
+        get {
+            let tabBar = self.navigationController!.tabBarController! as? TabBarController
+            return tabBar!.diningHall
         }
     }
     

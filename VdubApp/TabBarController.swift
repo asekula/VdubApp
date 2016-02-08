@@ -11,14 +11,18 @@ import UIKit
 class TabBarController: UITabBarController {
     
     var offset = 0
+    var diningHall = 0
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     @IBAction func diningHallChange(sender: AnyObject) {
-        if let nav = selectedViewController as? UINavigationController, let mvc = nav.viewControllers.first as? MealTableViewController
-        {
-            let s = sender as? UISegmentedControl
-            mvc.diningHall = s!.selectedSegmentIndex // reloads data
+        let s = sender as? UISegmentedControl
+        diningHall = s!.selectedSegmentIndex
+        for vc in self.viewControllers! {
+            if let nav = vc as? UINavigationController, let mvc = nav.viewControllers.first as? MealTableViewController
+            {
+                mvc.refresh()
+            }
         }
     }
     override func viewDidLoad() {
