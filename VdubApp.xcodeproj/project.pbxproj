@@ -19,9 +19,6 @@
 		FAE9511D1C66675500619760 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAE9511C1C66675500619760 /* Assets.xcassets */; };
 		FAE951201C66675500619760 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE9511E1C66675500619760 /* LaunchScreen.storyboard */; };
 		FAE9512A1C6689D600619760 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE951291C6689D600619760 /* TabBarController.swift */; };
-		FAE9512E1C668E1700619760 /* LunchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE9512D1C668E1700619760 /* LunchTableViewController.swift */; };
-		FAE951301C668E2F00619760 /* DinnerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE9512F1C668E2F00619760 /* DinnerTableViewController.swift */; };
-		FAE951341C668F3C00619760 /* BreakfastTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE951331C668F3C00619760 /* BreakfastTableViewController.swift */; };
 		FAE951361C6694EC00619760 /* MenuNSURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE951351C6694EC00619760 /* MenuNSURLSession.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,9 +39,6 @@
 		FAE9511F1C66675500619760 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FAE951211C66675500619760 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAE951291C6689D600619760 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		FAE9512D1C668E1700619760 /* LunchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LunchTableViewController.swift; sourceTree = "<group>"; };
-		FAE9512F1C668E2F00619760 /* DinnerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DinnerTableViewController.swift; sourceTree = "<group>"; };
-		FAE951331C668F3C00619760 /* BreakfastTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakfastTableViewController.swift; sourceTree = "<group>"; };
 		FAE951351C6694EC00619760 /* MenuNSURLSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuNSURLSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,9 +101,6 @@
 				FAE9511E1C66675500619760 /* LaunchScreen.storyboard */,
 				FAE951211C66675500619760 /* Info.plist */,
 				FAE951291C6689D600619760 /* TabBarController.swift */,
-				FAE9512D1C668E1700619760 /* LunchTableViewController.swift */,
-				FAE951331C668F3C00619760 /* BreakfastTableViewController.swift */,
-				FAE9512F1C668E2F00619760 /* DinnerTableViewController.swift */,
 				FAE951351C6694EC00619760 /* MenuNSURLSession.swift */,
 				FA9025121C66ADBD005469B5 /* MenuSingleton.swift */,
 				FA89BACC1C67970E0052700E /* FavFoodTableViewController.swift */,
@@ -243,15 +234,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAE9512A1C6689D600619760 /* TabBarController.swift in Sources */,
-				FAE9512E1C668E1700619760 /* LunchTableViewController.swift in Sources */,
 				CECFB3021C6677A300BF57DF /* MealTableViewController.swift in Sources */,
 				FAE951361C6694EC00619760 /* MenuNSURLSession.swift in Sources */,
 				FAE951161C66675400619760 /* AppDelegate.swift in Sources */,
-				FAE951301C668E2F00619760 /* DinnerTableViewController.swift in Sources */,
 				CEF0B1061C6726F4003EA6A2 /* DiningHoursViewController.swift in Sources */,
 				FA9025131C66ADBD005469B5 /* MenuSingleton.swift in Sources */,
 				FA89BACD1C67970E0052700E /* FavFoodTableViewController.swift in Sources */,
-				FAE951341C668F3C00619760 /* BreakfastTableViewController.swift in Sources */,
 				FA89BACF1C6797C20052700E /* FavoritesSingleton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

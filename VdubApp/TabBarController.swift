@@ -9,42 +9,20 @@
 import UIKit
 
 class TabBarController: UITabBarController {
-    /*
-    @IBOutlet weak var backButton: UIButton!
     
-    @IBAction func dayForward(sender: AnyObject) {
-        if let nav = selectedViewController as? UINavigationController, let mvc = nav.viewControllers.first as? MealTableViewController
-        {
-            backButton.hidden = false
-            mvc.dayOffSet += 1
-        }
-    }
-    
-    @IBAction func dayBack(sender: AnyObject) {
-        if let nav = selectedViewController as? UINavigationController, let mvc = nav.viewControllers.first as? MealTableViewController
-        {
-            if mvc.dayOffSet > 0 {
-                mvc.dayOffSet -= 1
-                if mvc.dayOffSet == 0 {
-                    backButton.hidden = true
-                }
-            }
-        }
-    }*/
-    
+    var offset = 0
+    var diningHall = 0
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     @IBAction func diningHallChange(sender: AnyObject) {
-        if let nav = selectedViewController as? UINavigationController, let mvc = nav.viewControllers.first as? MealTableViewController
-        {
-                //if let mvc = mealVC {
-                    // makes sure that the view is initalized so we can set the meal
-                mvc.tableView.reloadData()
-                    // sets the correct meal for the ALL dining halls
-                let s = sender as? UISegmentedControl
-                mvc.diningHall = s!.selectedSegmentIndex
-                //}
+        let s = sender as? UISegmentedControl
+        diningHall = s!.selectedSegmentIndex
+        for vc in self.viewControllers! {
+            if let nav = vc as? UINavigationController, let mvc = nav.viewControllers.first as? MealTableViewController
+            {
+                mvc.refresh()
+            }
         }
     }
     override func viewDidLoad() {
@@ -52,51 +30,40 @@ class TabBarController: UITabBarController {
         let hour = NSCalendar.currentCalendar().component(.Hour, fromDate: NSDate())
         let minute = NSCalendar.currentCalendar().component(.Minute, fromDate: NSDate())
         
-        //print("\(hour) hour")
-        //print("\(minute) minute")
-        
-        
         if (hour > 9 || (hour == 9 && minute > 30)) && hour < 14 {
-            //select lunch
             self.selectedViewController=self.viewControllers![1]
-       
         } else if hour > 14 {
-            //select dinner
             self.selectedViewController=self.viewControllers![2]
         }
         
-        //if let a = self.selectedViewController as? MealTableViewController {
-        //    a.diningHall = 0 // Next meal in day
-        //}
-        // Do any additional setup after loading the view.
+        let tabItems = self.tabBar.items! as [UITabBarItem]
+        let tabItem0 = tabItems[0] as UITabBarItem
+        let tabItem1 = tabItems[1] as UITabBarItem
+        let tabItem2 = tabItems[2] as UITabBarItem
+        tabItem0.title = "Breakfast"
+        tabItem1.title = "Lunch"
+        tabItem2.title = "Dinner"
+        tabItem0.image = UIImage(named: "breakfast")
+        tabItem1.image = UIImage(named: "lunch")
+        tabItem2.image = UIImage(named: "dinner")
+        tabItem0.selectedImage = UIImage(named: "breakfast")
+        tabItem1.selectedImage = UIImage(named: "lunch")
+        tabItem2.selectedImage = UIImage(named: "dinner")
         
         self.navigationController?.navigationBar
         segmentedControl.layer.cornerRadius = 5;
         segmentedControl.clipsToBounds = true;
-        //backButton.hidden = true
+        
+
     }
 
+    
+        
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    /* override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
-        let tabBarItems = tabBar.items
-        if tabBarItems!.indexOf(item) == 3 {
-            segmentedControl.hidden = true
-        } else {
-            segmentedControl.hidden = false
-        }
-    }
-
-*/
-
-
-
     
-    // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.

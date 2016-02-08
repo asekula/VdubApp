@@ -21,10 +21,10 @@
                     </tabBar>
                     <connections>
                         <outlet property="segmentedControl" destination="hFq-le-B8w" id="gdB-h6-CEe"/>
-                        <segue destination="0Cj-9L-r3Y" kind="relationship" relationship="viewControllers" id="NUs-oW-6rf"/>
-                        <segue destination="zlN-hY-Ory" kind="relationship" relationship="viewControllers" id="40S-55-tNv"/>
-                        <segue destination="aRM-n7-Kmm" kind="relationship" relationship="viewControllers" id="QoN-NB-2bT"/>
-                        <segue destination="cGn-vX-Fb2" kind="relationship" relationship="viewControllers" id="dia-Sa-Jln"/>
+                        <segue destination="RTZ-Tc-s0s" kind="relationship" relationship="viewControllers" id="2Yj-bf-Jeu"/>
+                        <segue destination="RTZ-Tc-s0s" kind="relationship" relationship="viewControllers" id="T75-O1-S48"/>
+                        <segue destination="RTZ-Tc-s0s" kind="relationship" relationship="viewControllers" id="IT1-Gv-gxx"/>
+                        <segue destination="cGn-vX-Fb2" kind="relationship" relationship="viewControllers" id="ANv-33-P5W"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SFC-67-jJb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -43,33 +43,23 @@
             <point key="canvasLocation" x="-1622.9333333333334" y="301.04000000000002"/>
         </scene>
         <!--Breakfast-->
-        <scene sceneID="65D-TQ-BfA">
-            <objects>
-                <navigationController id="0Cj-9L-r3Y" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Breakfast" image="breakfast" id="ZKA-fI-SiV"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5Y6-6x-b5b">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="5nE-js-Plx" kind="relationship" relationship="rootViewController" id="gMb-X6-BoJ"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WzM-Ec-0lX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1238.9333333333334" y="-823.60000000000002"/>
-        </scene>
-        <!--Breakfast-->
         <scene sceneID="Gh3-DX-1Us">
             <objects>
-                <tableViewController title="Breakfast" id="5nE-js-Plx" customClass="BreakfastTableViewController" customModule="VdubApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="Breakfast" id="5nE-js-Plx" customClass="MealTableViewController" customModule="VdubApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="0uN-UL-SMl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="a" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AvU-dS-kIh">
+                            <rect key="frame" x="0.0" y="64" width="320" height="23"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="9pg-Na-8M1">
-                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="115" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9pg-Na-8M1" id="MLE-wS-qEp">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -92,78 +82,43 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Breakfast" image="breakfast" id="iYL-YF-WyX"/>
                     <navigationItem key="navigationItem" id="y2J-yr-YCQ">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="JrB-jj-e1x">
+                        <barButtonItem key="leftBarButtonItem" image="back" id="m8A-iM-mXy">
                             <connections>
-                                <action selector="dayBack:" destination="5nE-js-Plx" id="8Jr-np-eg1"/>
+                                <action selector="dayBack:" destination="5nE-js-Plx" id="pGn-hw-42A"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" id="FaG-hY-AZo">
+                        <barButtonItem key="rightBarButtonItem" image="forward" id="HMT-l4-4y4">
                             <connections>
-                                <action selector="dayForward:" destination="5nE-js-Plx" id="n2T-RP-5wl"/>
+                                <action selector="dayForward:" destination="5nE-js-Plx" id="qGx-gS-Sgv"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="backButton" destination="JrB-jj-e1x" id="bsR-uq-G4o"/>
-                        <outlet property="forwardButton" destination="FaG-hY-AZo" id="QrD-S6-iPH"/>
+                        <outlet property="backButton" destination="m8A-iM-mXy" id="pl9-5K-zQR"/>
+                        <outlet property="dateLabel" destination="AvU-dS-kIh" id="dkk-nc-nAa"/>
+                        <outlet property="forwardButton" destination="HMT-l4-4y4" id="YAJ-Ep-RRB"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="On2-wK-ptS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-834.66666666666663" y="-823.60000000000002"/>
+            <point key="canvasLocation" x="-739" y="301"/>
         </scene>
-        <!--Lunch-->
-        <scene sceneID="tHO-lN-N1M">
+        <!--Item-->
+        <scene sceneID="Ns0-dI-jI5">
             <objects>
-                <tableViewController title="Lunch" id="vzF-fY-ai8" customClass="LunchTableViewController" customModule="VdubApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Dmk-s0-xRG">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="hVe-ll-hd9">
-                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hVe-ll-hd9" id="VzH-o3-0LA">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" restorationIdentifier="1" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lFb-Se-sgV">
-                                            <rect key="frame" x="9" y="6" width="583" height="32"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="vzF-fY-ai8" id="Pmj-1E-G6G"/>
-                            <outlet property="delegate" destination="vzF-fY-ai8" id="tG0-jC-JhU"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="Lunch" image="lunch" id="xHx-Tm-W1v"/>
-                    <navigationItem key="navigationItem" id="6oM-JV-AJD">
-                        <barButtonItem key="leftBarButtonItem" id="3pT-6E-4Fi">
-                            <connections>
-                                <action selector="dayBack:" destination="vzF-fY-ai8" id="gLJ-Iw-NkP"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" id="Ikj-8Q-8DF">
-                            <connections>
-                                <action selector="dayForward:" destination="vzF-fY-ai8" id="S89-PY-Em9"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                <navigationController id="RTZ-Tc-s0s" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Wy7-Q5-e17"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lHz-V2-2Qy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
                     <connections>
-                        <outlet property="backButton" destination="3pT-6E-4Fi" id="rvc-YV-QW9"/>
-                        <outlet property="forwardButton" destination="Ikj-8Q-8DF" id="wN5-QM-gE9"/>
+                        <segue destination="5nE-js-Plx" kind="relationship" relationship="rootViewController" id="2D2-cp-TqW"/>
                     </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="I98-9g-hsk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rtg-2k-xpt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-850.66666666666663" y="-130.63999999999999"/>
+            <point key="canvasLocation" x="-1145" y="374"/>
         </scene>
         <!--Extras-->
         <scene sceneID="WBP-Sa-8zQ">
@@ -186,7 +141,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="About" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Hd-J0-kZA">
                                                     <rect key="frame" x="8" y="11" width="47" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -205,7 +160,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notifications (Coming Soon!)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCM-RS-3n0">
                                                     <rect key="frame" x="8" y="11" width="220" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -224,7 +179,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Eatery Hours" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oGT-H5-zQT">
                                                     <rect key="frame" x="8" y="11" width="99" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -311,21 +266,21 @@ for the incredible help and support
 
 made with </string>
                                         <attributes>
-                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="17" name="HelveticaNeue"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content="♥">
                                         <attributes>
-                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="17" name="HiraginoSans-W3"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content=" at hack@brown 2016">
                                         <attributes>
-                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="17" name="HelveticaNeue"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
@@ -389,40 +344,6 @@ made with </string>
             </objects>
             <point key="canvasLocation" x="-725" y="1997"/>
         </scene>
-        <!--Lunch-->
-        <scene sceneID="ysd-8Z-8dC">
-            <objects>
-                <navigationController id="zlN-hY-Ory" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Lunch" image="lunch" id="DpI-wF-4sY"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="V3t-me-5SJ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="vzF-fY-ai8" kind="relationship" relationship="rootViewController" id="WRu-2N-SL5"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bD5-3b-HAK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1238.9333333333334" y="-130.63999999999999"/>
-        </scene>
-        <!--Dinner-->
-        <scene sceneID="7k5-cX-58g">
-            <objects>
-                <navigationController id="aRM-n7-Kmm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Dinner" image="dinner" id="aOJ-x7-sjX"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="0kR-nE-0r0">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="HQF-5N-KI1" kind="relationship" relationship="rootViewController" id="wHn-Uu-WP3"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jDJ-oe-Hhh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1238.9333333333334" y="505.51999999999998"/>
-        </scene>
         <!--More-->
         <scene sceneID="hBq-fw-dKw">
             <objects>
@@ -440,65 +361,15 @@ made with </string>
             </objects>
             <point key="canvasLocation" x="-1466.6666666666667" y="1274.2133333333334"/>
         </scene>
-        <!--Dinner-->
-        <scene sceneID="jBB-LO-tKW">
-            <objects>
-                <tableViewController title="Dinner" id="HQF-5N-KI1" customClass="DinnerTableViewController" customModule="VdubApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="KIi-DL-tPL">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseIdentifier" id="ti2-cv-lv4">
-                                <rect key="frame" x="0.0" y="92" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ti2-cv-lv4" id="IkV-7d-Ttq">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J2t-cg-LWi">
-                                            <rect key="frame" x="-188" y="-10" width="584" height="32"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="HQF-5N-KI1" id="KM3-Ty-UdC"/>
-                            <outlet property="delegate" destination="HQF-5N-KI1" id="lbb-P8-qt3"/>
-                        </connections>
-                    </tableView>
-                    <tabBarItem key="tabBarItem" title="Dinner" image="dinner" id="uDx-N6-Ofp"/>
-                    <navigationItem key="navigationItem" id="rZd-C3-puf">
-                        <barButtonItem key="leftBarButtonItem" id="jdV-3y-bXj">
-                            <connections>
-                                <action selector="dayBack:" destination="HQF-5N-KI1" id="ooS-Mr-yZP"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" id="kfE-IU-XaL">
-                            <connections>
-                                <action selector="dayForward:" destination="HQF-5N-KI1" id="fsf-Tr-Yae"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="backButton" destination="jdV-3y-bXj" id="ANg-Gu-mKu"/>
-                        <outlet property="forwardButton" destination="kfE-IU-XaL" id="0ej-yD-uDK"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="gLc-WU-eJ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-850.66666666666663" y="494.15999999999997"/>
-        </scene>
     </scenes>
     <resources>
+        <image name="back" width="25" height="25"/>
         <image name="breakfast" width="25" height="25"/>
-        <image name="dinner" width="25" height="25"/>
-        <image name="lunch" width="25" height="25"/>
+        <image name="forward" width="25" height="25"/>
         <image name="more" width="24" height="24"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="T75-O1-S48"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.80000000000000004" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>

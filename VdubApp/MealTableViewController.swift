@@ -23,297 +23,196 @@ extension NSDate {
 
 class MealTableViewController: UITableViewController {
 
-    let daysOfWeek = ["Sun","Mon","Tue","Wed","Thu","Fri", "Sat"]
-    
     @IBOutlet weak var backButton: UIBarButtonItem!
-    
     @IBOutlet weak var forwardButton: UIBarButtonItem!
+    @IBOutlet weak var dateLabel: UILabel!
     
     @IBAction func dayBack(sender: AnyObject) {
         if dayOffSet > 0 {
-            forwardButton.enabled = true
-            for vc in (self.navigationController?.tabBarController?.viewControllers)! {
-                if let nav = vc as? UINavigationController, let mvc = nav.viewControllers.first as? MealTableViewController
-                {
-                    mvc.forwardButton.enabled = true
-                    mvc.dayOffSet -= 1
-                    mvc.dateIndex -= 1
-                    if mvc.dateIndex == -1 {
-                        mvc.dateIndex = 6
-                    }
-                    
-                }
-            }
+            //forwardButton.enabled = true
+            dayOffSet -= 1
+            //print("DAYOFFSET MINUS ONE")
         }
         if dayOffSet == 0 {
-            backButton.enabled = false
-            for vc in (self.navigationController?.tabBarController?.viewControllers)! {
-                if let nav = vc as? UINavigationController, let mvc = nav.viewControllers.first as? MealTableViewController
-                {
-                    mvc.backButton.enabled = false
-                }
-            }
+            //backButton.enabled = false
         }
     }
     @IBAction func dayForward(sender: AnyObject) {
         if dayOffSet < 4 {
-            //dayOffSet += 1
-            backButton.enabled = true
-            for vc in (self.navigationController?.tabBarController?.viewControllers)! {
-                if let nav = vc as? UINavigationController, let mvc = nav.viewControllers.first as? MealTableViewController
-                {
-                    mvc.backButton.enabled = true
-                    mvc.dayOffSet += 1
-                    mvc.dateIndex += 1
-                    if mvc.dateIndex == 7 {
-                        mvc.dateIndex = 0
-                    }
-                    
-                }
-            }
+            //backButton.enabled = true
+            dayOffSet += 1
+            //print("DAYOFFSET PLUS ONE")
         }
-        if dayOffSet >= 4 {
-            forwardButton.enabled = false
-            for vc in (self.navigationController?.tabBarController?.viewControllers)! {
-                if let nav = vc as? UINavigationController, let mvc = nav.viewControllers.first as? MealTableViewController
-                {
-                    mvc.forwardButton.enabled = false
-                }
-            }
+        if dayOffSet == 4 {
+            //forwardButton.enabled = false
         }
     }
-    
-    
     
     var menu: [String:[String]]?
     var keys: [String]?
     var meal: Int = 0
-    var dateIndex = 0 {
-        didSet {
-            if dateIndex == 7 {
-                dateIndex = 0
-            }
-            if dateIndex == -1 {
-                dateIndex = 6
-            }
-            if dateIndex - 1 == -1 {
-                //backButton.title = "<Sat"
-                for vc in (self.navigationController?.tabBarController?.viewControllers)! {
-                    if let nav = vc as? UINavigationController, let mvc = nav.viewControllers.first as? MealTableViewController
-                    {
-                        mvc.backButton.title = "<Sat"
-                    }
-                }
-                
-            } else {
-                //backButton.title =  "<"+daysOfWeek[dateIndex - 1]
-                for vc in (self.navigationController?.tabBarController?.viewControllers)! {
-                    if let nav = vc as? UINavigationController, let mvc = nav.viewControllers.first as? MealTableViewController
-                    {
-                        mvc.backButton.title =  "<"+daysOfWeek[dateIndex - 1]
-                    }
-                }
-            }
-            if dateIndex + 1 == 7 {
-                for vc in (self.navigationController?.tabBarController?.viewControllers)! {
-                    if let nav = vc as? UINavigationController, let mvc = nav.viewControllers.first as? MealTableViewController
-                    {
-                        mvc.forwardButton.title = "Sun>"
-                    }
-                }
-
-            } else {
-                for vc in (self.navigationController?.tabBarController?.viewControllers)! {
-                    if let nav = vc as? UINavigationController, let mvc = nav.viewControllers.first as? MealTableViewController
-                    {
-                        mvc.forwardButton.title = daysOfWeek[dateIndex + 1]+">"
-                    }
-                }
-
-            }
-            print("meal is \(meal)")
-        }
-    }
-    var dayOffSet = 0 {
-        didSet {
-            MenuSingleton.sharedInstance.vdubMenu[0] = "I"
-            MenuSingleton.sharedInstance.rattyMenu[0] = "I"
-            diningHall = diningHall + 0 // NOTE: WILL THIS WORK TO REFRESH MENU?
-        }
-    }
-    var diningHall = 0 {
-        didSet {
-            
-            menu = [String: [String]]()
-            //print("dininghall = \(diningHall) and meal = \(meal)")
-            
-            //print("Dining hall set")
-            //connection.setMyQuery("vdub&day=10") //TODO: day
-            //connection.data_request()
-            let restOfUrl: String
-            
-            let calendar = NSCalendar.currentCalendar()
-            let newDate = calendar.dateByAddingUnit(.Day, value: dayOffSet, toDate: NSDate(), options: [])
-            let weekend = calendar.isDateInWeekend(newDate!)
-            let components = calendar.components([.Day , .Month , .Year], fromDate: newDate!)
-            let day = components.day
-            
-            if diningHall == 0 {
-                //print("staring url vdub request")
-                restOfUrl = "vdub&day=\(day)"
-                if MenuSingleton.sharedInstance.vdubMenu[0].stringValue == "I" {
-                    connection.setMyQuery(restOfUrl) //TODO: day
-                    connection.data_request()
-                    //print("Set singleton")
-                    while MenuSingleton.sharedInstance.vdubMenu[0].stringValue == "I" {
-                        //Just hang out for a bit
-                    }
-                }
-            } else {
-                //print("staring url ratty request")
-                restOfUrl = "ratty&day=\(day)"
-                if MenuSingleton.sharedInstance.rattyMenu[0].stringValue == "I" {
-                    connection.setMyQuery(restOfUrl) //TODO: day
-                    connection.data_request()
-                    //print("Set singleton")
-                    while MenuSingleton.sharedInstance.rattyMenu[0].stringValue == "I" {
-                        //Just hang out for a bit
-                    }
-                }
-            }
-            
-            
-            var theMenu: [String: JSON]
-            
-            if diningHall == 0 {
-                var tempMeal = meal
-                if meal > 0 {
-                    tempMeal += 1
-                }
-                let tm = MenuSingleton.sharedInstance.vdubMenu
-                //print(tm.count)
-                if tm.count == 1 {
-                    theMenu = ["Closed": JSON(arrayLiteral: ["closed", "a"])]
-                } else {
-                    theMenu = tm[tempMeal].dictionaryValue
-                }
-                
-            } else {
-                //print("MEAL \(meal)")
-                let tm = MenuSingleton.sharedInstance.rattyMenu
-                //print(tm)
-                if weekend && meal > 0 { //meal -= 1
-                    print("changing meal")
-                    print("weekend? \(weekend)")
-                    print("day #? \(day)")
-                    print("dayoffset?\(dayOffSet)")
-                    
-                    theMenu = tm[meal-1].dictionaryValue
-                    
-                }
-                else {
-                    theMenu = tm[meal].dictionaryValue
-                }
-            }
-            //print(theMenu)
-            for key in theMenu.keys {
-                //print(theMenu[key])
-                //print(theMenu[key]!.arrayValue.debugDescription)
-                let jsonMenuItems = theMenu[key]!.arrayValue
-                //print("COUNT \(jsonMenuItems)")
-                if jsonMenuItems.count > 1 {
-                    //print(jsonMenuItems)
-                    var stringArr = [String]()
-                    for jsonVal in jsonMenuItems {
-                        if let s = jsonVal.string {
-                            stringArr.append(s)
-                        }
-                    }
-                    menu![key] = stringArr
-                    //menu![key] = jsonMenuItems.map { $0.stringValue }
-                }
-            }
-            
-            keys = Array(menu!.keys)
-            
-            //print("\(menu)")
-            
-            self.tableView.registerClass(UITableViewCell().classForCoder, forCellReuseIdentifier: "reuseIdentifier")
-            
-            //after api loads
-            //print("reloading data")
-            self.tableView.reloadData()
-            
-        }
-    }
-    
-    
-    
     var connection: MenuNSURLSession = MenuNSURLSession()
     
+    //Strange here, could change this later
+    var dayOffSet: Int {
+        get {
+            let tabBar = self.navigationController!.tabBarController! as? TabBarController
+            let offset = tabBar!.offset
+            
+            if offset == 0 {
+                backButton.enabled = false
+            } else {
+                backButton.enabled = true
+            }
+            if offset == 4 {
+                forwardButton.enabled = false
+            } else {
+                forwardButton.enabled = true
+            }
+            return offset
+        }
+        set {
+            dateLabel.text = getDate(newValue)
+            let tabBar = self.navigationController!.tabBarController! as? TabBarController
+            tabBar!.offset = newValue
+
+            MenuSingleton.sharedInstance.vdubMenu[0] = "I"
+            MenuSingleton.sharedInstance.rattyMenu[0] = "I" // fix this with array of returnvalues (w.e. they are)
+            refresh()
+        }
+    }
+    
+    var diningHall: Int {
+        get {
+            let tabBar = self.navigationController!.tabBarController! as? TabBarController
+            return tabBar!.diningHall
+        }
+    }
+    
+    func refresh() {
+        menu = [String: [String]]()
+        
+        let restOfUrl: String
+        
+        let calendar = NSCalendar.currentCalendar()
+        let newDate = calendar.dateByAddingUnit(.Day, value: dayOffSet, toDate: NSDate(), options: [])
+        let weekend = calendar.isDateInWeekend(newDate!)
+        let components = calendar.components([.Day , .Month , .Year], fromDate: newDate!)
+        let day = components.day
+        
+        //fix these resettings of menusingleton to 
+        if diningHall == 0 {
+            restOfUrl = "vdub&day=\(day)"
+            if MenuSingleton.sharedInstance.vdubMenu[0].stringValue == "I" {
+                connection.setMyQuery(restOfUrl) //TODO: day
+                connection.data_request()
+                while MenuSingleton.sharedInstance.vdubMenu[0].stringValue == "I" { }
+            }
+        } else {
+            restOfUrl = "ratty&day=\(day)"
+            if MenuSingleton.sharedInstance.rattyMenu[0].stringValue == "I" {
+                connection.setMyQuery(restOfUrl) //TODO: day
+                connection.data_request()
+                while MenuSingleton.sharedInstance.rattyMenu[0].stringValue == "I" { }
+            }
+        }
+        
+        var theMenu: [String: JSON]
+        
+        if diningHall == 0 {
+            var tempMeal = meal
+            if meal > 0 {
+                tempMeal += 1
+            }
+            let tm = MenuSingleton.sharedInstance.vdubMenu
+            if tm.count == 1 {
+                theMenu = ["Closed": JSON(arrayLiteral: ["closed", "a"])] // doesn't actually display closed
+            } else {
+                theMenu = tm[tempMeal].dictionaryValue
+            }
+        } else {
+            let tm = MenuSingleton.sharedInstance.rattyMenu
+            if weekend && meal > 0 {
+                theMenu = tm[meal-1].dictionaryValue
+            }
+            else {
+                theMenu = tm[meal].dictionaryValue
+            }
+        }
+        for key in theMenu.keys {
+            let jsonMenuItems = theMenu[key]!.arrayValue
+            if jsonMenuItems.count > 1 {
+                var stringArr = [String]()
+                for jsonVal in jsonMenuItems {
+                    if let s = jsonVal.string {
+                        stringArr.append(s)
+                    }
+                }
+                menu![key] = stringArr
+            }
+        }
+        keys = Array(menu!.keys)
+        
+        self.tableView.registerClass(UITableViewCell().classForCoder, forCellReuseIdentifier: "reuseIdentifier")
+        self.tableView.reloadData()
+    }
+    
+    func getDate(offset: Int) -> String {
+        let today = NSDate()
+        let newdate = NSCalendar.currentCalendar().dateByAddingUnit(
+            .Day,
+            value: offset,
+            toDate: today,
+            options: NSCalendarOptions(rawValue: 0))
+        
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = NSDateFormatterStyle.LongStyle
+        formatter.timeStyle = .MediumStyle
+        
+        let dateString = formatter.stringFromDate(newdate!)
+        let fullNameArr = dateString.characters.split{$0 == ","}.map(String.init)
+        //print(fullNameArr[0])
+        
+        let myComponents = NSCalendar.currentCalendar().components(.Weekday, fromDate: newdate!)
+        let weekDay = myComponents.weekday
+        var days = ["Saturday","Sunday","Monday","Tuesday","Wednesday","Thursday","Friday"]
+        return("\(days[weekDay]), "+fullNameArr[0])
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //Fixes top allignment.
-        //tableView.contentInset = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)
         
-        
-        //if let theNav = super.view.viewWithTag(50) as? UISegmentedControl {
-            //diningHall = theNav.titleForSegmentAtIndex(theNav.selectedSegmentIndex)!
-        //}
-        //if MenuSingleton.sharedInstance.rattyMenu {
-            
-        //}
-        //connection.setMyQuery("vdub&day=10")
-        //connection.data_request()
+        meal = (self.navigationController!.tabBarController?.selectedIndex)!
+        if meal == 4 {
+            meal = 0
+        }
         
         menu = [String: [String]]()
         
-        backButton.enabled = false
-        for vc in (self.navigationController?.tabBarController?.viewControllers)! {
-            if let nav = vc as? UINavigationController, let mvc = nav.viewControllers.first as? MealTableViewController
-            {
-                mvc.backButton.enabled = false
-            }
+        if dayOffSet == 0 {
+            backButton.enabled = false
+        } else {
+            backButton.enabled = true
         }
-        
-        
         forwardButton.enabled = true
-        for vc in (self.navigationController?.tabBarController?.viewControllers)! {
-            if let nav = vc as? UINavigationController, let mvc = nav.viewControllers.first as? MealTableViewController
-            {
-                mvc.forwardButton.enabled = true
-            }
-        }
+        dateLabel.backgroundColor = UIColor(red: 0.81, green: 0.0, blue: 0.0, alpha: 0.68)
+        //dayOffSet = 0
         
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "EEEE"
-        _ = dateFormatter.stringFromDate(NSDate())
+        //meal = (self.navigationController!.tabBarController?.selectedIndex)!
         
-        //dateIndex = NSDate.dayOfWeek(NSDate()) - 1
-        dateIndex = 0
-        //TODO: initialize keys and menu
         
-        diningHall = 0
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
+        refresh()
         
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        let tabBar = self.navigationController!.tabBarController! as! TabBarController
-        self.navigationItem.titleView = tabBar.segmentedControl
-        diningHall = tabBar.segmentedControl.selectedSegmentIndex
-        backButton.enabled = true
-        forwardButton.enabled = true
+        let tabBar = self.navigationController!.tabBarController! as? TabBarController
+        self.navigationItem.titleView = tabBar!.segmentedControl
+        dateLabel.text = getDate(dayOffSet)
     }
+    
     override func viewWillDisappear(animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationItem.titleView = nil
@@ -321,29 +220,22 @@ class MealTableViewController: UITableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
-    // MARK: - Table view data source
-
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        //print("hellow")
         if let k = keys {
-            //print(k.count)
             return k.count
-            
         }
-        return 0 // TODO: get from network call ("Chef's Corner" etc.)
+        return 0
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let m = menu {
             if let k = keys {
-                //print(m[k[section]]!.count)
                 return m[k[section]]!.count
             }
         }
-        return 0 // TODO: get from network call (pass in number of section)
+        return 0
     }
 
     
@@ -354,12 +246,8 @@ class MealTableViewController: UITableViewController {
             if let k = keys {
                 let sectionItems = m[k[indexPath.section]]
                 cell.textLabel!.text = sectionItems![indexPath.row]
-                //print(sectionItems![indexPath.row])
             }
         }
-
-        // Configure the cell...
-
         return cell
     }
     
@@ -381,49 +269,4 @@ class MealTableViewController: UITableViewController {
     
     
     
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
