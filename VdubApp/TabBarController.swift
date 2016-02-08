@@ -11,17 +11,15 @@ import UIKit
 class TabBarController: UITabBarController {
     
     var offset = 0
-    var diningHall = 0
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     @IBAction func diningHallChange(sender: AnyObject) {
-        let s = sender as? UISegmentedControl
-        diningHall = s!.selectedSegmentIndex
-        for vc in self.viewControllers! {
+        for vc in self.viewControllers! { // annoying but w/e
             if let nav = vc as? UINavigationController, let mvc = nav.viewControllers.first as? MealTableViewController
             {
-                mvc.refresh()
+                let s = sender as? UISegmentedControl
+                mvc.diningHall = s!.selectedSegmentIndex
             }
         }
     }
@@ -49,6 +47,13 @@ class TabBarController: UITabBarController {
         tabItem0.selectedImage = UIImage(named: "breakfast")
         tabItem1.selectedImage = UIImage(named: "lunch")
         tabItem2.selectedImage = UIImage(named: "dinner")
+        for(var i=0; i<3; i++) {
+            if let nav = self.viewControllers![i] as? UINavigationController, let mvc = nav.viewControllers.first as? MealTableViewController
+            {
+                mvc.meal = i
+                mvc.truemeal = i
+            }
+        }
         
         self.navigationController?.navigationBar
         segmentedControl.layer.cornerRadius = 5;

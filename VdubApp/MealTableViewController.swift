@@ -51,6 +51,7 @@ class MealTableViewController: UITableViewController {
     var menu: [String:[String]]?
     var keys: [String]?
     var meal: Int = 0
+    var truemeal: Int = 0
     var connection: MenuNSURLSession = MenuNSURLSession()
     
     //Strange here, could change this later
@@ -82,14 +83,16 @@ class MealTableViewController: UITableViewController {
         }
     }
     
-    var diningHall: Int {
-        get {
-            let tabBar = self.navigationController!.tabBarController! as? TabBarController
-            return tabBar!.diningHall
+    var diningHall = 0 {
+        didSet {
+            refresh()
         }
     }
     
     func refresh() {
+        meal = truemeal
+        //print(meal)
+        //print("true meal \(truemeal)")
         menu = [String: [String]]()
         
         let restOfUrl: String
