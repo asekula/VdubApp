@@ -50,7 +50,6 @@ class TabBarController: UITabBarController {
         for(var i=0; i<3; i++) {
             if let nav = self.viewControllers![i] as? UINavigationController, let mvc = nav.viewControllers.first as? MealTableViewController
             {
-                mvc.meal = i
                 mvc.truemeal = i
             }
         }

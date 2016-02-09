@@ -50,7 +50,6 @@ class MealTableViewController: UITableViewController {
     
     var menu: [String:[String]]?
     var keys: [String]?
-    var meal: Int = 0
     var truemeal: Int = 0
     var connection: MenuNSURLSession = MenuNSURLSession()
     
@@ -90,7 +89,6 @@ class MealTableViewController: UITableViewController {
     }
     
     func refresh() {
-        meal = truemeal
         //print(meal)
         //print("true meal \(truemeal)")
         menu = [String: [String]]()
@@ -121,6 +119,7 @@ class MealTableViewController: UITableViewController {
         }
         
         var theMenu: [String: JSON]
+        let meal = truemeal
         
         if diningHall == 0 {
             var tempMeal = meal
@@ -186,11 +185,6 @@ class MealTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        meal = (self.navigationController!.tabBarController?.selectedIndex)!
-        if meal == 4 {
-            meal = 0
-        }
-        
         menu = [String: [String]]()
         
         if dayOffSet == 0 {
@@ -199,11 +193,11 @@ class MealTableViewController: UITableViewController {
             backButton.enabled = true
         }
         forwardButton.enabled = true
-        dateLabel.backgroundColor = UIColor(red: 0.81, green: 0.0, blue: 0.0, alpha: 0.68)
+        
+        let redish = UIColor(red: 0.81, green: 0.0, blue: 0.0, alpha: 0.68)
+        dateLabel.backgroundColor = redish
+        
         //dayOffSet = 0
-        
-        //meal = (self.navigationController!.tabBarController?.selectedIndex)!
-        
         
         refresh()
         
