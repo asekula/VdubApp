@@ -27,10 +27,10 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
         let hour = NSCalendar.currentCalendar().component(.Hour, fromDate: NSDate())
         let minute = NSCalendar.currentCalendar().component(.Minute, fromDate: NSDate())
-        
+        //print(hour)
         if (hour > 9 || (hour == 9 && minute > 30)) && hour < 14 {
             self.selectedViewController=self.viewControllers![1]
-        } else if hour > 14 {
+        } else if hour >= 14 {
             self.selectedViewController=self.viewControllers![2]
         }
         

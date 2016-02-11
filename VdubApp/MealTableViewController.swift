@@ -178,7 +178,7 @@ class MealTableViewController: UITableViewController {
         let myComponents = NSCalendar.currentCalendar().components(.Weekday, fromDate: newdate!)
         let weekDay = myComponents.weekday
         var days = ["","Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
-        print(weekDay)
+        //print(weekDay)
         return("\(days[weekDay]), "+fullNameArr[0])
     }
     
