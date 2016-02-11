@@ -38,12 +38,12 @@ class MealTableViewController: UITableViewController {
         }
     }
     @IBAction func dayForward(sender: AnyObject) {
-        if dayOffSet < 4 {
+        if dayOffSet < 3 {
             //backButton.enabled = true
             dayOffSet += 1
             //print("DAYOFFSET PLUS ONE")
         }
-        if dayOffSet == 4 {
+        if dayOffSet == 3 {
             //forwardButton.enabled = false
         }
     }
@@ -64,7 +64,7 @@ class MealTableViewController: UITableViewController {
             } else {
                 backButton.enabled = true
             }
-            if offset == 4 {
+            if offset == 3 {
                 forwardButton.enabled = false
             } else {
                 forwardButton.enabled = true
@@ -177,7 +177,8 @@ class MealTableViewController: UITableViewController {
         
         let myComponents = NSCalendar.currentCalendar().components(.Weekday, fromDate: newdate!)
         let weekDay = myComponents.weekday
-        var days = ["Saturday","Sunday","Monday","Tuesday","Wednesday","Thursday","Friday"]
+        var days = ["","Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+        print(weekDay)
         return("\(days[weekDay]), "+fullNameArr[0])
     }
     
