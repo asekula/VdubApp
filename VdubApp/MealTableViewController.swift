@@ -52,6 +52,7 @@ class MealTableViewController: UITableViewController {
     var keys: [String]?
     var truemeal: Int = 0
     var connection: MenuNSURLSession = MenuNSURLSession()
+    var model = 6
     
     //Strange here, could change this later
     var dayOffSet: Int {
@@ -153,8 +154,12 @@ class MealTableViewController: UITableViewController {
                 menu![key] = stringArr
             }
         }
-        keys = Array(menu!.keys)
         
+        if model >= 6 {
+            keys = Array(menu!.keys)
+        } else {
+            keys = Array(menu!.keys).reverse()
+        }
         self.tableView.registerClass(UITableViewCell().classForCoder, forCellReuseIdentifier: "reuseIdentifier")
         self.tableView.reloadData()
     }
@@ -185,6 +190,23 @@ class MealTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //set model:
+        //print(UIDevice.currentDevice().model)
+        
+        var systemInfo = utsname()
+        uname(&systemInfo)
+        let machineMirror = Mirror(reflecting: systemInfo.machine)
+        let identifier = machineMirror.children.reduce("") { identifier, element in
+            guard let value = element.value as? Int8 where value != 0 else { return identifier }
+            return identifier + String(UnicodeScalar(UInt8(value)))
+        }
+        if identifier.containsString("7") || identifier.containsString("8") {
+            model = 6
+        } else {
+            model = 5
+        }
+        
         
         menu = [String: [String]]()
         
