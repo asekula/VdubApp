@@ -178,7 +178,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Eatery Hours" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oGT-H5-zQT">
-                                                    <rect key="frame" x="8" y="11" width="99" height="21"/>
+                                                    <rect key="frame" x="8" y="11" width="186" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -203,7 +203,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LIN-61-4ao" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1064" y="1259.0666666666666"/>
+            <point key="canvasLocation" x="-1064" y="1259"/>
         </scene>
         <!--Notifications-->
         <scene sceneID="tqq-vZ-3Ds">
@@ -248,8 +248,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="25" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ev3-qm-2Y7">
-                                <rect key="frame" x="0.0" y="72" width="600" height="223"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="25" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ev3-qm-2Y7">
+                                <rect key="frame" x="0.0" y="72" width="320" height="327"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="327" id="jDs-q2-eWl"/>
+                                </constraints>
                                 <attributedString key="attributedText">
                                     <fragment>
                                         <string key="content">eat@brown © 2016
@@ -257,7 +260,24 @@
 Joe Romano
 Alex Sekula
 Brendan Walsh
-
+Ben Weissmann</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="17" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
 Andrews Commons WIP:
 Josh Chipman
 Dan Murphy
@@ -293,6 +313,8 @@ made with </string>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ev3-qm-2Y7" firstAttribute="centerX" secondItem="Pda-Lh-MYR" secondAttribute="centerX" id="Ar0-lD-4LH"/>
+                            <constraint firstItem="ev3-qm-2Y7" firstAttribute="width" secondItem="Pda-Lh-MYR" secondAttribute="width" id="Twk-Dc-Sjd"/>
+                            <constraint firstItem="ev3-qm-2Y7" firstAttribute="top" secondItem="HSU-Jd-lOY" secondAttribute="bottom" constant="8" id="ffI-VK-9lN"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="About" id="utI-uT-kIS">
@@ -301,7 +323,7 @@ made with </string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ufm-5Y-eZi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1401.0666666666666" y="2005.04"/>
+            <point key="canvasLocation" x="-1402" y="2005"/>
         </scene>
         <!--Dining Hours-->
         <scene sceneID="PDx-2L-iO7">

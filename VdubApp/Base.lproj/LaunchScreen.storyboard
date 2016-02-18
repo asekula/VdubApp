@@ -17,25 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="lxx-0w-uAb">
-                                <rect key="frame" x="0.0" y="551" width="600" height="49"/>
-                                <subviews>
-                                    <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jaI-b1-xsb">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="49"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="49" id="D5V-W2-eyv"/>
-                                        </constraints>
-                                        <items/>
-                                        <color key="barTintColor" red="0.22352941176470587" green="0.11764705882352941" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
-                                    </tabBar>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="jaI-b1-xsb" secondAttribute="trailing" id="UCl-gc-kcu"/>
-                                    <constraint firstItem="jaI-b1-xsb" firstAttribute="leading" secondItem="lxx-0w-uAb" secondAttribute="leading" id="bIY-dH-Wjx"/>
-                                    <constraint firstAttribute="bottom" secondItem="jaI-b1-xsb" secondAttribute="bottom" id="nsj-m1-waC"/>
-                                </constraints>
-                            </stackView>
                             <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aSG-c6-cha">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
                                 <color key="backgroundColor" red="0.22352941179999999" green="0.1176470588" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
@@ -43,15 +24,24 @@
                                     <constraint firstAttribute="height" constant="64" id="Hqj-Z9-NSr"/>
                                 </constraints>
                             </view>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jaI-b1-xsb">
+                                <rect key="frame" x="0.0" y="551" width="600" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="D5V-W2-eyv"/>
+                                </constraints>
+                                <items/>
+                                <color key="barTintColor" red="0.22352941176470587" green="0.11764705882352941" blue="0.10588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.80000000000000004" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="lxx-0w-uAb" secondAttribute="trailing" id="23l-pA-OFK"/>
+                            <constraint firstItem="jaI-b1-xsb" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="M0r-v1-K8s"/>
                             <constraint firstItem="aSG-c6-cha" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="M5K-Ot-F7L"/>
+                            <constraint firstItem="jaI-b1-xsb" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Ua1-Ww-Kfb"/>
                             <constraint firstAttribute="trailing" secondItem="aSG-c6-cha" secondAttribute="trailing" id="WWQ-sS-k6T"/>
-                            <constraint firstItem="lxx-0w-uAb" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="bjF-zw-epm"/>
-                            <constraint firstItem="lxx-0w-uAb" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="lo1-c1-LJz"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="jaI-b1-xsb" secondAttribute="bottom" id="n5U-VE-9uw"/>
                             <constraint firstItem="aSG-c6-cha" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="rCX-QI-Arf"/>
                         </constraints>
                     </view>
