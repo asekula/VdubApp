@@ -191,6 +191,9 @@ class MealTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tableView.allowsSelection = false;
+        
+
         //set model:
         //print(UIDevice.currentDevice().model)
         
@@ -201,13 +204,12 @@ class MealTableViewController: UITableViewController {
             guard let value = element.value as? Int8 where value != 0 else { return identifier }
             return identifier + String(UnicodeScalar(UInt8(value)))
         }
-        if identifier.containsString("7") || identifier.containsString("8") {
+        
+        if identifier.containsString("7") || identifier.containsString("8") || identifier.containsString("6"){
             model = 6
         } else {
             model = 5
         }
-        print(identifier)
-        
         
         menu = [String: [String]]()
         
