@@ -34,6 +34,18 @@ class TabBarController: UITabBarController {
             self.selectedViewController=self.viewControllers![2]
         }
         
+        let myComponents = NSCalendar.currentCalendar().components(.Weekday, fromDate: NSDate())
+        let weekDay = myComponents.weekday
+        if weekDay == 1 || weekDay == 7 {
+            segmentedControl.selectedSegmentIndex = 1
+            for(var i=0; i<3; i++) {
+                if let nav = self.viewControllers![i] as? UINavigationController, let mvc = nav.viewControllers.first as? MealTableViewController
+                {
+                    mvc.diningHall = 1
+                }
+            }
+        }
+        
         let tabItems = self.tabBar.items! as [UITabBarItem]
         let tabItem0 = tabItems[0] as UITabBarItem
         let tabItem1 = tabItems[1] as UITabBarItem
