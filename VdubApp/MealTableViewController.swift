@@ -206,6 +206,7 @@ class MealTableViewController: UITableViewController {
         } else {
             model = 5
         }
+        print(identifier)
         
         
         menu = [String: [String]]()
@@ -231,6 +232,7 @@ class MealTableViewController: UITableViewController {
         let tabBar = self.navigationController!.tabBarController! as? TabBarController
         self.navigationItem.titleView = tabBar!.segmentedControl
         dateLabel.text = getDate(dayOffSet)
+        refresh()
     }
     
     override func viewWillDisappear(animated: Bool) {
