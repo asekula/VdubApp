@@ -101,6 +101,7 @@ class MealTableViewController: UITableViewController {
         let weekend = calendar.isDateInWeekend(newDate!)
         let components = calendar.components([.Day , .Month , .Year], fromDate: newDate!)
         let day = components.day
+        let max_time = 10  // 1 second
         
         //fix these resettings of menusingleton to 
         if diningHall == 0 {
@@ -108,14 +109,40 @@ class MealTableViewController: UITableViewController {
             if MenuSingleton.sharedInstance.vdubMenu[0].stringValue == "I" {
                 connection.setMyQuery(restOfUrl) //TODO: day
                 connection.data_request()
-                while MenuSingleton.sharedInstance.vdubMenu[0].stringValue == "I" { }
+                var count = 0
+                while MenuSingleton.sharedInstance.vdubMenu[0].stringValue == "I" && count < max_time {
+                    //sleep(1) // WATCH OUT HERE
+                    NSThread.sleepForTimeInterval(0.1)
+                    count += 1
+                }
+                if count >= max_time && MenuSingleton.sharedInstance.vdubMenu[0].stringValue == "I" {
+                    let alert = UIAlertController(title: "It's a little slow.", message: "Still want the menu?", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Try Again", style: UIAlertActionStyle.Default, handler: { action in self.refresh() }))
+                    alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                    
+                    //display alert box, cancel or try again.
+                }
             }
         } else {
             restOfUrl = "ratty&day=\(day)"
             if MenuSingleton.sharedInstance.rattyMenu[0].stringValue == "I" {
                 connection.setMyQuery(restOfUrl) //TODO: day
                 connection.data_request()
-                while MenuSingleton.sharedInstance.rattyMenu[0].stringValue == "I" { }
+                var count = 0
+                while MenuSingleton.sharedInstance.rattyMenu[0].stringValue == "I" && count < max_time {
+                    //sleep(1)
+                    NSThread.sleepForTimeInterval(0.1)
+                    count += 1
+                }
+                if count >= max_time && MenuSingleton.sharedInstance.rattyMenu[0].stringValue == "I"{
+                    let alert = UIAlertController(title: "It's a little slow.", message: "Still want the menu?", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Try Again", style: UIAlertActionStyle.Default, handler: { action in self.refresh() }))
+                    alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                    
+                    // alert box, cancel or try again.
+                }
             }
         }
         
