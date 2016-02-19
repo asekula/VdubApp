@@ -118,7 +118,11 @@ class MealTableViewController: UITableViewController {
                 if count >= max_time && MenuSingleton.sharedInstance.vdubMenu[0].stringValue == "I" {
                     let alert = UIAlertController(title: "It's a little slow.", message: "Still want the menu?", preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "Try Again", style: UIAlertActionStyle.Default, handler: { action in self.refresh() }))
-                    alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
+                    alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: { action in
+                        self.menu = nil
+                        self.keys = nil
+                        self.tableView.reloadData()
+                    }))
                     self.presentViewController(alert, animated: true, completion: nil)
                     
                     //display alert box, cancel or try again.
@@ -138,7 +142,11 @@ class MealTableViewController: UITableViewController {
                 if count >= max_time && MenuSingleton.sharedInstance.rattyMenu[0].stringValue == "I"{
                     let alert = UIAlertController(title: "It's a little slow.", message: "Still want the menu?", preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "Try Again", style: UIAlertActionStyle.Default, handler: { action in self.refresh() }))
-                    alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: nil))
+                    alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: { action in
+                        self.menu = nil
+                        self.keys = nil
+                        self.tableView.reloadData()
+                    } ))
                     self.presentViewController(alert, animated: true, completion: nil)
                     
                     // alert box, cancel or try again.
