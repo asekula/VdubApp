@@ -116,7 +116,7 @@ class MealTableViewController: UITableViewController {
                     count += 1
                 }
                 if count >= max_time && MenuSingleton.sharedInstance.vdubMenu[0].stringValue == "I" {
-                    let alert = UIAlertController(title: "It's a little slow.", message: "Still want the menu?", preferredStyle: UIAlertControllerStyle.Alert)
+                    let alert = UIAlertController(title: "It's a little slow.", message: "...or the menu doesn't exist.", preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "Try Again", style: UIAlertActionStyle.Default, handler: { action in self.refresh() }))
                     alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: { action in
                         self.menu = nil
@@ -140,7 +140,7 @@ class MealTableViewController: UITableViewController {
                     count += 1
                 }
                 if count >= max_time && MenuSingleton.sharedInstance.rattyMenu[0].stringValue == "I"{
-                    let alert = UIAlertController(title: "It's a little slow.", message: "Still want the menu?", preferredStyle: UIAlertControllerStyle.Alert)
+                    let alert = UIAlertController(title: "It's a little slow.", message: "...or the menu doesn't exist.", preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "Try Again", style: UIAlertActionStyle.Default, handler: { action in self.refresh() }))
                     alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default, handler: { action in
                         self.menu = nil
@@ -174,7 +174,14 @@ class MealTableViewController: UITableViewController {
                 theMenu = tm[meal-1].dictionaryValue
             }
             else {
-                theMenu = tm[meal].dictionaryValue
+                //print(meal)
+                if meal < tm.count {
+                    theMenu = tm[meal].dictionaryValue
+                }
+                else {
+                    theMenu = [String: JSON]()
+
+                }
             }
         }
         for key in theMenu.keys {
