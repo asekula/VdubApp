@@ -9,18 +9,6 @@
 import UIKit
 import SwiftyJSON
 
-extension NSDate {
-    func dayOfWeek() -> Int? {
-        if
-            let cal: NSCalendar = NSCalendar.currentCalendar(),
-            let comp: NSDateComponents = cal.components(.Weekday, fromDate: self) {
-                return comp.weekday
-        } else {
-            return nil
-        }
-    }
-}
-
 class MealTableViewController: UITableViewController {
 
     @IBOutlet weak var backButton: UIBarButtonItem!
@@ -29,22 +17,12 @@ class MealTableViewController: UITableViewController {
     
     @IBAction func dayBack(sender: AnyObject) {
         if dayOffSet > 0 {
-            //forwardButton.enabled = true
             dayOffSet -= 1
-            //print("DAYOFFSET MINUS ONE")
-        }
-        if dayOffSet == 0 {
-            //backButton.enabled = false
         }
     }
     @IBAction func dayForward(sender: AnyObject) {
         if dayOffSet < 3 {
-            //backButton.enabled = true
             dayOffSet += 1
-            //print("DAYOFFSET PLUS ONE")
-        }
-        if dayOffSet == 3 {
-            //forwardButton.enabled = false
         }
     }
     
@@ -54,7 +32,6 @@ class MealTableViewController: UITableViewController {
     var connection: MenuNSURLSession = MenuNSURLSession()
     var model = 6
     
-    //Strange here, could change this later
     var dayOffSet: Int {
         get {
             let tabBar = self.navigationController!.tabBarController! as? TabBarController
@@ -73,7 +50,7 @@ class MealTableViewController: UITableViewController {
             return offset
         }
         set {
-            dateLabel.text = getDate(newValue)
+            dateLabel.text = Date.getDate(newValue)
             let tabBar = self.navigationController!.tabBarController! as? TabBarController
             tabBar!.offset = newValue
 
@@ -96,14 +73,11 @@ class MealTableViewController: UITableViewController {
         
         let restOfUrl: String
         
-        let calendar = NSCalendar.currentCalendar()
-        let newDate = calendar.dateByAddingUnit(.Day, value: dayOffSet, toDate: NSDate(), options: [])
-        let weekend = calendar.isDateInWeekend(newDate!)
-        let components = calendar.components([.Day , .Month , .Year], fromDate: newDate!)
-        let day = components.day
         let max_time = 10  // 1 second
         
         //fix these resettings of menusingleton to 
+        let day = Date.getDate(0)
+        
         if diningHall == 0 {
             restOfUrl = "vdub&day=\(day)"
             if MenuSingleton.sharedInstance.vdubMenu[0].stringValue == "I" {
@@ -170,7 +144,7 @@ class MealTableViewController: UITableViewController {
             }
         } else {
             let tm = MenuSingleton.sharedInstance.rattyMenu
-            if weekend && meal > 0 {
+            if Date.isWeekend(dayOffSet) && meal > 0 {
                 theMenu = tm[meal-1].dictionaryValue
             }
             else {
@@ -206,38 +180,11 @@ class MealTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
-    func getDate(offset: Int) -> String {
-        let today = NSDate()
-        let newdate = NSCalendar.currentCalendar().dateByAddingUnit(
-            .Day,
-            value: offset,
-            toDate: today,
-            options: NSCalendarOptions(rawValue: 0))
-        
-        let formatter = NSDateFormatter()
-        formatter.dateStyle = NSDateFormatterStyle.LongStyle
-        formatter.timeStyle = .MediumStyle
-        
-        let dateString = formatter.stringFromDate(newdate!)
-        let fullNameArr = dateString.characters.split{$0 == ","}.map(String.init)
-        //print(fullNameArr[0])
-        
-        let myComponents = NSCalendar.currentCalendar().components(.Weekday, fromDate: newdate!)
-        let weekDay = myComponents.weekday
-        var days = ["","Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
-        //print(weekDay)
-        return("\(days[weekDay]), "+fullNameArr[0])
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.tableView.allowsSelection = false;
-        
-
-        //set model:
-        //print(UIDevice.currentDevice().model)
         
         var systemInfo = utsname()
         uname(&systemInfo)
@@ -274,8 +221,8 @@ class MealTableViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         let tabBar = self.navigationController!.tabBarController! as? TabBarController
-        self.navigationItem.titleView = tabBar!.segmentedControl
-        dateLabel.text = getDate(dayOffSet)
+        //self.navigationItem.titleView = tabBar!.segmentedControl
+        dateLabel.text = Date.getDate(dayOffSet)
         refresh()
     }
     

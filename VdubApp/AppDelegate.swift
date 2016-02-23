@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UISegmentedControl.appearance().tintColor = appColorRed
         UISegmentedControl.appearance().backgroundColor = appColorRedLITE
         
-        UITableViewHeaderFooterView.appearance().tintColor = appColorRedLITE
+        //UITableViewHeaderFooterView.appearance().tintColor = appColorRedLITE
         // UITableViewCell.appearance().selectionStyle =
         
         UINavigationBar.appearance().barTintColor = appColorDarkBrown
