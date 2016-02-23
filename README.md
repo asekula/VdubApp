@@ -1,6 +1,9 @@
 # Eat@Brown
 Provides menus for two of Brown's dining halls, the Verney Wooley dining hall (VDub) and the Sharpe Refectory (the Ratty).
 
+# Development Progress
+See current progress on Trello: https://trello.com/b/vIQAJtNy/eat-brown
+
 # Licensing
 The MIT License (MIT)
 Copyright (c) 2016
