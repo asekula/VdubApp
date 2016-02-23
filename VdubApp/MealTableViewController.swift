@@ -101,11 +101,12 @@ class MealTableViewController: UITableViewController {
         let weekend = calendar.isDateInWeekend(newDate!)
         let components = calendar.components([.Day , .Month , .Year], fromDate: newDate!)
         let day = components.day
+        let month = components.month
         let max_time = 10  // 1 second
         
         //fix these resettings of menusingleton to 
         if diningHall == 0 {
-            restOfUrl = "vdub&day=\(day)"
+            restOfUrl = "vdub&day=\(day)&month=\(month)"
             if MenuSingleton.sharedInstance.vdubMenu[0].stringValue == "I" {
                 connection.setMyQuery(restOfUrl) //TODO: day
                 connection.data_request()
@@ -129,7 +130,7 @@ class MealTableViewController: UITableViewController {
                 }
             }
         } else {
-            restOfUrl = "ratty&day=\(day)"
+            restOfUrl = "ratty&day=\(day)&month=\(month)"
             if MenuSingleton.sharedInstance.rattyMenu[0].stringValue == "I" {
                 connection.setMyQuery(restOfUrl) //TODO: day
                 connection.data_request()
