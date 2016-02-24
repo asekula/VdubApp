@@ -10,13 +10,16 @@ import UIKit
 
 class MealViewController: UIViewController {
 
+    var menuHandler: MenuHandler = MenuHandler()
     
+    @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var tabBar: UITabBar!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
         let tabItems = tabBar.items! as [UITabBarItem]
         let tabItem0 = tabItems[0] as UITabBarItem
         let tabItem1 = tabItems[1] as UITabBarItem
@@ -31,8 +34,10 @@ class MealViewController: UIViewController {
         tabItem1.selectedImage = UIImage(named: "lunch")
         tabItem2.selectedImage = UIImage(named: "dinner")
         
+        navBar.clipsToBounds = true
         segmentedControl.layer.cornerRadius = 5;
         segmentedControl.clipsToBounds = true;
+        
         
         
         // Uncomment the following line to preserve selection between presentations
