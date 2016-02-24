@@ -220,7 +220,7 @@ class MealTableViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        let tabBar = self.navigationController!.tabBarController! as? TabBarController
+        //let tabBar = self.navigationController!.tabBarController! as? TabBarController
         //self.navigationItem.titleView = tabBar!.segmentedControl
         dateLabel.text = Date.getDate(dayOffSet)
         refresh()

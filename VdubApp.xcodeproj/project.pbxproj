@@ -11,10 +11,7 @@
 		CECFB3021C6677A300BF57DF /* MealTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECFB3011C6677A300BF57DF /* MealTableViewController.swift */; };
 		CEF0B1061C6726F4003EA6A2 /* DiningHoursViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF0B1051C6726F4003EA6A2 /* DiningHoursViewController.swift */; };
 		CEF0B1081C672C73003EA6A2 /* home.html in Resources */ = {isa = PBXBuildFile; fileRef = CEF0B1071C672C73003EA6A2 /* home.html */; };
-		FA89BACD1C67970E0052700E /* FavFoodTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89BACC1C67970E0052700E /* FavFoodTableViewController.swift */; };
-		FA89BACF1C6797C20052700E /* FavoritesSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA89BACE1C6797C20052700E /* FavoritesSingleton.swift */; };
 		FA8A8C561C7C07EC003ED5F6 /* MenuHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A8C551C7C07EC003ED5F6 /* MenuHandler.swift */; };
-		FA8A8C581C7C0800003ED5F6 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A8C571C7C0800003ED5F6 /* Menu.swift */; };
 		FA8A8C5A1C7C0815003ED5F6 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A8C591C7C0815003ED5F6 /* Date.swift */; };
 		FA8A8C5C1C7C12A0003ED5F6 /* MealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A8C5B1C7C12A0003ED5F6 /* MealViewController.swift */; };
 		FA9025131C66ADBD005469B5 /* MenuSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9025121C66ADBD005469B5 /* MenuSingleton.swift */; };
@@ -33,10 +30,7 @@
 		CECFB3011C6677A300BF57DF /* MealTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealTableViewController.swift; sourceTree = "<group>"; };
 		CEF0B1051C6726F4003EA6A2 /* DiningHoursViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiningHoursViewController.swift; sourceTree = "<group>"; };
 		CEF0B1071C672C73003EA6A2 /* home.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = home.html; sourceTree = "<group>"; };
-		FA89BACC1C67970E0052700E /* FavFoodTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavFoodTableViewController.swift; sourceTree = "<group>"; };
-		FA89BACE1C6797C20052700E /* FavoritesSingleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesSingleton.swift; sourceTree = "<group>"; };
 		FA8A8C551C7C07EC003ED5F6 /* MenuHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuHandler.swift; sourceTree = "<group>"; };
-		FA8A8C571C7C0800003ED5F6 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		FA8A8C591C7C0815003ED5F6 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		FA8A8C5B1C7C12A0003ED5F6 /* MealViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealViewController.swift; sourceTree = "<group>"; };
 		FA9025121C66ADBD005469B5 /* MenuSingleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuSingleton.swift; sourceTree = "<group>"; };
@@ -111,10 +105,7 @@
 				FAE951291C6689D600619760 /* TabBarController.swift */,
 				FAE951351C6694EC00619760 /* MenuNSURLSession.swift */,
 				FA9025121C66ADBD005469B5 /* MenuSingleton.swift */,
-				FA89BACC1C67970E0052700E /* FavFoodTableViewController.swift */,
-				FA89BACE1C6797C20052700E /* FavoritesSingleton.swift */,
 				FA8A8C551C7C07EC003ED5F6 /* MenuHandler.swift */,
-				FA8A8C571C7C0800003ED5F6 /* Menu.swift */,
 				FA8A8C591C7C0815003ED5F6 /* Date.swift */,
 				FA8A8C5B1C7C12A0003ED5F6 /* MealViewController.swift */,
 			);
@@ -249,14 +240,11 @@
 				CECFB3021C6677A300BF57DF /* MealTableViewController.swift in Sources */,
 				FAE951361C6694EC00619760 /* MenuNSURLSession.swift in Sources */,
 				FAE951161C66675400619760 /* AppDelegate.swift in Sources */,
-				FA8A8C581C7C0800003ED5F6 /* Menu.swift in Sources */,
 				FA8A8C5C1C7C12A0003ED5F6 /* MealViewController.swift in Sources */,
 				CEF0B1061C6726F4003EA6A2 /* DiningHoursViewController.swift in Sources */,
 				FA9025131C66ADBD005469B5 /* MenuSingleton.swift in Sources */,
-				FA89BACD1C67970E0052700E /* FavFoodTableViewController.swift in Sources */,
 				FA8A8C5A1C7C0815003ED5F6 /* Date.swift in Sources */,
 				FA8A8C561C7C07EC003ED5F6 /* MenuHandler.swift in Sources */,
-				FA89BACF1C6797C20052700E /* FavoritesSingleton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
