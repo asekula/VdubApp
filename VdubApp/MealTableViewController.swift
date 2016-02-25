@@ -32,7 +32,7 @@ class MealTableViewController: UITableViewController {
     var connection: MenuNSURLSession = MenuNSURLSession()
     var model = 6
     
-    var dayOffSet: Int {
+    var dayOffSet: Int  = 0/*{
         get {
             let tabBar = self.navigationController!.tabBarController! as? TabBarController
             let offset = tabBar!.offset
@@ -58,7 +58,7 @@ class MealTableViewController: UITableViewController {
             MenuSingleton.sharedInstance.rattyMenu[0] = "I" // fix this with array of returnvalues (w.e. they are)
             refresh()
         }
-    }
+    }*/
     
     var diningHall = 0 {
         didSet {

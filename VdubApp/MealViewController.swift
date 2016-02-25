@@ -26,6 +26,7 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
     
     @IBAction func back(sender: AnyObject) {
         menuHandler.back() // Guaranteed to work.
+        // back() is only called if the backButton is enabled.
         forwardButton.enabled = true
         if !menuHandler.canBack() {
             backButton.enabled = false
@@ -60,7 +61,6 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
     }
     
     func refresh() {
-        print("UPDATED")
         self.tableView.reloadData()
         self.navBar.topItem?.title = menuHandler.dayOfWeek()
     }
@@ -85,8 +85,11 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
         tabItem0.selectedImage = UIImage(named: "breakfast")
         tabItem1.selectedImage = UIImage(named: "lunch")
         tabItem2.selectedImage = UIImage(named: "dinner")
-        // Set selected tab.
+        
+        // Todo: Set selected tab.
         tabBar.selectedItem = tabItem0
+        
+        // Also set default dining hall.
         
         backButton.enabled = false
         forwardButton.enabled = true
@@ -96,11 +99,7 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
         segmentedControl.clipsToBounds = true;
         
         self.tableView.registerClass(UITableViewCell().classForCoder, forCellReuseIdentifier: "reuseIdentifier")
-        
-        menuHandler.retrieve(0, offset: 0)
-        menuHandler.retrieve(1, offset: 0)
-        menuHandler.retrieve(2, offset: 0)
-        
+                
         refresh()
     }
 

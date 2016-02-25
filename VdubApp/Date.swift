@@ -59,6 +59,26 @@ class Date {
         let weekDay = myComponents.weekday
         var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
         
-        return days[weekDay]
+        return days[weekDay-1]
+    }
+    
+    static func getDayNumber(offset: Int) -> Int {
+        let newdate = NSCalendar.currentCalendar().dateByAddingUnit(
+            .Day,
+            value: offset,
+            toDate: NSDate(),
+            options: NSCalendarOptions(rawValue: 0))
+        let myComponents = NSCalendar.currentCalendar().components(.Day, fromDate: newdate!)
+        return myComponents.day
+    }
+    
+    static func getMonthNumber(offset: Int) -> Int {
+        let newdate = NSCalendar.currentCalendar().dateByAddingUnit(
+            .Day,
+            value: offset,
+            toDate: NSDate(),
+            options: NSCalendarOptions(rawValue: 0))
+        let myComponents = NSCalendar.currentCalendar().components(.Month, fromDate: newdate!)
+        return myComponents.month
     }
 }
