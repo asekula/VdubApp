@@ -28,7 +28,11 @@ class ApiNSURLSession: NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate 
         let task = session.dataTaskWithRequest(request, completionHandler: {(data, response, error) in
             if let d = data {
                 let json = JSON(data: d)
-                let arrRep = json["menus"].arrayValue
+                var arrRep = json["menus"].arrayValue
+                
+                if arrRep.count == 0 {
+                    arrRep = json["error"].arrayValue
+                }
                 
                 self.dataComplete = arrRep
             }

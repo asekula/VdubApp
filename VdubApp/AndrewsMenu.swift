@@ -21,6 +21,7 @@ class AndrewsMenu {
         let pizza:[String], pasta:[String]
         var special = [String]()
         var brunch = [String]()
+        let bfast = ["You'll have to wait": ["Andrews Commons opens at 11am"]]
         
         /*
         Organize:
@@ -135,7 +136,7 @@ class AndrewsMenu {
                 "pizza": pizza,
                 "wok": wok,
                 "daily": dailyDinner]
-            return [[:], lunch, dinner]
+            return [bfast, lunch, dinner]
         }
         else if weekday == "Friday" {
             if Date.wokCycle(offset) == 1 {
@@ -192,7 +193,7 @@ class AndrewsMenu {
                 "pasta": pasta,
                 "wok": wok,
                 "daily": dailyDinner]
-            return [[:], lunch, dinner]
+            return [bfast, lunch, dinner]
         }
             
         else if weekday == "Sunday" {
@@ -226,7 +227,7 @@ class AndrewsMenu {
                 "pasta": pasta,
                 "wok": wok,
                 "daily": dailyDinner]
-            return [[:], lunch, dinner]
+            return [bfast, lunch, dinner]
         }
         else {
             pizza = []
@@ -238,7 +239,7 @@ class AndrewsMenu {
             "pasta": pasta,
             "wok": wok,
             "daily": dailyDinner]
-        return [[:], lunch, dinner]
+        return [bfast, lunch, dinner]
         
     }
 }

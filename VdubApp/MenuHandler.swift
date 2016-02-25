@@ -14,7 +14,7 @@ class MenuHandler {
     var currentDiningHall: Int = 0 // 0 vdub, 1 ratty
     var currentOffset: Int = 0 //
     var currentMeal: Int = 0 // 0 bfast, 1 lunch, 2 dinner.
-    var maxDaysForward: Int = 4 // currentOffset is allowed to equal maxDaysForward
+    var maxDaysForward: Int = 6 // currentOffset is allowed to equal maxDaysForward
     var menuRetriever: MenuRetriever = MenuRetriever()
     var retrievedIndex: Int = -1 // Ensures that menu has loaded days up to and including retrievedIndex.
     
@@ -65,17 +65,6 @@ class MenuHandler {
         currentMeal = meal
     }
     
-    /*  Alternatively, retrieveData could load all data,
-        but if there is no need, might as well only load
-        what the user requests. Plus, retrieving should be quick
-        if it's stored in a file on the phone. 
-        What we should really do is load everything from the api
-        in the background if it doesn't exist in the local file.
-        As for displaying data, we really only need menuHandler to
-        store data that the user specifically requests.
-        menuRetriever should take care of the background menu downloads,
-        if we choose to implement them.
-    */
     func retrieveData() {
         if retrievedIndex < maxDaysForward {
             for hall in 0..<menu.count {
@@ -86,16 +75,10 @@ class MenuHandler {
         }
     }
     
-    
     // None of these handles edge cases, put these in later.
     // Unless these should be kept bare to check for bugs. 
     // The exceptions would be unwanted exceptions, after all.
-    
-    // Somehow fix the sorting at some point.
-    // Although, the keys are guaranteed to be max five elements long,
-    // sorting is not at all computationally intensive.
-    // Would cause more harm if it stored keys in a 3D array.
-    
+
     func numberOfKeys() -> Int {
         return Array(menu[currentDiningHall][currentOffset][currentMeal].keys).count
     }
@@ -138,5 +121,4 @@ class MenuHandler {
         }
         return ind1 < ind2
     }
-    
 }

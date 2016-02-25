@@ -28,7 +28,8 @@ class MenuRetriever {
         case 0:
             url = "vdub"+url
             if Date.isWeekend(offset) {
-                return [[String:[String]](),[String:[String]](),[String:[String]]()]
+                let closedMsg = ["Bummer":["The Vdub is closed."]]
+                return [closedMsg,closedMsg,closedMsg]
             }
         case 1: url = "ratty"+url
         case 2: return AndrewsMenu.menu(offset)
@@ -41,6 +42,11 @@ class MenuRetriever {
         
         while data.count == 0 {
             data = connection.dataComplete // SHOULDN'T RUN IF CONNECTION RETURNS "ERROR"
+        }
+        
+        if data.count == 1 {
+            let errorMsg = ["Whoops": ["Unable to load data."]]
+            return [errorMsg, errorMsg, errorMsg]
         }
         
         var meals = [[String:[String]](),[String:[String]](),[String:[String]]()]

@@ -57,7 +57,8 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
         }
         else { // Tab was "More"
             let vc : AnyObject! = self.storyboard!.instantiateViewControllerWithIdentifier("MoreInfo")
-            self.presentViewController(vc as! UIViewController, animated: false, completion: nil)
+            //self.presentViewController(vc as! UIViewController, animated: true, completion: nil)
+            self.showViewController(vc as! UIViewController, sender: vc)
         }
     }
     
@@ -68,7 +69,7 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         // Tableview.
         tableView.delegate = self
         tableView.dataSource = self

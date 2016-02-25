@@ -20,7 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //let appColorRedLITE = UIColor(red: 248/255, green: 230/255, blue: 230/255, alpha:1.0)
         
         //UITableViewHeaderFooterView.appearance().tintColor = appColorRedLITE
-        
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
+
         return true
     }
 
