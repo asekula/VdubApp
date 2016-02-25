@@ -60,12 +60,9 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
     }
     
     func refresh() {
-        //let menu = menuHandler.getMenu()
         print("UPDATED")
         self.tableView.reloadData()
         self.navBar.topItem?.title = menuHandler.dayOfWeek()
-        // Update tableview.
-        // Change date at top.
     }
     
     override func viewDidLoad() {
@@ -99,7 +96,11 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
         segmentedControl.clipsToBounds = true;
         
         self.tableView.registerClass(UITableViewCell().classForCoder, forCellReuseIdentifier: "reuseIdentifier")
-
+        
+        menuHandler.retrieve(0, offset: 0)
+        menuHandler.retrieve(1, offset: 0)
+        menuHandler.retrieve(2, offset: 0)
+        
         refresh()
     }
 

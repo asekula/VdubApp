@@ -10,56 +10,70 @@ import Foundation
 
 class MenuHandler {
     
+    
     var currentDiningHall: Int = 0 // 0 vdub, 1 ratty
     var currentOffset: Int = 0 //
     var currentMeal: Int = 0 // 0 bfast, 1 lunch, 2 dinner.
+    var maxDaysForward: Int = 4 // currentOffset is allowed to equal maxDaysForward
+    
+    // First coordinate: dinin hall
+    // Second: day of week. 
+    // Third: meal of day.
+    // Array of Array of Array of Dictionary<String, Array<String>>
+    var menu = [[[[String:[String]]]]]()
     
     func switchHall(hall: Int) {
-        
+        currentDiningHall = hall
     }
     
     func back() {
-    
+        if currentOffset > 0 {
+            currentOffset -= 1
+        }
     }
     
     func forward() {
-    
+        if currentOffset < maxDaysForward {
+            currentOffset += 1
+        }
     }
     
     func canBack() -> Bool {
-        return true
+        return (currentOffset > 0)
     }
     
     func canForward() -> Bool {
-        return true
+        return (currentOffset < maxDaysForward)
     }
     
     func changeMeal(meal: Int) {
-        
+        currentMeal = meal
     }
     
-    func getMenu() -> Int {
-        return 0
+    func retrieve(hall: Int, offset: Int) -> [String:[String]] {
+        menu[hall][offset]
     }
     
     func numberOfKeys() -> Int {
-        return 2
+        return Array(menu[currentDiningHall][currentOffset][currentMeal].keys).count
     }
     
     func elementsInSection(section: Int) -> Int {
-        return 3
+        let key = Array(menu[currentDiningHall][currentOffset][currentMeal].keys)[section]
+        return menu[currentDiningHall][currentOffset][currentMeal][key]!.count
     }
     
     func getItem(section: Int, row: Int) -> String {
-        return "a"
+        let key = Array(menu[currentDiningHall][currentOffset][currentMeal].keys)[section]
+        return menu[currentDiningHall][currentOffset][currentMeal][key]![row]
     }
     
     func sectionTitle(section: Int) -> String {
-        return "b"
+        return Array(menu[currentDiningHall][currentOffset][currentMeal].keys)[section]
     }
     
     func dayOfWeek() -> String {
-        return "asdf"
+        return Date.getWeekday(currentOffset)
     }
 
 }

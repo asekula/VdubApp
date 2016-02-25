@@ -16,6 +16,7 @@ class Date {
         return calendar.isDateInWeekend(newDate!)
     }
     
+    // Not used yet, can probably ditch.
     static func getDate(offset: Int) -> String {
         let today = NSDate()
         let newdate = NSCalendar.currentCalendar().dateByAddingUnit(
@@ -42,9 +43,22 @@ class Date {
         return NSCalendar.currentCalendar().component(.Hour, fromDate: NSDate())
     }
     
-    static func getWeekday() -> Int { // 0 to 6, sunday to saturday.
-        let myComponents = NSCalendar.currentCalendar().components(.Weekday, fromDate: NSDate())
-        return(myComponents.weekday - 1)
+    static func getWeekday(offset: Int) -> String {
+        let today = NSDate()
+        let newdate = NSCalendar.currentCalendar().dateByAddingUnit(
+            .Day,
+            value: offset,
+            toDate: today,
+            options: NSCalendarOptions(rawValue: 0))
         
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = NSDateFormatterStyle.LongStyle
+        formatter.timeStyle = .MediumStyle
+        
+        let myComponents = NSCalendar.currentCalendar().components(.Weekday, fromDate: newdate!)
+        let weekDay = myComponents.weekday
+        var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+        
+        return days[weekDay]
     }
 }
