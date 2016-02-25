@@ -366,7 +366,7 @@ made with </string>
         <scene sceneID="hBq-fw-dKw">
             <objects>
                 <navigationController storyboardIdentifier="MoreInfo" title="More" useStoryboardIdentifierAsRestorationIdentifier="YES" id="cGn-vX-Fb2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="More" image="more" id="m1Z-Kn-czn"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2rS-kg-GLU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -381,9 +381,8 @@ made with </string>
         </scene>
     </scenes>
     <resources>
-        <image name="back" width="24" height="24"/>
-        <image name="forward" width="24" height="24"/>
-        <image name="more" width="24" height="24"/>
+        <image name="back" width="25" height="25"/>
+        <image name="forward" width="25" height="25"/>
     </resources>
     <color key="tintColor" red="0.80000000000000004" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>
