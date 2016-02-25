@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-class MenuNSURLSession: NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate {
+class ApiNSURLSession: NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate {
     var host = "https://api.students.brown.edu/dining/menu?client_id=e5e5e5f6-f300-48f9-ab95-c57d6c731cba&eatery="
     var query = String()
     var replyData: NSData = NSData()

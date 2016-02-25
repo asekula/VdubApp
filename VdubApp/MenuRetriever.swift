@@ -11,16 +11,14 @@ import SwiftyJSON
 
 class MenuRetriever {
  
-    var connection: MenuNSURLSession = MenuNSURLSession()
+    var connection: ApiNSURLSession = ApiNSURLSession()
     
     init() {}
     
     // First check if it's stored in a local file.
     // If not, get from api, then store in file.
     func get(hall: Int, offset: Int) -> [[String:[String]]] {
- 
-        //return [ [ "poo": ["a", "b"]],[ "red": ["aa", "bb"]],[ "pereroo": ["are", "bre"]] ]
-        
+         
         let day = Date.getDayNumber(offset)
         let month = Date.getMonthNumber(offset)
  
