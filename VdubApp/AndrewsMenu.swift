@@ -14,220 +14,231 @@ class AndrewsMenu {
     static func menu(offset: Int) -> [[String:[String]]] {
         let lunch:[String:[String]]
         let dinner:[String:[String]]
-        let wok:[String]
+        var wok = [String]()
+        let weekday = Date.getWeekday(offset)
+        let dailyLunch = ["grinder", "pho", "cookie slice", "brownie slice"]
+        let dailyDinner = ["make your own panini", "cookie slice", "brownie slice"]
+        let pizza:[String], pasta:[String]
+        var special = [String]()
+        var brunch = [String]()
         
-        print(Date.getWeekday(offset))
+        /*
+        Organize:
+        1. special (day specific)
+        2. pizza - puff pocket too, cause where else.
+        3. pasta
+        4. wok
+        5. daily food (cookie/brownie/panini)
+        */
         
-        if Date.getWeekday(offset) == "Monday" {
+        
+        if weekday == "Monday" {
             if Date.wokCycle(offset) == 1 {
-                wok = ["Lemongrass", "Jasmine Rice",
-                    "Quinoa",
-                    "Teriyaki Chicken",
-                    "Vegetable Lo Mein",
-                    "Yellow Jungle Curry",
-                    "Basil Pork with Onions and Garlic",
-                    "Kerala Green Beans"]
+                wok = ["lemongrass", "jasmine rice",
+                    "quinoa",
+                    "teriyaki chicken",
+                    "vegetable lo mein",
+                    "yellow jungle curry",
+                    "basil pork with onions and garlic",
+                    "kerala green beans"]
             } else {
-                wok = ["Lemongrass",
-                    "Jasmine Rice",
-                    "Quinoa",
-                    "Lemonrass Chicken",
-                    "Vegetable Lo Mein",
-                    "Yellow Jungle Curry",
-                    "Sriracha Chicken Tempura",
-                    "Green Beans with Garlic",
-                    "Fried Rice Station"]
+                wok = ["lemongrass",
+                    "jasmine rice",
+                    "quinoa",
+                    "lemonrass chicken",
+                    "vegetable lo mein",
+                    "yellow jungle curry",
+                    "sriracha chicken tempura",
+                    "green beans with garlic",
+                    "fried rice station"]
             }
             
-            lunch = [ "Pizza": ["Rhode to Italy", "Caprese", "BBQ Chicken Ranch"],
-                "Pasta": ["Chicken Parmesan", "Jalapeno Mac & Cheese"],
-                "Special": ["Grinder Station", "Pho", "Spinach and Feta Puff Pocket", "Cookie Slice", "Brownie Slice"] ]
-            dinner = [ "Wok": wok,
-                "Pizza": ["Rhode to Italy", "Caprese", "BBQ Chicken Ranch"],
-                "Pasta": ["Chicken Parmesan", "Jalapeno Mac & Cheese"],
-                "Special": ["Chili Bar", "Fried Rice Station", "Make your own Panini", "Spinach and Feta Puff Pocket", "Cookie Slice", "Brownie Slice"] ]
+            pizza = ["rhode to italy", "caprese", "bbq chicken ranch", "spinach and feta puff pocket"]
+            pasta = ["chicken parmesan", "jalapeno mac & cheese"]
+            special = ["chili bar", "fried rice station"]
         }
-        else if Date.getWeekday(offset) == "Tuesday" {
-            var wok:[String] = []
+        else if weekday == "Tuesday" {
             if Date.wokCycle(offset) == 1 {
-                wok = ["Lemongrass", "Jasmine Rice",
-                    "Quinoa",
-                    "Teriyaki Chicken",
-                    "Vegetable Lo Mein",
-                    "Yellow Jungle Curry",
-                    "Basil Pork with Onions and Garlic",
-                    "Kerala Green Beans"]
+                wok = ["lemongrass", "jasmine rice",
+                    "quinoa",
+                    "teriyaki chicken",
+                    "vegetable lo mein",
+                    "yellow jungle curry",
+                    "basil pork with onions and garlic",
+                    "kerala green beans"]
             } else {
-                wok = ["Lemongrass",
-                    "Jasmine Rice",
-                    "Quinoa",
-                    "Lemonrass Chicken",
-                    "Vegetable Lo Mein",
-                    "Yellow Jungle Curry",
-                    "Sriracha Chicken Tempura",
-                    "Green Beans with Garlic",
-                    "Fried Rice Station"]
+                wok = ["lemongrass",
+                    "jasmine rice",
+                    "quinoa",
+                    "lemonrass chicken",
+                    "vegetable lo mein",
+                    "yellow jungle curry",
+                    "sriracha chicken tempura",
+                    "green beans with garlic",
+                    "fried rice station"]
             }
             
-            lunch = [ "Pizza": ["Bacon Chicken Ranch", "Spinach & Feta", "Pepperoni & Meatball"],
-                "Pasta": ["Meatball", "Mac & Cheese"],
-                "Special": ["Grinder Station", "Pho", "Italian Puff Pocket", "Cookie Slice", "Brownie Slice"] ]
-            dinner = [ "Wok": wok,
-                "Pizza": ["Bacon Chicken Ranch", "Spinach & Feta", "Pepperoni & Meatball"],
-                "Pasta": ["Meatball", "Mac & Cheese"],
-                "Special": ["Chipotle BBQ Taco", "Make your own Panini", "Italian Puff Pocket", "Cookie Slice", "Brownie Slice"] ]
+            pizza = ["bacon chicken ranch", "spinach & feta", "pepperoni & meatball", "italian puff pocket"]
+            pasta = ["meatball", "mac & cheese"]
+            special = ["chipotle bbq taco"]
         }
-        else if Date.getWeekday(offset) == "Wednesday" {
-            var wok:[String] = []
+        else if weekday == "Wednesday" {
             if Date.wokCycle(offset) == 1 {
-                wok = ["Lemongrass", "Jasmine Rice",
-                    "Quinoa",
-                    "Teriyaki Chicken",
-                    "Vegetable Lo Mein",
-                    "Yellow Jungle Curry",
-                    "Basil Pork with Onions and Garlic",
-                    "Kerala Green Beans"]
+                wok = ["lemongrass", "jasmine rice",
+                    "quinoa",
+                    "teriyaki chicken",
+                    "vegetable lo mein",
+                    "yellow jungle curry",
+                    "basil pork with onions and garlic",
+                    "kerala green beans"]
             } else {
-                wok = ["Lemongrass",
-                    "Jasmine Rice",
-                    "Quinoa",
-                    "Lemonrass Chicken",
-                    "Vegetable Lo Mein",
-                    "Yellow Jungle Curry",
-                    "Sriracha Chicken Tempura",
-                    "Green Beans with Garlic",
-                    "Fried Rice Station"]
+                wok = ["lemongrass",
+                    "jasmine rice",
+                    "quinoa",
+                    "lemonrass chicken",
+                    "vegetable lo mein",
+                    "yellow jungle curry",
+                    "sriracha chicken tempura",
+                    "green beans with garlic",
+                    "fried rice station"]
             }
-            lunch = [ "Pizza": ["Honey Boo Boo", "Mushroom's Revenge", "Sausage & spicy garlic"],
-                "Pasta": ["Carbonara", "Pesto & Sundried Tomato"],
-                "Special": ["Grinder Station", "Pho", "Buffalo Chicken Puff Pocket", "Cookie Slice", "Brownie Slice"] ]
-            dinner = [ "Wok": wok,
-                "Pizza": ["Honey Boo Boo", "Mushroom's Revenge", "Sausage & spicy garlic"],
-                "Pasta": ["Carbonara", "Pesto & Sundried Tomato"],
-                "Special": ["Po' Boys/Rich Boys", "Make your own Panini", "Buffalo Chicken Puff Pocket", "Cookie Slice", "Brownie Slice"] ]
+            pizza = ["honey boo boo", "mushroom's revenge", "sausage & spicy garlic", "buffalo chicken puff pocket"]
+            pasta = ["carbonara", "pesto & sundried tomato"]
+            special = ["po' boys/rich boys"]
         }
-        else if Date.getWeekday(offset) == "Thursday" {
-            var wok:[String] = []
+        else if weekday == "Thursday" {
             if Date.wokCycle(offset) == 1 {
-                wok = ["Lemongrass", "Jasmine Rice",
-                    "Quinoa",
-                    "Teriyaki Chicken",
-                    "Vegetable Lo Mein",
-                    "Yellow Jungle Curry",
-                    "Basil Pork with Onions and Garlic",
-                    "Kerala Green Beans"]
+                wok = ["lemongrass", "jasmine rice",
+                    "quinoa",
+                    "teriyaki chicken",
+                    "vegetable lo mein",
+                    "yellow jungle curry",
+                    "basil pork with onions and garlic",
+                    "kerala green beans"]
             } else {
-                wok = ["Lemongrass",
-                    "Jasmine Rice",
-                    "Quinoa",
-                    "Lemonrass Chicken",
-                    "Vegetable Lo Mein",
-                    "Yellow Jungle Curry",
-                    "Sriracha Chicken Tempura",
-                    "Green Beans with Garlic",
-                    "Fried Rice Station"]
+                wok = ["lemongrass",
+                    "jasmine rice",
+                    "quinoa",
+                    "lemonrass chicken",
+                    "vegetable lo mein",
+                    "yellow jungle curry",
+                    "sriracha chicken tempura",
+                    "green beans with garlic",
+                    "fried rice station"]
             }
-            lunch = [ "Pizza": ["Na'cho Pizza", "Spicy 5 Cheese & Garlic", "BBQ Bam Bam"],
-                "Special": ["Grinder Station", "Pho", "Spinach and Feta Puff Pocket", "Cookie Slice", "Brownie Slice", "add Ice Cream and Sundae toppings"] ]
-            dinner = [ "Wok": wok,
-                "Pizza": ["Na'cho Pizza", "Spicy 5 Cheese & Garlic", "BBQ Bam Bam"],
-                "Special": ["Make your own Pasta Station", "Make your own Panini", "Spinach and Feta Puff Pocket", "Cookie Slice", "Brownie Slice", "add Ice Cream and Sundae toppings"] ]
+            pizza = ["na'cho pizza", "spicy 5 cheese & garlic", "bbq bam bam", "spinach and feta puff pocket"]
+            pasta = []
+            special = ["make your own pasta station", "add ice cream and sundae toppings"]
+            
+            lunch = ["pizza": pizza, "daily": dailyLunch]
+            dinner = ["special": special,
+                "pizza": pizza,
+                "wok": wok,
+                "daily": dailyDinner]
+            return [[:], lunch, dinner]
         }
-        else if Date.getWeekday(offset) == "Friday" {
-            var wok:[String] = []
+        else if weekday == "Friday" {
             if Date.wokCycle(offset) == 1 {
-                wok = ["Lemongrass", "Jasmine Rice",
-                    "Quinoa",
-                    "Teriyaki Chicken",
-                    "Vegetable Lo Mein",
-                    "Yellow Jungle Curry",
-                    "Basil Pork with Onions and Garlic",
-                    "Kerala Green Beans"]
+                wok = ["lemongrass", "jasmine rice",
+                    "quinoa",
+                    "teriyaki chicken",
+                    "vegetable lo mein",
+                    "yellow jungle curry",
+                    "basil pork with onions and garlic",
+                    "kerala green beans"]
             } else {
-                wok = ["Lemongrass",
-                    "Jasmine Rice",
-                    "Quinoa",
-                    "Lemonrass Chicken",
-                    "Vegetable Lo Mein",
-                    "Yellow Jungle Curry",
-                    "Sriracha Chicken Tempura",
-                    "Green Beans with Garlic",
-                    "Fried Rice Station"]
+                wok = ["lemongrass",
+                    "jasmine rice",
+                    "quinoa",
+                    "lemonrass chicken",
+                    "vegetable lo mein",
+                    "yellow jungle curry",
+                    "sriracha chicken tempura",
+                    "green beans with garlic",
+                    "fried rice station"]
             }
-            lunch = [ "Pizza": ["Bacon & Feta", "Harvest", "Buffalo Chicken"],
-                "Pasta": ["Cajun chicken", "Wild Mushroom & Gorgonzola"],
-                "Special": ["Grinder Station", "Pho", "Italian Puff Pocket", "Cookie Slice", "Brownie Slice"] ]
-            dinner = [ "Wok": wok,
-                "Pizza": ["Bacon & Feta", "Harvest", "Buffalo Chicken"],
-                "Pasta": ["Cajun chicken", "Wild Mushroom & Gorgonzola"],
-                "Special": ["BBQ Pulled Pork Sandwich", "Make your own Panini", "Italian Puff Pocket", "Cookie Slice", "Brownie Slice"] ]
+            pizza = ["bacon & feta", "harvest", "buffalo chicken", "italian puff pocket"]
+            pasta = ["cajun chicken", "wild mushroom & gorgonzola"]
+            special = ["bbq pulled pork sandwich"]
         }
-        else if Date.getWeekday(offset) == "Saturday" {
-            var wok:[String] = []
+        else if weekday == "Saturday" {
             if Date.wokCycle(offset) == 1 {
-                wok = ["Lemongrass", "Jasmine Rice",
-                    "Quinoa",
-                    "Teriyaki Chicken",
-                    "Vegetable Lo Mein",
-                    "Yellow Jungle Curry",
-                    "Basil Pork with Onions and Garlic",
-                    "Kerala Green Beans"]
+                wok = ["lemongrass", "jasmine rice",
+                    "quinoa",
+                    "teriyaki chicken",
+                    "vegetable lo mein",
+                    "yellow jungle curry",
+                    "basil pork with onions and garlic",
+                    "kerala green beans"]
             } else {
-                wok = ["Lemongrass",
-                    "Jasmine Rice",
-                    "Quinoa",
-                    "Lemonrass Chicken",
-                    "Vegetable Lo Mein",
-                    "Yellow Jungle Curry",
-                    "Sriracha Chicken Tempura",
-                    "Green Beans with Garlic",
-                    "Fried Rice Station"]
+                wok = ["lemongrass",
+                    "jasmine rice",
+                    "quinoa",
+                    "lemonrass chicken",
+                    "vegetable lo mein",
+                    "yellow jungle curry",
+                    "sriracha chicken tempura",
+                    "green beans with garlic",
+                    "fried rice station"]
             }
-            lunch = [ "Pizza": ["Bacon Alfredo", "Pizza Bianco", "Pepperoni & Sausage & Jalapeno"],
-                "Pasta": ["Bacon Mac", "Mac & Cheese"],
-                "Brunch": ["Granola Bowl", "Pho", "Breakfast Burrito", "Breakfast Sandwich", "Biscuit Bites", "Cookie Slice", "Brownie Slice"] ]
-            dinner = [ "Wok": wok,
-                "Pizza": ["Bacon Alfredo", "Pizza Bianco", "Pepperoni & Sausage & Jalapeno"],
-                "Pasta": ["Bacon Mac", "Mac & Cheese"],
-                "Special": ["Asian Tacos", "Make your own Panini", "Biscuit Bites", "Cookie Slice", "Brownie Slice"] ]
+            pizza = ["bacon alfredo", "pizza bianco", "pepperoni & sausage & jalapeno", "biscuit bites"] // pizza only for dinner.
+            pasta = ["bacon mac", "mac & cheese"]
+            brunch = ["granola bowl", "pho", "breakfast burrito", "breakfast sandwich"] // use brunch instead of dailyLunch
+            special = ["asian tacos"] // still use dailyDinner
+            
+            lunch = ["brunch": brunch]
+            dinner = ["special": special,
+                "pizza": pizza,
+                "pasta": pasta,
+                "wok": wok,
+                "daily": dailyDinner]
+            return [[:], lunch, dinner]
         }
             
-        else if Date.getWeekday(offset) == "Sunday" {
-            var wok:[String] = []
+        else if weekday == "Sunday" {
             if Date.wokCycle(offset) == 1 {
-                wok = ["Lemongrass", "Jasmine Rice",
-                    "Quinoa",
-                    "Teriyaki Chicken",
-                    "Vegetable Lo Mein",
-                    "Yellow Jungle Curry",
-                    "Basil Pork with Onions and Garlic",
-                    "Kerala Green Beans"]
+                wok = ["lemongrass", "jasmine rice",
+                    "quinoa",
+                    "teriyaki chicken",
+                    "vegetable lo mein",
+                    "yellow jungle curry",
+                    "basil pork with onions and garlic",
+                    "kerala green beans"]
             } else {
-                wok = ["Lemongrass",
-                    "Jasmine Rice",
-                    "Quinoa",
-                    "Lemonrass Chicken",
-                    "Vegetable Lo Mein",
-                    "Yellow Jungle Curry",
-                    "Sriracha Chicken Tempura",
-                    "Green Beans with Garlic",
-                    "Fried Rice Station"]
+                wok = ["lemongrass",
+                    "jasmine rice",
+                    "quinoa",
+                    "lemonrass chicken",
+                    "vegetable lo mein",
+                    "yellow jungle curry",
+                    "sriracha chicken tempura",
+                    "green beans with garlic",
+                    "fried rice station"]
             }
-            lunch = [ "Pizza": ["Chipotle BBQ Sausage", "Southwest Veggie", "Upside Down Margherita"],
-                "Pasta": ["Chicken w/Pink Vodka", "Pesto & Sundried Tomato"],
-                "Brunch": ["Granola Bowl", "Pho", "Breakfast Burrito", "Breakfast Sandwich", "Buffalo Chicken Puff Pocket", "Cookie Slice", "Brownie Slice"] ]
-            dinner = [ "Wok": wok,
-                "Pizza": ["Chipotle BBQ Sausage", "Southwest Veggie", "Upside Down Margherita"],
-                "Pasta": ["Chicken w/Pink Vodka", "Pesto & Sundried Tomato"],
-                "Special": ["Bahn Mi", "Make your own Panini", "Buffalo Chicken Puff Pocket", "Cookie Slice", "Brownie Slice"] ]
+            pizza = ["chipotle bbq sausage", "southwest veggie", "upside down margherita", "buffalo chicken puff pocket"]
+            pasta = ["chicken w/pink vodka", "pesto & sundried tomato"]
+            brunch = ["granola bowl", "pho", "breakfast burrito", "breakfast sandwich"]
+            special = ["bahn mi"]
+            
+            lunch = ["brunch": brunch]
+            dinner = ["special": special,
+                "pizza": pizza,
+                "pasta": pasta,
+                "wok": wok,
+                "daily": dailyDinner]
+            return [[:], lunch, dinner]
         }
         else {
-            lunch = [:]
-            dinner = [:]
+            pizza = []
+            pasta = []
         }
-        print(lunch)
+        lunch = ["pizza": pizza, "pasta": pasta, "daily": dailyLunch]
+        dinner = ["special": special,
+            "pizza": pizza,
+            "pasta": pasta,
+            "wok": wok,
+            "daily": dailyDinner]
         return [[:], lunch, dinner]
         
     }
-
 }

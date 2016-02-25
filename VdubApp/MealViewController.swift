@@ -64,16 +64,34 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
     func refresh() {
         self.tableView.reloadData()
         self.navBar.topItem?.title = menuHandler.dayOfWeek()
-        self.view.setNeedsDisplay()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tabBar.delegate = self
+        // Tableview.
         tableView.delegate = self
         tableView.dataSource = self
+        self.tableView.registerClass(UITableViewCell().classForCoder, forCellReuseIdentifier: "reuseIdentifier")
         
+        // Bar Button Items.
+        backButton.enabled = false
+        forwardButton.enabled = true
+        
+        // Nav Bar.
+        navBar.clipsToBounds = true
+        self.navBar.topItem?.title = menuHandler.dayOfWeek()
+
+        // Segmented Control.
+        segmentedControl.layer.cornerRadius = 5;
+        segmentedControl.clipsToBounds = true;
+        if Date.isWeekend(0) {
+            segmentedControl.selectedSegmentIndex = 1
+            menuHandler.switchHall(1)
+        }
+        
+        // Tab Bar.
+        tabBar.delegate = self
         let tabItems = tabBar.items! as [UITabBarItem]
         let tabItem0 = tabItems[0] as UITabBarItem
         let tabItem1 = tabItems[1] as UITabBarItem
@@ -88,26 +106,23 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
         tabItem1.selectedImage = UIImage(named: "lunch")
         tabItem2.selectedImage = UIImage(named: "dinner")
         
-        // Todo: Set selected tab.
         tabBar.selectedItem = tabItem0
-        
-        // Also set default dining hall.
-        
-        backButton.enabled = false
-        forwardButton.enabled = true
-        
-        navBar.clipsToBounds = true
-        segmentedControl.layer.cornerRadius = 5;
-        segmentedControl.clipsToBounds = true;
-        
-        self.tableView.registerClass(UITableViewCell().classForCoder, forCellReuseIdentifier: "reuseIdentifier")
-                
-        refresh()
+        let hour = Date.getHour()
+        if hour < 10 {
+            tabBar.selectedItem = tabItem0
+            refresh()
+        } else if hour < 14 {
+            menuHandler.changeMeal(1)
+            tabBar.selectedItem = tabItem1
+        } else {
+            menuHandler.changeMeal(2)
+            tabBar.selectedItem = tabItem2
+        }
+    
     }
     
     override func viewDidAppear(animated: Bool) {
         menuHandler.retrieveData()
-        menuHandler.retrieveData() // To be certain that it doesn't glitch.
     }
 
     override func didReceiveMemoryWarning() {

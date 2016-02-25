@@ -40,7 +40,7 @@ class MenuRetriever {
         var data: [JSON] = connection.dataComplete
         
         while data.count == 0 {
-            data = connection.dataComplete
+            data = connection.dataComplete // SHOULDN'T RUN IF CONNECTION RETURNS "ERROR"
         }
         
         var meals = [[String:[String]](),[String:[String]](),[String:[String]]()]

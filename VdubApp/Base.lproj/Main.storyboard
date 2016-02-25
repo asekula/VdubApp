@@ -63,7 +63,7 @@
                                 </userDefinedRuntimeAttributes>
                             </tabBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="reuseIdentifier" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HZt-BU-umx">
-                                <rect key="frame" x="0.0" y="93" width="320" height="426"/>
+                                <rect key="frame" x="0.0" y="102" width="320" height="417"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" restorationIdentifier="12" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="odZ-aZ-N9g">
@@ -88,7 +88,7 @@
                             <constraint firstItem="2RD-eW-LYD" firstAttribute="top" secondItem="yzF-Lh-V8F" secondAttribute="bottom" id="88p-w7-mbM"/>
                             <constraint firstItem="2RD-eW-LYD" firstAttribute="top" secondItem="yzF-Lh-V8F" secondAttribute="bottom" id="Asp-zq-5lA"/>
                             <constraint firstItem="HZt-BU-umx" firstAttribute="centerX" secondItem="cMZ-ls-Uh2" secondAttribute="centerX" id="CgG-Gs-PyO"/>
-                            <constraint firstItem="HZt-BU-umx" firstAttribute="top" secondItem="odZ-aZ-N9g" secondAttribute="bottom" constant="1" id="Goh-yV-TvJ"/>
+                            <constraint firstItem="HZt-BU-umx" firstAttribute="top" secondItem="odZ-aZ-N9g" secondAttribute="bottom" constant="10" id="Goh-yV-TvJ"/>
                             <constraint firstItem="HZt-BU-umx" firstAttribute="width" secondItem="cMZ-ls-Uh2" secondAttribute="width" id="Iyu-FB-JMS"/>
                             <constraint firstItem="2RD-eW-LYD" firstAttribute="width" secondItem="cMZ-ls-Uh2" secondAttribute="width" id="Kay-rx-YHb"/>
                             <constraint firstItem="xVm-CH-uAo" firstAttribute="top" secondItem="xOT-1H-NiU" secondAttribute="bottom" id="Mk8-nD-iW6"/>

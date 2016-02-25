@@ -90,26 +90,53 @@ class MenuHandler {
     // None of these handles edge cases, put these in later.
     // Unless these should be kept bare to check for bugs. 
     // The exceptions would be unwanted exceptions, after all.
+    
+    // Somehow fix the sorting at some point.
+    // Although, the keys are guaranteed to be max five elements long,
+    // sorting is not at all computationally intensive.
+    // Would cause more harm if it stored keys in a 3D array.
+    
     func numberOfKeys() -> Int {
         return Array(menu[currentDiningHall][currentOffset][currentMeal].keys).count
     }
     
     func elementsInSection(section: Int) -> Int {
-        let key = Array(menu[currentDiningHall][currentOffset][currentMeal].keys)[section]
+        let key = Array(menu[currentDiningHall][currentOffset][currentMeal].keys).sort(isOrderedBefore)[section]
         return menu[currentDiningHall][currentOffset][currentMeal][key]!.count
     }
     
     func getItem(section: Int, row: Int) -> String {
-        let key = Array(menu[currentDiningHall][currentOffset][currentMeal].keys)[section]
+        let key = Array(menu[currentDiningHall][currentOffset][currentMeal].keys).sort(isOrderedBefore)[section]
         return menu[currentDiningHall][currentOffset][currentMeal][key]![row]
     }
     
     func sectionTitle(section: Int) -> String {
-        return Array(menu[currentDiningHall][currentOffset][currentMeal].keys)[section]
+        return Array(menu[currentDiningHall][currentOffset][currentMeal].keys).sort(isOrderedBefore)[section]
     }
     
     func dayOfWeek() -> String {
         return Date.getWeekday(currentOffset)
     }
 
+    func isOrderedBefore(s: String, t:String) -> Bool {
+        var ind1: Int, ind2: Int
+        let vdub = ["main menu", "daily sidebars"]
+        let ratty = ["bistro", "chef's corner", "grill", "roots & shoots", "daily sidebars"]
+        let andrews = ["brunch", "special", "pizza", "pasta", "wok", "daily"]
+        
+        if vdub.contains(s) && vdub.contains(t) {
+            ind1 = vdub.indexOf(s)!
+            ind2 = vdub.indexOf(t)!
+        } else if ratty.contains(s) && ratty.contains(t) {
+            ind1 = ratty.indexOf(s)!
+            ind2 = ratty.indexOf(t)!
+        } else if andrews.contains(s) && andrews.contains(t) {
+            ind1 = andrews.indexOf(s)!
+            ind2 = andrews.indexOf(t)!
+        } else {
+            return s < t
+        }
+        return ind1 < ind2
+    }
+    
 }
