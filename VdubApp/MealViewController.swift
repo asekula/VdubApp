@@ -41,6 +41,7 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
             forwardButton.enabled = false
         }
         refresh()
+        menuHandler.retrieveData()
     }
     
     func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
@@ -63,6 +64,7 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
     func refresh() {
         self.tableView.reloadData()
         self.navBar.topItem?.title = menuHandler.dayOfWeek()
+        self.view.setNeedsDisplay()
     }
     
     override func viewDidLoad() {
@@ -101,6 +103,11 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
         self.tableView.registerClass(UITableViewCell().classForCoder, forCellReuseIdentifier: "reuseIdentifier")
                 
         refresh()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        menuHandler.retrieveData()
+        menuHandler.retrieveData() // To be certain that it doesn't glitch.
     }
 
     override func didReceiveMemoryWarning() {

@@ -31,7 +31,7 @@ class MenuRetriever {
                 return [[String:[String]](),[String:[String]](),[String:[String]]()]
             }
         case 1: url = "ratty"+url
-        case 2: return andrews(offset)
+        case 2: return AndrewsMenu.menu(offset)
         default: return [[:]]
         }
         
@@ -71,53 +71,5 @@ class MenuRetriever {
         }
         
         return meals
-        
-        /*
-        
-        if diningHall == 0 {
-            var tempMeal = meal
-            if meal > 0 {
-                tempMeal += 1
-            }
-            let tm = MenuSingleton.sharedInstance.vdubMenu
-            if tm.count == 1 {
-                theMenu = ["Closed": JSON(arrayLiteral: ["closed", "a"])] // doesn't actually display closed
-            } else {
-                theMenu = tm[tempMeal].dictionaryValue
-            }
-        } else {
-            let tm = MenuSingleton.sharedInstance.rattyMenu
-            if Date.isWeekend(dayOffSet) && meal > 0 {
-                theMenu = tm[meal-1].dictionaryValue
-            }
-            else {
-                //print(meal)
-                if meal < tm.count {
-                    theMenu = tm[meal].dictionaryValue
-                }
-                else {
-                    theMenu = [String: JSON]()
-                    
-                }
-            }
-        }
-        for key in theMenu.keys {
-            let jsonMenuItems = theMenu[key]!.arrayValue
-            if jsonMenuItems.count > 1 {
-                var stringArr = [String]()
-                for jsonVal in jsonMenuItems {
-                    if let s = jsonVal.string {
-                        stringArr.append(s)
-                    }
-                }
-                menu![key] = stringArr
-            }
-        }
-*/
     }
-    
-    func andrews(offset: Int) -> [[String:[String]]] {
-        return [[String:[String]](),[String:[String]](),[String:[String]]()]
-    }
-    
 }

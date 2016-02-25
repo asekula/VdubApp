@@ -81,4 +81,9 @@ class Date {
         let myComponents = NSCalendar.currentCalendar().components(.Month, fromDate: newdate!)
         return myComponents.month
     }
+    
+    // Change this.
+    static func wokCycle(offset: Int) -> Int {
+        return 1
+    }
 }

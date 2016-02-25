@@ -47,7 +47,7 @@ class MenuHandler {
     func forward() {
         if currentOffset < maxDaysForward {
             currentOffset += 1
-            if currentOffset > retrievedIndex {
+            if currentOffset > retrievedIndex { // wouldn't happen
                 retrieveData()
             }
         }
@@ -77,10 +77,13 @@ class MenuHandler {
         if we choose to implement them.
     */
     func retrieveData() {
-        for hall in 0..<menu.count {
-            menu[hall][retrievedIndex + 1] = menuRetriever.get(hall, offset: (retrievedIndex + 1))
+        if retrievedIndex < maxDaysForward {
+            for hall in 0..<menu.count {
+                menu[hall][retrievedIndex + 1] = menuRetriever.get(hall, offset: (retrievedIndex + 1))
+            }
+            retrievedIndex += 1
+            print("loaded \(retrievedIndex)")
         }
-        retrievedIndex += 1
     }
     
     
