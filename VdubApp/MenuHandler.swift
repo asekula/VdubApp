@@ -17,6 +17,7 @@ class MenuHandler {
     var maxDaysForward: Int = 6 // currentOffset is allowed to equal maxDaysForward
     var menuRetriever: MenuRetriever = MenuRetriever()
     var retrievedIndex: Int = -1 // Ensures that menu has loaded days up to and including retrievedIndex.
+    var retrieving = false
     
     // First coordinate: dining hall
     // Second: day of week. 
@@ -30,7 +31,6 @@ class MenuHandler {
         let days = [[[String:[String]]]](count: maxDaysForward + 1, repeatedValue: meals)
         
         menu = [[[[String:[String]]]]](count: 3, repeatedValue: days)
-        retrieveData()
     }
     
     
@@ -47,9 +47,10 @@ class MenuHandler {
     func forward() {
         if currentOffset < maxDaysForward {
             currentOffset += 1
-            if currentOffset > retrievedIndex { // wouldn't happen
+            /*if currentOffset > retrievedIndex {
+                print("Emergency data retrieval")
                 retrieveData()
-            }
+            }*/
         }
     }
     
@@ -58,7 +59,7 @@ class MenuHandler {
     }
     
     func canForward() -> Bool {
-        return (currentOffset < maxDaysForward)
+        return (currentOffset < maxDaysForward) && (currentOffset < retrievedIndex)
     }
     
     func changeMeal(meal: Int) {

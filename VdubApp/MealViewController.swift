@@ -40,8 +40,20 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
         if !menuHandler.canForward() {
             forwardButton.enabled = false
         }
+        
         refresh()
-        menuHandler.retrieveData()
+        
+        print("loading \(menuHandler.retrievedIndex+1) in background")
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            //print("getting data")
+            self.menuHandler.retrieveData()
+            dispatch_async(dispatch_get_main_queue()) {
+                if self.menuHandler.canForward() {
+                    self.forwardButton.enabled = true
+                }
+            }
+        }
     }
     
     func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
@@ -119,11 +131,13 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
             menuHandler.changeMeal(2)
             tabBar.selectedItem = tabItem2
         }
+        
+        menuHandler.retrieveData() // First call.
     
     }
     
     override func viewDidAppear(animated: Bool) {
-        menuHandler.retrieveData()
+        menuHandler.retrieveData() // Second call done in background.
     }
 
     override func didReceiveMemoryWarning() {

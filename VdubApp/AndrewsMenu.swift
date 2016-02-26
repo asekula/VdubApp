@@ -23,15 +23,6 @@ class AndrewsMenu {
         var brunch = [String]()
         let bfast = ["You'll have to wait": ["Andrews Commons opens at 11am"]]
         
-        /*
-        Organize:
-        1. special (day specific)
-        2. pizza - puff pocket too, cause where else.
-        3. pasta
-        4. wok
-        5. daily food (cookie/brownie/panini)
-        */
-        
         
         if weekday == "Monday" {
             if Date.wokCycle(offset) == 1 {

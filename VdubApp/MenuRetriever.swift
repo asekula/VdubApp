@@ -28,7 +28,7 @@ class MenuRetriever {
         case 0:
             url = "vdub"+url
             if Date.isWeekend(offset) {
-                let closedMsg = ["Bummer":["The Vdub is closed."]]
+                let closedMsg = ["Bummer":["The Vdub is closed today."]]
                 return [closedMsg,closedMsg,closedMsg]
             }
         case 1: url = "ratty"+url
@@ -51,16 +51,20 @@ class MenuRetriever {
         
         var meals = [[String:[String]](),[String:[String]](),[String:[String]]()]
         
-        for meal in 0..<meals.count {
+        for meal in 0...2 {
             
             var actualmeal = meal
             if hall == 0 && meal > 0 {
                 actualmeal += 1
             }
-            if hall == 1 && Date.getWeekday(offset) == "Sunday" && meal > 0{
+            if hall == 1 && Date.getWeekday(offset) == "Sunday" && meal > 0 {
                 actualmeal = meal - 1
             }
             
+            if actualmeal == data.count {
+                print(data)
+            }
+            //print("\(actualmeal) accessing \(data.count) for \(hall)")
             let dict = data[actualmeal].dictionaryValue
             for key in dict.keys {
                 let jsonMenuItems = dict[key]!.arrayValue
