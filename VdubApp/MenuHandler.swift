@@ -47,10 +47,6 @@ class MenuHandler {
     func forward() {
         if currentOffset < maxDaysForward {
             currentOffset += 1
-            /*if currentOffset > retrievedIndex {
-                print("Emergency data retrieval")
-                retrieveData()
-            }*/
         }
     }
     
@@ -68,11 +64,19 @@ class MenuHandler {
     
     func retrieveData() {
         if retrievedIndex < maxDaysForward {
+            var noInternet = false
             for hall in 0..<menu.count {
                 menu[hall][retrievedIndex + 1] = menuRetriever.get(hall, offset: (retrievedIndex + 1))
+                if Array(menu[hall][retrievedIndex + 1][0].keys)[0] == MenuRetriever.noInternetMessage {
+                    noInternet = true
+                }
             }
-            retrievedIndex += 1
-            print("loaded \(retrievedIndex)")
+            if noInternet {
+                print("couldn't load \(retrievedIndex+1)")
+            } else {
+                retrievedIndex += 1
+                print("loaded \(retrievedIndex)")
+            }
         }
     }
     

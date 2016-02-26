@@ -82,8 +82,30 @@ class Date {
         return myComponents.month
     }
     
-    // Change this.
     static func wokCycle(offset: Int) -> Int {
-        return 1
+        let start = "2016-01-31"
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        let startDate:NSDate = dateFormatter.dateFromString(start)!
+        let endDate:NSDate = NSCalendar.currentCalendar().dateByAddingUnit(
+            .Day,
+            value: offset,
+            toDate: NSDate(),
+            options: NSCalendarOptions(rawValue: 0))!
+        
+        let cal = NSCalendar.currentCalendar()
+        
+        let unit:NSCalendarUnit = .Day
+        
+        let components = cal.components(unit, fromDate: startDate, toDate: endDate, options: NSCalendarOptions(rawValue: 0))
+        
+        if ((Double(components.day+2)/5)%2) >= 1 {
+            return 2
+            
+        } else {
+            return 1
+        }
     }
 }

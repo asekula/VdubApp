@@ -26,7 +26,7 @@ class AndrewsMenu {
         
         if weekday == "Monday" {
             if Date.wokCycle(offset) == 1 {
-                wok = ["lemongrass", "jasmine rice",
+                wok = ["jasmine rice",
                     "quinoa",
                     "teriyaki chicken",
                     "vegetable lo mein",
@@ -34,15 +34,14 @@ class AndrewsMenu {
                     "basil pork with onions and garlic",
                     "kerala green beans"]
             } else {
-                wok = ["lemongrass",
+                wok = [
                     "jasmine rice",
                     "quinoa",
-                    "lemonrass chicken",
-                    "vegetable lo mein",
+                    "lemongrass chicken",
+                    "vegetable lo mein ",
                     "yellow jungle curry",
                     "sriracha chicken tempura",
-                    "green beans with garlic",
-                    "fried rice station"]
+                    "green beans with garlic"]
             }
             
             pizza = ["rhode to italy", "caprese", "bbq chicken ranch", "spinach and feta puff pocket"]
@@ -51,23 +50,23 @@ class AndrewsMenu {
         }
         else if weekday == "Tuesday" {
             if Date.wokCycle(offset) == 1 {
-                wok = ["lemongrass", "jasmine rice",
+                wok = [
+                    "jasmine rice",
                     "quinoa",
                     "teriyaki chicken",
                     "vegetable lo mein",
-                    "yellow jungle curry",
-                    "basil pork with onions and garlic",
-                    "kerala green beans"]
+                    "toor dal lentil curry",
+                    "beef and broccoli",
+                    "stir fried zucchini and yellow squash"]
             } else {
-                wok = ["lemongrass",
+                wok = [
                     "jasmine rice",
                     "quinoa",
-                    "lemonrass chicken",
-                    "vegetable lo mein",
-                    "yellow jungle curry",
-                    "sriracha chicken tempura",
-                    "green beans with garlic",
-                    "fried rice station"]
+                    "lemongrass chicken",
+                    "vegetable lo mein ",
+                    "tofu and butternut yellow curry",
+                    "mongolian beef",
+                    "stir fried broccoli"]
             }
             
             pizza = ["bacon chicken ranch", "spinach & feta", "pepperoni & meatball", "italian puff pocket"]
@@ -76,23 +75,21 @@ class AndrewsMenu {
         }
         else if weekday == "Wednesday" {
             if Date.wokCycle(offset) == 1 {
-                wok = ["lemongrass", "jasmine rice",
-                    "quinoa",
-                    "teriyaki chicken",
+                wok = ["jasmine rice",
+                    "brown rice",
+                    "carved orange-chili pork tenderloin",
                     "vegetable lo mein",
-                    "yellow jungle curry",
-                    "basil pork with onions and garlic",
-                    "kerala green beans"]
+                    "green curry chicken with zucchini",
+                    "corey's chili chicken",
+                    "asian greens with garlic"]
             } else {
-                wok = ["lemongrass",
-                    "jasmine rice",
-                    "quinoa",
-                    "lemonrass chicken",
-                    "vegetable lo mein",
-                    "yellow jungle curry",
-                    "sriracha chicken tempura",
-                    "green beans with garlic",
-                    "fried rice station"]
+                wok = ["jasmine rice",
+                    "brown rice",
+                    "thai bbq chicken",
+                    "vegetable lo mein ",
+                    "red curry pork with sweet potatoes and green beans",
+                    "general tso chicken",
+                    "tofu and eggplant stir fry"]
             }
             pizza = ["honey boo boo", "mushroom's revenge", "sausage & spicy garlic", "buffalo chicken puff pocket"]
             pasta = ["carbonara", "pesto & sundried tomato"]
@@ -100,23 +97,22 @@ class AndrewsMenu {
         }
         else if weekday == "Thursday" {
             if Date.wokCycle(offset) == 1 {
-                wok = ["lemongrass", "jasmine rice",
-                    "quinoa",
-                    "teriyaki chicken",
+                wok = ["jasmine rice",
+                    "brown rice",
+                    "thai bbq chicken",
                     "vegetable lo mein",
-                    "yellow jungle curry",
-                    "basil pork with onions and garlic",
-                    "kerala green beans"]
+                    "devil's chicken curry",
+                    "sweet and sour pork",
+                    "tofu and vegetable stir fry"]
             } else {
-                wok = ["lemongrass",
+                wok = [
                     "jasmine rice",
                     "quinoa",
-                    "lemonrass chicken",
-                    "vegetable lo mein",
-                    "yellow jungle curry",
-                    "sriracha chicken tempura",
-                    "green beans with garlic",
-                    "fried rice station"]
+                    "thai bbq chicken",
+                    "vegetable lo mein ",
+                    "vegetable yellow curry of the day",
+                    "vietnamese basil chicken stir fry",
+                    "spice market cauliflower"]
             }
             pizza = ["na'cho pizza", "spicy 5 cheese & garlic", "bbq bam bam", "spinach and feta puff pocket"]
             pasta = []
@@ -131,23 +127,22 @@ class AndrewsMenu {
         }
         else if weekday == "Friday" {
             if Date.wokCycle(offset) == 1 {
-                wok = ["lemongrass", "jasmine rice",
+                wok = ["jasmine rice",
                     "quinoa",
-                    "teriyaki chicken",
+                    "thai bbq chicken",
                     "vegetable lo mein",
-                    "yellow jungle curry",
-                    "basil pork with onions and garlic",
-                    "kerala green beans"]
+                    "red curry pork and potatoes",
+                    "chicken dumplings with vegetables in garlic sauce",
+                    "snap peas with mushrooms and tofu"]
             } else {
-                wok = ["lemongrass",
+                wok = [
                     "jasmine rice",
-                    "quinoa",
-                    "lemonrass chicken",
-                    "vegetable lo mein",
-                    "yellow jungle curry",
-                    "sriracha chicken tempura",
-                    "green beans with garlic",
-                    "fried rice station"]
+                    "brown rice",
+                    "thai bbq chicken",
+                    "vegetable lo mein ",
+                    "shrimp green curry with vegetables",
+                    "carved lemongrass pork tenderloin",
+                    "stir fried snap peas w/ red bell pepper and tofu"]
             }
             pizza = ["bacon & feta", "harvest", "buffalo chicken", "italian puff pocket"]
             pasta = ["cajun chicken", "wild mushroom & gorgonzola"]
@@ -155,23 +150,22 @@ class AndrewsMenu {
         }
         else if weekday == "Saturday" {
             if Date.wokCycle(offset) == 1 {
-                wok = ["lemongrass", "jasmine rice",
-                    "quinoa",
-                    "teriyaki chicken",
-                    "vegetable lo mein",
-                    "yellow jungle curry",
-                    "basil pork with onions and garlic",
-                    "kerala green beans"]
+                wok = ["jasmine rice",
+                    "brown rice",
+                    "thai bbq chicken",
+                    "vegetable lo mein ",
+                    "mushroom and squash yellow curry",
+                    "teriyaki salmon",
+                    "gingered carrots"]
             } else {
-                wok = ["lemongrass",
+                wok = [
                     "jasmine rice",
-                    "quinoa",
-                    "lemonrass chicken",
-                    "vegetable lo mein",
-                    "yellow jungle curry",
-                    "sriracha chicken tempura",
-                    "green beans with garlic",
-                    "fried rice station"]
+                    "brown rice",
+                    "thai bbq chicken",
+                    "vegetable lo mein ",
+                    "broccoli and tofu yellow curry",
+                    "haddock with soy mushroom broth",
+                    "asian greens with garlic"]
             }
             pizza = ["bacon alfredo", "pizza bianco", "pepperoni & sausage & jalapeno", "biscuit bites"] // pizza only for dinner.
             pasta = ["bacon mac", "mac & cheese"]
@@ -189,23 +183,22 @@ class AndrewsMenu {
             
         else if weekday == "Sunday" {
             if Date.wokCycle(offset) == 1 {
-                wok = ["lemongrass", "jasmine rice",
-                    "quinoa",
+                wok = ["jasmine rice",
+                    "brown rice",
                     "teriyaki chicken",
-                    "vegetable lo mein",
-                    "yellow jungle curry",
-                    "basil pork with onions and garlic",
-                    "kerala green beans"]
+                    "vegetable lo mein ",
+                    "green curry haddock and butternut squash",
+                    "beef rendang",
+                    "stir fried broccoli with tofu"]
             } else {
-                wok = ["lemongrass",
+                wok = [
                     "jasmine rice",
-                    "quinoa",
-                    "lemonrass chicken",
-                    "vegetable lo mein",
-                    "yellow jungle curry",
-                    "sriracha chicken tempura",
-                    "green beans with garlic",
-                    "fried rice station"]
+                    "brown rice",
+                    "lemongrass chicken",
+                    "vegetable lo mein ",
+                    "red curry chicken and sweet potatoes",
+                    "shrimp and scallops with vegetables in a garlic sauce ",
+                    "bok choy with mushrooms"]
             }
             pizza = ["chipotle bbq sausage", "southwest veggie", "upside down margherita", "buffalo chicken puff pocket"]
             pasta = ["chicken w/pink vodka", "pesto & sundried tomato"]

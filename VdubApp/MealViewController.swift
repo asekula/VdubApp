@@ -69,8 +69,10 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
         }
         else { // Tab was "More"
             let vc : AnyObject! = self.storyboard!.instantiateViewControllerWithIdentifier("MoreInfo")
-            //self.presentViewController(vc as! UIViewController, animated: true, completion: nil)
-            self.showViewController(vc as! UIViewController, sender: vc)
+            
+            //self.dismissViewControllerAnimated(true, completion: nil)
+            self.presentViewController(vc as! UIViewController, animated: true, completion: nil)
+            //self.showViewController(vc as! UIViewController, sender: vc)
         }
     }
     
@@ -89,8 +91,8 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
         
         // Bar Button Items.
         backButton.enabled = false
-        forwardButton.enabled = true
-        
+        forwardButton.enabled = false // until it retrieves the next day's data in view did appear
+
         // Nav Bar.
         navBar.clipsToBounds = true
         self.navBar.topItem?.title = menuHandler.dayOfWeek()
@@ -119,7 +121,6 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
         tabItem1.selectedImage = UIImage(named: "lunch")
         tabItem2.selectedImage = UIImage(named: "dinner")
         
-        tabBar.selectedItem = tabItem0
         let hour = Date.getHour()
         if hour < 10 {
             tabBar.selectedItem = tabItem0
@@ -133,11 +134,15 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
         }
         
         menuHandler.retrieveData() // First call.
+    }
     
+    override func viewWillAppear(animated: Bool) {
+        tabBar.selectedItem = tabBar.items![menuHandler.currentMeal]
     }
     
     override func viewDidAppear(animated: Bool) {
         menuHandler.retrieveData() // Second call done in background.
+        forwardButton.enabled = menuHandler.canForward()
     }
 
     override func didReceiveMemoryWarning() {

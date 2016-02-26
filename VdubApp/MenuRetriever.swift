@@ -11,6 +11,7 @@ import SwiftyJSON
 
 class MenuRetriever {
  
+    static var noInternetMessage = "Where is the internet?"
     var connection: ApiNSURLSession = ApiNSURLSession()
     
     init() {}
@@ -18,6 +19,11 @@ class MenuRetriever {
     // First check if it's stored in a local file.
     // If not, get from api, then store in file.
     func get(hall: Int, offset: Int) -> [[String:[String]]] {
+        
+        if !Reachability.isConnectedToNetwork() {
+            let closedMsg = [MenuRetriever.noInternetMessage : ["You need the internet."]]
+            return [closedMsg, closedMsg, closedMsg]
+        }
         
         let day = Date.getDayNumber(offset)
         let month = Date.getMonthNumber(offset)
