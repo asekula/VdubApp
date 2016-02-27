@@ -21,7 +21,7 @@ class AndrewsMenu {
         let pizza:[String], pasta:[String]
         var special = [String]()
         var brunch = [String]()
-        let bfast = ["You'll have to wait": ["Andrews Commons opens at 11am"]]
+        let bfast = ["You'll have to wait": ["Andrews Commons opens at 11am."]]
         
         
         if weekday == "Monday" {
@@ -116,7 +116,7 @@ class AndrewsMenu {
             }
             pizza = ["na'cho pizza", "spicy 5 cheese & garlic", "bbq bam bam", "spinach and feta puff pocket"]
             pasta = []
-            special = ["make your own pasta station", "add ice cream and sundae toppings"]
+            special = ["make your own pasta station", "sundae slice bar"]
             
             lunch = ["pizza": pizza, "daily": dailyLunch]
             dinner = ["special": special,

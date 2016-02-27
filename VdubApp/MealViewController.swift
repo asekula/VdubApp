@@ -88,6 +88,7 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
         tableView.delegate = self
         tableView.dataSource = self
         self.tableView.registerClass(UITableViewCell().classForCoder, forCellReuseIdentifier: "reuseIdentifier")
+        tableView.allowsSelection = false;
         
         // Bar Button Items.
         backButton.enabled = false

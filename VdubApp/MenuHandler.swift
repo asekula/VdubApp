@@ -17,7 +17,7 @@ class MenuHandler {
     var maxDaysForward: Int = 6 // currentOffset is allowed to equal maxDaysForward
     var menuRetriever: MenuRetriever = MenuRetriever()
     var retrievedIndex: Int = -1 // Ensures that menu has loaded days up to and including retrievedIndex.
-    var retrieving = false
+    var loading = false
     
     // First coordinate: dining hall
     // Second: day of week. 
@@ -63,8 +63,9 @@ class MenuHandler {
     }
     
     func retrieveData() {
-        if retrievedIndex < maxDaysForward {
+        if retrievedIndex < maxDaysForward && !loading {
             var noInternet = false
+            loading = true
             for hall in 0..<menu.count {
                 menu[hall][retrievedIndex + 1] = menuRetriever.get(hall, offset: (retrievedIndex + 1))
                 if Array(menu[hall][retrievedIndex + 1][0].keys)[0] == MenuRetriever.noInternetMessage {
@@ -77,6 +78,10 @@ class MenuHandler {
                 retrievedIndex += 1
                 print("loaded \(retrievedIndex)")
             }
+            loading = false
+        }
+        if loading {
+            print("letting other thread finish")
         }
     }
     
