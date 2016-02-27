@@ -25,32 +25,36 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
     }
     
     @IBAction func back(sender: AnyObject) {
-        menuHandler.back() // Guaranteed to work.
-        // back() is only called if the backButton is enabled.
-        forwardButton.enabled = true
-        if !menuHandler.canBack() {
-            backButton.enabled = false
+        if menuHandler.canBack() {
+            menuHandler.back() // Guaranteed to work.
+            // back() is only called if the backButton is enabled.
+            forwardButton.enabled = true
+            if !menuHandler.canBack() {
+                backButton.enabled = false
+            }
+            refresh()
         }
-        refresh()
     }
     
     @IBAction func forward(sender: AnyObject) {
-        menuHandler.forward() // Guaranteed to work.
-        backButton.enabled = true
-        if !menuHandler.canForward() {
-            forwardButton.enabled = false
-        }
-        
-        refresh()
-        
-        print("loading \(menuHandler.retrievedIndex+1) in background")
-        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-        dispatch_async(dispatch_get_global_queue(priority, 0)) {
-            //print("getting data")
-            self.menuHandler.retrieveData()
-            dispatch_async(dispatch_get_main_queue()) {
-                if self.menuHandler.canForward() {
-                    self.forwardButton.enabled = true
+        if menuHandler.canForward() {
+            menuHandler.forward() // Guaranteed to work.
+            backButton.enabled = true
+            if !menuHandler.canForward() {
+                forwardButton.enabled = false
+            }
+            
+            refresh()
+            
+            print("loading \(menuHandler.retrievedIndex+1) in background")
+            let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+            dispatch_async(dispatch_get_global_queue(priority, 0)) {
+                //print("getting data")
+                self.menuHandler.retrieveData()
+                dispatch_async(dispatch_get_main_queue()) {
+                    if self.menuHandler.canForward() {
+                        self.forwardButton.enabled = true
+                    }
                 }
             }
         }
@@ -133,6 +137,17 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
             menuHandler.changeMeal(2)
             tabBar.selectedItem = tabItem2
         }
+        
+        // Swipe gestures
+        let forward: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "forward:")
+        forward.direction = .Left
+        
+        let back: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "back:")
+        back.direction = .Right
+        
+        self.view .addGestureRecognizer(forward)
+        self.view .addGestureRecognizer(back)
+        
         
         menuHandler.retrieveData() // First call.
     }
