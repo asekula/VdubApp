@@ -16,6 +16,9 @@
 		FA8A8C561C7C07EC003ED5F6 /* MenuHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A8C551C7C07EC003ED5F6 /* MenuHandler.swift */; };
 		FA8A8C5A1C7C0815003ED5F6 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A8C591C7C0815003ED5F6 /* Date.swift */; };
 		FA8A8C5C1C7C12A0003ED5F6 /* MealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8A8C5B1C7C12A0003ED5F6 /* MealViewController.swift */; };
+		FA9929BA1C83752500C22B20 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9929B91C83752500C22B20 /* SettingsViewController.swift */; };
+		FABCF0AE1C83E3C30003377C /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABCF0AD1C83E3C30003377C /* TableViewCell.swift */; };
+		FABCF0B01C83E4270003377C /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABCF0AF1C83E4270003377C /* TableViewCell.xib */; };
 		FAE951161C66675400619760 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE951151C66675400619760 /* AppDelegate.swift */; };
 		FAE9511B1C66675500619760 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE951191C66675500619760 /* Main.storyboard */; };
 		FAE9511D1C66675500619760 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAE9511C1C66675500619760 /* Assets.xcassets */; };
@@ -36,6 +39,9 @@
 		FA8A8C551C7C07EC003ED5F6 /* MenuHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuHandler.swift; sourceTree = "<group>"; };
 		FA8A8C591C7C0815003ED5F6 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		FA8A8C5B1C7C12A0003ED5F6 /* MealViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealViewController.swift; sourceTree = "<group>"; };
+		FA9929B91C83752500C22B20 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		FABCF0AD1C83E3C30003377C /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		FABCF0AF1C83E4270003377C /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		FAE951121C66675400619760 /* VdubApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VdubApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAE951151C66675400619760 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAE9511A1C66675500619760 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -111,6 +117,9 @@
 				FA2BCFCF1C7EBFC0004759E9 /* AndrewsMenu.swift */,
 				FA3F38061C8005A200B2D8CB /* Reachability.swift */,
 				FA5D7FEC1C80BC5C00518D94 /* ExtrasTableViewController.swift */,
+				FA9929B91C83752500C22B20 /* SettingsViewController.swift */,
+				FABCF0AD1C83E3C30003377C /* TableViewCell.swift */,
+				FABCF0AF1C83E4270003377C /* TableViewCell.xib */,
 			);
 			path = VdubApp;
 			sourceTree = "<group>";
@@ -178,6 +187,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAE951201C66675500619760 /* LaunchScreen.storyboard in Resources */,
+				FABCF0B01C83E4270003377C /* TableViewCell.xib in Resources */,
 				CEF0B1081C672C73003EA6A2 /* home.html in Resources */,
 				FAE9511D1C66675500619760 /* Assets.xcassets in Resources */,
 				FAE9511B1C66675500619760 /* Main.storyboard in Resources */,
@@ -241,12 +251,14 @@
 			files = (
 				FAE951361C6694EC00619760 /* ApiNSURLSession.swift in Sources */,
 				FAF0DA7B1C7E6B2A005669FF /* MenuRetriever.swift in Sources */,
+				FA9929BA1C83752500C22B20 /* SettingsViewController.swift in Sources */,
 				FAE951161C66675400619760 /* AppDelegate.swift in Sources */,
 				FA8A8C5C1C7C12A0003ED5F6 /* MealViewController.swift in Sources */,
 				CEF0B1061C6726F4003EA6A2 /* DiningHoursViewController.swift in Sources */,
 				FA5D7FED1C80BC5C00518D94 /* ExtrasTableViewController.swift in Sources */,
 				FA3F38071C8005A200B2D8CB /* Reachability.swift in Sources */,
 				FA2BCFD01C7EBFC0004759E9 /* AndrewsMenu.swift in Sources */,
+				FABCF0AE1C83E3C30003377C /* TableViewCell.swift in Sources */,
 				FA8A8C5A1C7C0815003ED5F6 /* Date.swift in Sources */,
 				FA8A8C561C7C07EC003ED5F6 /* MenuHandler.swift in Sources */,
 			);

@@ -46,6 +46,7 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
             
             refresh()
             
+            // multithreading
             print("loading \(menuHandler.retrievedIndex+1) in background")
             let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
             dispatch_async(dispatch_get_global_queue(priority, 0)) {
@@ -91,6 +92,10 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
         // Tableview.
         tableView.delegate = self
         tableView.dataSource = self
+        let nib = UINib(nibName: "TableViewCell", bundle: nil)
+        tableView.registerNib(nib, forCellReuseIdentifier: "reuseIdentifier")
+
+        
         self.tableView.registerClass(UITableViewCell().classForCoder, forCellReuseIdentifier: "reuseIdentifier")
         tableView.allowsSelection = false;
         
@@ -109,7 +114,14 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
             segmentedControl.selectedSegmentIndex = 1
             menuHandler.switchHall(1)
         }
+        // Sets seg control as default dining hall if set.
+        let defaults = NSUserDefaults.standardUserDefaults()
+        if let defaultHall = defaults.objectForKey("default dining hall") as? Int {
+            segmentedControl.selectedSegmentIndex = defaultHall
+            menuHandler.switchHall(defaultHall)
+        }
         
+
         // Tab Bar.
         tabBar.delegate = self
         let tabItems = tabBar.items! as [UITabBarItem]
@@ -179,6 +191,8 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
         cell.textLabel!.text = menuHandler.getItem(indexPath.section, row: indexPath.row)
+        
+        cell.detailTextLabel!.text = "asd"
         
         return cell
     }
