@@ -92,10 +92,6 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
         // Tableview.
         tableView.delegate = self
         tableView.dataSource = self
-        let nib = UINib(nibName: "TableViewCell", bundle: nil)
-        tableView.registerNib(nib, forCellReuseIdentifier: "reuseIdentifier")
-
-        
         self.tableView.registerClass(UITableViewCell().classForCoder, forCellReuseIdentifier: "reuseIdentifier")
         tableView.allowsSelection = false;
         
@@ -191,8 +187,6 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
         cell.textLabel!.text = menuHandler.getItem(indexPath.section, row: indexPath.row)
-        
-        cell.detailTextLabel!.text = "asd"
         
         return cell
     }
