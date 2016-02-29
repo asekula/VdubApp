@@ -90,9 +90,12 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
         super.viewDidLoad()
                 
         // Tableview.
-        tableView.delegate = self
-        tableView.dataSource = self
-        self.tableView.registerClass(UITableViewCell().classForCoder, forCellReuseIdentifier: "reuseIdentifier")
+        //tableView.delegate = self
+        //tableView.dataSource = self
+        let nib = UINib(nibName: "TableViewCell", bundle: nil)
+        tableView.registerNib(nib, forCellReuseIdentifier: "reuseIdentifier")
+
+        //self.tableView.registerClass(UITableViewCell().classForCoder, forCellReuseIdentifier: "reuseIdentifier")
         tableView.allowsSelection = false;
         
         // Bar Button Items.
@@ -185,9 +188,11 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-        cell.textLabel!.text = menuHandler.getItem(indexPath.section, row: indexPath.row)
+        let cell:TableViewCell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! TableViewCell
+        //cell.textLabel!.text = menuHandler.getItem(indexPath.section, row: indexPath.row)
+        let food = menuHandler.getItem(indexPath.section, row: indexPath.row)
         
+        cell.loadItem(food, amount: (random()%10 - 5)+123, favorite: food.characters.count%5==2)
         return cell
     }
     

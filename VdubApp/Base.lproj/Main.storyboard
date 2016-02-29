@@ -95,6 +95,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="lJg-FH-Cn0" id="V5L-e8-bvk"/>
+                                    <outlet property="delegate" destination="lJg-FH-Cn0" id="CSz-tw-J4t"/>
+                                </connections>
                             </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" restorationIdentifier="12" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="odZ-aZ-N9g">
                                 <rect key="frame" x="51" y="64" width="218" height="29"/>
@@ -375,8 +379,8 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="25" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ev3-qm-2Y7">
-                                <rect key="frame" x="0.0" y="72" width="320" height="327"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="25" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ev3-qm-2Y7">
+                                <rect key="frame" x="0.0" y="8" width="320" height="327"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="327" id="jDs-q2-eWl"/>
                                 </constraints>

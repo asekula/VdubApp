@@ -27,9 +27,23 @@ class TableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func loadItem(food: String, amount: Int) {
+    func loadItem(food: String, amount: Int, favorite:Bool) {
         self.food.text = food
-        self.amount.text = "\(amount)"
+        
+        if favorite {
+            self.food.font = UIFont.boldSystemFontOfSize(16.0)
+        } else {
+            self.food.font = UIFont.systemFontOfSize(16.0)
+        }
+        
+        //self.star.setImage(UIImage(named: "star"), forState: .Normal)
+        
+        if amount > 0 {
+            self.amount.text = "\(amount)"
+        } else {
+            self.amount.text = ""
+
+        }
     }
 
 }
