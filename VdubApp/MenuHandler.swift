@@ -18,6 +18,8 @@ class MenuHandler {
     var menuRetriever: MenuRetriever = MenuRetriever()
     var retrievedIndex: Int = -1 // Ensures that menu has loaded days up to and including retrievedIndex.
     var loading = false
+    let defaults = NSUserDefaults.standardUserDefaults()
+    var allFavorites:[String:Int] = [String:Int]()
     
     // First coordinate: dining hall
     // Second: day of week. 
@@ -82,6 +84,56 @@ class MenuHandler {
         }
         if loading {
             print("letting other thread finish")
+        }
+    }
+    
+    func retrieveFavorites() {
+        //sets allFavorites
+        allFavorites["caprese"] = 100
+    }
+    
+    func howFavorite(food: String) -> Int {
+        if let amount = allFavorites[food] {
+            return amount
+        }
+        return 0
+    }
+    
+    func isFavorite(food: String) -> Bool {
+        if let favorites = defaults.objectForKey("favorite foods") as? [String] {
+            return favorites.contains(food)
+        }
+        return false
+    }
+    
+    func addFavorite(food: String) {
+        if !isFavorite(food) {
+            if var favorites = defaults.objectForKey("favorite foods") as? [String] {
+                favorites.append(food) // make sure this actually changes the user defaults
+                defaults.setObject(favorites, forKey: "favorite foods")
+                defaults.synchronize()
+            } else {
+                defaults.setObject([food], forKey: "favorite foods")
+                defaults.synchronize()
+            }
+            // add 1 to food in database.
+            if allFavorites[food] == nil {
+                allFavorites[food] = 1
+            } else {
+                allFavorites[food]! += 1
+            }
+        } else {
+            if var favorites = defaults.objectForKey("favorite foods") as? [String] {
+                // make sure this actually changes the user defaults
+                favorites = favorites.filter { $0 != food }
+                defaults.setObject(favorites, forKey: "favorite foods")
+                defaults.synchronize()
+            }
+            if allFavorites[food] == nil {
+                allFavorites[food] = 0
+            } else {
+                allFavorites[food]! -= 1
+            }
         }
     }
     

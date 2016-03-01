@@ -47,17 +47,7 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
             refresh()
             
             // multithreading
-            print("loading \(menuHandler.retrievedIndex+1) in background")
-            let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-            dispatch_async(dispatch_get_global_queue(priority, 0)) {
-                //print("getting data")
-                self.menuHandler.retrieveData()
-                dispatch_async(dispatch_get_main_queue()) {
-                    if self.menuHandler.canForward() {
-                        self.forwardButton.enabled = true
-                    }
-                }
-            }
+            loadInBackground()
         }
     }
     
@@ -94,9 +84,9 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
         //tableView.dataSource = self
         let nib = UINib(nibName: "TableViewCell", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "reuseIdentifier")
-
         //self.tableView.registerClass(UITableViewCell().classForCoder, forCellReuseIdentifier: "reuseIdentifier")
-        tableView.allowsSelection = false;
+        //tableView.allowsSelection = false;
+        //tableView.
         
         // Bar Button Items.
         backButton.enabled = false
@@ -120,33 +110,23 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
             menuHandler.switchHall(defaultHall)
         }
         
-
         // Tab Bar.
         tabBar.delegate = self
-        let tabItems = tabBar.items! as [UITabBarItem]
-        let tabItem0 = tabItems[0] as UITabBarItem
-        let tabItem1 = tabItems[1] as UITabBarItem
-        let tabItem2 = tabItems[2] as UITabBarItem
-        tabItem0.title = "Breakfast"
-        tabItem1.title = "Lunch"
-        tabItem2.title = "Dinner"
-        tabItem0.image = UIImage(named: "breakfast")
-        tabItem1.image = UIImage(named: "lunch")
-        tabItem2.image = UIImage(named: "dinner")
-        tabItem0.selectedImage = UIImage(named: "breakfast")
-        tabItem1.selectedImage = UIImage(named: "lunch")
-        tabItem2.selectedImage = UIImage(named: "dinner")
         
+        // Automatically sets selected meal.
         let hour = Date.getHour()
         if hour < 10 {
-            tabBar.selectedItem = tabItem0
+            tabBar.selectedItem = tabBar.items![0]
+            //tabBar.selectedItem = tabItem0
             refresh()
         } else if hour < 14 {
             menuHandler.changeMeal(1)
-            tabBar.selectedItem = tabItem1
+            tabBar.selectedItem = tabBar.items![1]
+            //tabBar.selectedItem = tabItem1
         } else {
             menuHandler.changeMeal(2)
-            tabBar.selectedItem = tabItem2
+            tabBar.selectedItem = tabBar.items![2]
+            //tabBar.selectedItem = tabItem2
         }
         
         // Swipe gestures
@@ -160,16 +140,38 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
         self.view .addGestureRecognizer(back)
         
         
-        menuHandler.retrieveData() // First call.
+        menuHandler.retrieveData() // Automaticall gets tomorrows data (offset = 1)
+        
+        // Should probably do this in the background.
+        menuHandler.retrieveFavorites() // sets menuHandler.favorites
     }
     
     override func viewWillAppear(animated: Bool) {
+        // For switching back from more.
         tabBar.selectedItem = tabBar.items![menuHandler.currentMeal]
+        refresh()
     }
     
     override func viewDidAppear(animated: Bool) {
-        menuHandler.retrieveData() // Second call done in background.
-        forwardButton.enabled = menuHandler.canForward()
+        loadInBackground()
+    }
+    
+    override func viewDidUnload() {
+        // UPDATE DATABASE WITH ALLFAVORITES
+    }
+    
+    func loadInBackground() {
+        print("loading \(menuHandler.retrievedIndex+1) in background")
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            //print("getting data")
+            self.menuHandler.retrieveData()
+            dispatch_async(dispatch_get_main_queue()) {
+                if self.menuHandler.canForward() {
+                    self.forwardButton.enabled = true
+                }
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -189,15 +191,23 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell:TableViewCell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as! TableViewCell
-        //cell.textLabel!.text = menuHandler.getItem(indexPath.section, row: indexPath.row)
         let food = menuHandler.getItem(indexPath.section, row: indexPath.row)
         
-        cell.loadItem(food, amount: (random()%10 - 5)+123, favorite: food.characters.count%5==2)
+        cell.loadItem(food, amount: menuHandler.howFavorite(food), favorite: menuHandler.isFavorite(food))
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
+
         return cell
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return menuHandler.sectionTitle(section)
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let food = menuHandler.getItem(indexPath.section, row: indexPath.row)
+        menuHandler.addFavorite(food)
+        
+        refresh()
     }
     
     // THIS makes headers the right color pls don't touch
@@ -208,4 +218,5 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
         header.textLabel!.textColor = UIColor.whiteColor() //make the text white
         header.alpha = 0.68 //make the header transparent
     }
+    
 }

@@ -13,9 +13,7 @@ class TableViewCell: UITableViewCell {
     @IBOutlet var food: UILabel!
     @IBOutlet var amount: UILabel!
     @IBOutlet var star: UIButton!
-    
-    
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

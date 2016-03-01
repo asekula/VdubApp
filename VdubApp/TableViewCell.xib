@@ -15,13 +15,13 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yfh-BC-c1o">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yfh-BC-c1o">
                         <rect key="frame" x="299" y="11" width="13" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.70747373952558368" green="0.71989515078868727" blue="0.77777502825897438" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drU-By-S0y">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drU-By-S0y">
                         <rect key="frame" x="8" y="11" width="270" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -33,7 +33,6 @@
                     <constraint firstItem="Yfh-BC-c1o" firstAttribute="trailing" secondItem="Q4o-Vu-3bs" secondAttribute="trailingMargin" id="5bR-ig-0rg"/>
                     <constraint firstItem="Yfh-BC-c1o" firstAttribute="centerY" secondItem="Q4o-Vu-3bs" secondAttribute="centerY" id="Gsw-dA-0vL"/>
                     <constraint firstItem="drU-By-S0y" firstAttribute="centerY" secondItem="Q4o-Vu-3bs" secondAttribute="centerY" id="POg-8Q-Zh9"/>
-                    <constraint firstItem="Yfh-BC-c1o" firstAttribute="leading" secondItem="drU-By-S0y" secondAttribute="trailing" constant="10" id="xNv-L0-fBt"/>
                 </constraints>
             </tableViewCellContentView>
             <constraints>
