@@ -156,9 +156,10 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
         loadInBackground()
     }
     
-    override func viewDidUnload() {
-        // UPDATE DATABASE WITH ALLFAVORITES
-    }
+    //func viewWillUnload() {
+        // Updates the database with the changes to allFavorites.
+    //    menuHandler.pushFavoritesChanges()
+    //}
     
     func loadInBackground() {
         print("loading \(menuHandler.retrievedIndex+1) in background")

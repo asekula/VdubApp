@@ -19,7 +19,8 @@ class MenuHandler {
     var retrievedIndex: Int = -1 // Ensures that menu has loaded days up to and including retrievedIndex.
     var loading = false
     let defaults = NSUserDefaults.standardUserDefaults()
-    var allFavorites:[String:Int] = [String:Int]()
+    var allFavorites:[String:Int] = [String:Int]() // Shouldn't change. Setting to var 
+    // instead of let so that it can load in the background.
     
     // First coordinate: dining hall
     // Second: day of week. 
@@ -88,15 +89,23 @@ class MenuHandler {
     }
     
     func retrieveFavorites() {
-        //sets allFavorites
-        allFavorites["caprese"] = 100
+        allFavorites["caprese"] = 100 // HERE IS WHERE YOU INITIALIZE ALLFAVORITES
+    }
+    
+    func pushFavoritesChanges() {
+        // send changes to database
     }
     
     func howFavorite(food: String) -> Int {
-        if let amount = allFavorites[food] {
-            return amount
+        var change = 0, amount = 0
+        if let c = ChangesSingleton.changes[food] {
+            change = c
         }
-        return 0
+        
+        if let a = allFavorites[food] {
+            amount = a
+        }
+        return change + amount
     }
     
     func isFavorite(food: String) -> Bool {
@@ -116,23 +125,27 @@ class MenuHandler {
                 defaults.setObject([food], forKey: "favorite foods")
                 defaults.synchronize()
             }
-            // add 1 to food in database.
-            if allFavorites[food] == nil {
-                allFavorites[food] = 1
+            if ChangesSingleton.changes[food] == nil {
+                ChangesSingleton.changes[food] = 1
             } else {
-                allFavorites[food]! += 1
+                ChangesSingleton.changes[food]! += 1
             }
+            print(ChangesSingleton.changes[food])
+            
         } else {
+            // Edits the nsuserdefaults array.
             if var favorites = defaults.objectForKey("favorite foods") as? [String] {
                 // make sure this actually changes the user defaults
                 favorites = favorites.filter { $0 != food }
                 defaults.setObject(favorites, forKey: "favorite foods")
                 defaults.synchronize()
             }
-            if allFavorites[food] == nil {
-                allFavorites[food] = 0
+            
+            //Edits the changes array for the database.
+            if ChangesSingleton.changes[food] == nil {
+                ChangesSingleton.changes[food] = -1
             } else {
-                allFavorites[food]! -= 1
+                ChangesSingleton.changes[food]! -= 1
             }
         }
     }

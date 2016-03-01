@@ -46,8 +46,15 @@ class FavoritesTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
+            let food = foods[indexPath.row]
+
+            // Updates the changes for the database.
+            if ChangesSingleton.changes[food] == nil {
+                ChangesSingleton.changes[food] = -1
+            } else {
+                ChangesSingleton.changes[food]! -= 1
+            }
             foods.removeAtIndex(indexPath.row)
-            // UPDATE ALLFAVORITES
             defaults.setObject(foods, forKey: "favorite foods")
             defaults.synchronize()
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
