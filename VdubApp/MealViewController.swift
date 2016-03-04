@@ -203,7 +203,7 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return menuHandler.sectionTitle(section)
+        return menuHandler.sectionTitle(section).capitalizedString
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
