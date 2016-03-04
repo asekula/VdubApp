@@ -33,11 +33,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         let changes = ChangesSingleton.changes
         print("Uploading changes to database \(changes.description)")
-        // Send changes to database.
+        // Send changes to database. // key: food string, value: 1.
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+        
+        // DB REQUEST
+        print("LOADING    2")
     }
 
     func applicationDidBecomeActive(application: UIApplication) {

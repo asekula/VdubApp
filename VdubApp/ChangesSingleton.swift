@@ -10,4 +10,4 @@ import Foundation
 
 class ChangesSingleton {
     static var changes = [String:Int]()
-}
+}   

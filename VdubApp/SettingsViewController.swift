@@ -18,7 +18,6 @@ class SettingsViewController: UIViewController {
         
         defaults.setInteger(new, forKey: "default dining hall")
         defaults.synchronize()
-        
     }
     
     

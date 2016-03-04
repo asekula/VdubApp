@@ -78,7 +78,9 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
+        
+        print("LOADING")
+        
         // Tableview.
         //tableView.delegate = self
         //tableView.dataSource = self

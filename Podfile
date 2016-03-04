@@ -7,6 +7,8 @@ target 'VdubApp' do
 
 
 pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
+pod 'Firebase', '>= 2.5.0'
+
 
 end
 
