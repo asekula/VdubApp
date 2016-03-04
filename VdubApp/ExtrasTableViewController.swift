@@ -8,8 +8,19 @@
 
 import UIKit
 
-class ExtrasTableViewController: UITableViewController {
+class ExtrasTableViewController: UITableViewController{
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.tableView.scrollEnabled = false;
+        
+        let swipeToRemove:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "returnToMenu:")
+        swipeToRemove.direction = .Down
+        self.view.addGestureRecognizer(swipeToRemove)
+        print("loaded thing")
+
+    }
     
     @IBAction func returnToMenu(sender: UIBarButtonItem) {
         self.dismissViewControllerAnimated(true, completion: nil)
