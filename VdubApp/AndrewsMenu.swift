@@ -11,6 +11,9 @@ import Foundation
 // Maybe we shouldn't hard code this.
 // Someone has to though.
 class AndrewsMenu {
+    
+    static let AndrewsClosed = "Andrews Commons opens at 11am."
+    
     static func menu(offset: Int) -> [[String:[String]]] {
         let lunch:[String:[String]]
         let dinner:[String:[String]]
@@ -21,7 +24,7 @@ class AndrewsMenu {
         let pizza:[String], pasta:[String]
         var special = [String]()
         var brunch = [String]()
-        let bfast = ["You'll have to wait": ["Andrews Commons opens at 11am."]]
+        let bfast = ["You'll have to wait": [AndrewsMenu.AndrewsClosed]]
         
         
         if weekday == "Monday" {

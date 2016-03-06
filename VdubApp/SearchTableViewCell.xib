@@ -15,36 +15,38 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="        " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vzp-Ww-Hd4">
-                        <rect key="frame" x="8" y="11" width="80" height="23"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="80" id="3Ob-4n-JAc"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I09-nr-YBx">
                         <rect key="frame" x="287" y="9" width="25" height="25"/>
-                        <state key="normal" image="plus"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="25" id="PTg-2q-CAX"/>
+                        </constraints>
+                        <state key="normal" image="plus_math"/>
                         <connections>
-                            <action selector="addedFood:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="yBB-6O-dU1"/>
+                            <action selector="changeFavorite:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="SF1-Bn-3o1"/>
                         </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="asd" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vzp-Ww-Hd4">
+                        <rect key="frame" x="8" y="11" width="212" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="I09-nr-YBx" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="N8H-xh-uan"/>
+                    <constraint firstItem="I09-nr-YBx" firstAttribute="leading" secondItem="vzp-Ww-Hd4" secondAttribute="trailing" constant="67" id="OuL-sr-TJS"/>
                     <constraint firstItem="vzp-Ww-Hd4" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="Pc7-31-pdC"/>
                     <constraint firstItem="vzp-Ww-Hd4" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="S4K-XN-pWT"/>
                     <constraint firstItem="I09-nr-YBx" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ryO-bZ-6wo"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="button" destination="I09-nr-YBx" id="xdc-ZF-Bit"/>
                 <outlet property="food" destination="vzp-Ww-Hd4" id="zC6-70-boX"/>
             </connections>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="plus" width="25" height="25"/>
+        <image name="plus_math" width="25" height="25"/>
     </resources>
 </document>

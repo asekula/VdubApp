@@ -29,7 +29,7 @@ class TableViewCell: UITableViewCell {
         self.food.text = food
         
         if favorite {
-            self.food.font = UIFont.boldSystemFontOfSize(16.0)
+            self.food.font = UIFont.boldSystemFontOfSize(17.0)
         } else {
             self.food.font = UIFont.systemFontOfSize(16.0)
         }

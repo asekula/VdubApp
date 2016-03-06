@@ -116,6 +116,8 @@ class MenuHandler {
     }
     
     func addFavorite(food: String) {
+        if isErrorMessage(food) { return }
+        
         if !isFavorite(food) {
             if var favorites = defaults.objectForKey("favorite foods") as? [String] {
                 favorites.append(food) // make sure this actually changes the user defaults
@@ -149,6 +151,14 @@ class MenuHandler {
             }
         }
     }
+    
+    func isErrorMessage(message: String) -> Bool {
+        if message == AndrewsMenu.AndrewsClosed || message == MenuRetriever.unableToLoad || message == MenuRetriever.noInternetValue || message == MenuRetriever.VDubClosed {
+            return true
+        }
+        return false
+    }
+    
     
     // None of these handles edge cases, put these in later.
     // Unless these should be kept bare to check for bugs. 

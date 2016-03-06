@@ -24,6 +24,7 @@
 		FABCF0B01C83E4270003377C /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FABCF0AF1C83E4270003377C /* TableViewCell.xib */; };
 		FABCF0B21C8527B80003377C /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABCF0B11C8527B80003377C /* FavoritesTableViewController.swift */; };
 		FABCF0B41C8553560003377C /* ChangesSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABCF0B31C8553560003377C /* ChangesSingleton.swift */; };
+		FABDCC2C1C8CD84200378099 /* AllFoodsRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABDCC2B1C8CD84200378099 /* AllFoodsRetriever.swift */; };
 		FAE951161C66675400619760 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE951151C66675400619760 /* AppDelegate.swift */; };
 		FAE9511B1C66675500619760 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE951191C66675500619760 /* Main.storyboard */; };
 		FAE9511D1C66675500619760 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAE9511C1C66675500619760 /* Assets.xcassets */; };
@@ -52,6 +53,7 @@
 		FABCF0AF1C83E4270003377C /* TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		FABCF0B11C8527B80003377C /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
 		FABCF0B31C8553560003377C /* ChangesSingleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangesSingleton.swift; sourceTree = "<group>"; };
+		FABDCC2B1C8CD84200378099 /* AllFoodsRetriever.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AllFoodsRetriever.swift; sourceTree = "<group>"; };
 		FAE951121C66675400619760 /* VdubApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VdubApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAE951151C66675400619760 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAE9511A1C66675500619760 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				FAAAA3161C86A33C00E2F3B9 /* SearchViewController.swift */,
 				FA8D699A1C87BA3E00513BE9 /* SearchTableViewCell.swift */,
 				FA8D699B1C87BA3E00513BE9 /* SearchTableViewCell.xib */,
+				FABDCC2B1C8CD84200378099 /* AllFoodsRetriever.swift */,
 			);
 			path = VdubApp;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				FA8D699C1C87BA3E00513BE9 /* SearchTableViewCell.swift in Sources */,
 				FA8A8C561C7C07EC003ED5F6 /* MenuHandler.swift in Sources */,
 				FABCF0B21C8527B80003377C /* FavoritesTableViewController.swift in Sources */,
+				FABDCC2C1C8CD84200378099 /* AllFoodsRetriever.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

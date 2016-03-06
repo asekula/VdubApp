@@ -8,38 +8,39 @@
 
 import UIKit
 
-class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
+class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     var allFoods = [String]()
     var filtered = [String]()
-    var searchController: UISearchController!
-
+    var favorites = [String]()
+    var defaults = NSUserDefaults.standardUserDefaults()
     
     @IBOutlet weak var searchBar: UISearchBar!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if let obj = defaults.objectForKey("favorite foods") as? [String] {
+            favorites = obj
+        }
+        
+        allFoods = AllFoodsRetriever.getAllFoods()
         filtered = allFoods
-        filtered.append("asdrere")
         
         tableView.dataSource = self
+        tableView.delegate = self
         
-        //tableView.registerClass(UITableViewCell().classForCoder, forCellReuseIdentifier: "reuseIdentifier")
+        tableView.registerClass(UITableViewCell().classForCoder, forCellReuseIdentifier: "reuseIdentifier")
         
-        let nib = UINib(nibName: "SearchTableViewCell", bundle: nil)
-        tableView.registerNib(nib, forCellReuseIdentifier: "reuseIdentifier")
+        
+        //let nib = UINib(nibName: "SearchTableViewCell", bundle: nil)
+        //tableView.registerNib(nib, forCellReuseIdentifier: "reuseIdentifier")
 
+        searchBar.delegate = self
         
-        searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
-        searchController.dimsBackgroundDuringPresentation = true
-        searchController.searchBar.sizeToFit()
+        searchBar.autocapitalizationType = UITextAutocapitalizationType.None
         
-        tableView.tableHeaderView = searchController.searchBar
-        
-        definesPresentationContext = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,21 +58,49 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return filtered.count
     }
 
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as? SearchTableViewCell {
-            cell.textLabel?.text = filtered[indexPath.row]
-            return cell
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if let favs = defaults.objectForKey("favorite foods") as? [String] {
+            let text = filtered[indexPath.row]
+            if favs.contains(text) {
+                let newFavorites = favs.filter { $0 != text }
+                defaults.setObject(newFavorites, forKey: "favorite foods")
+            }
+            else {
+                var newFavorites = favs
+                newFavorites.append(text)
+                defaults.setObject(newFavorites, forKey: "favorite foods")
+            }
         }
-        return UITableViewCell()
+        
+        if let obj = defaults.objectForKey("favorite foods") as? [String] {
+            favorites = obj
+        }
+        
+        self.tableView.reloadData()
+    }
+        
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        cell.textLabel!.text = filtered[indexPath.row]
+        
+        if favorites.contains(filtered[indexPath.row]) {
+            cell.textLabel!.font = UIFont.boldSystemFontOfSize(17.0)
+        } else {
+            cell.textLabel!.font = UIFont.systemFontOfSize(16.0)
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
+
+        
+        return cell
     }
     
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
-        print("edited")
-        filtered.append("edited")
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        filtered = searchText.isEmpty ? allFoods : allFoods.filter({(dataString: String) -> Bool in
+            return dataString.rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil
+        })
         tableView.reloadData()
     }
-
     
     /*
     // Override to support conditional editing of the table view.

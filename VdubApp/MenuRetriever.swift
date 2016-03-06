@@ -11,6 +11,10 @@ import SwiftyJSON
 
 class MenuRetriever {
  
+    static let VDubClosed = "The Vdub is closed today."
+    static let noInternetValue = "You need the internet."
+    static let unableToLoad = "Unable to load data."
+    
     static var noInternetMessage = "Where is the internet?"
     var connection: ApiNSURLSession = ApiNSURLSession()
     
@@ -21,7 +25,7 @@ class MenuRetriever {
     func get(hall: Int, offset: Int) -> [[String:[String]]] {
         
         if !Reachability.isConnectedToNetwork() {
-            let closedMsg = [MenuRetriever.noInternetMessage : ["You need the internet."]]
+            let closedMsg = [MenuRetriever.noInternetMessage : [MenuRetriever.noInternetValue]]
             return [closedMsg, closedMsg, closedMsg]
         }
         
@@ -34,7 +38,7 @@ class MenuRetriever {
         case 0:
             url = "vdub"+url
             if Date.isWeekend(offset) {
-                let closedMsg = ["Bummer":["The Vdub is closed today."]]
+                let closedMsg = ["Bummer":[MenuRetriever.VDubClosed]]
                 return [closedMsg,closedMsg,closedMsg]
             }
         case 1: url = "ratty"+url
@@ -51,7 +55,7 @@ class MenuRetriever {
         }
         
         if data.count == 1 {
-            let errorMsg = ["Whoops": ["Unable to load data."]]
+            let errorMsg = ["Whoops": [MenuRetriever.unableToLoad]]
             return [errorMsg, errorMsg, errorMsg]
         }
         
