@@ -10,17 +10,22 @@ import UIKit
 
 class FavoritesTableViewController: UITableViewController {
 
-    let defaults = NSUserDefaults.standardUserDefaults()
+    var defaults = NSUserDefaults.standardUserDefaults()
     var foods = [String]()
     
     override func viewDidLoad() {
+        self.tableView.registerClass(UITableViewCell().classForCoder, forCellReuseIdentifier: "reuseIdentifier")
+        self.tableView.allowsSelectionDuringEditing = false
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        defaults = NSUserDefaults.standardUserDefaults()
         if let obj = defaults.objectForKey("favorite foods") {
             if let foodList = obj as? [String] {
                 self.foods = foodList
             }
         }
-        self.tableView.registerClass(UITableViewCell().classForCoder, forCellReuseIdentifier: "reuseIdentifier")
-        self.tableView.allowsSelectionDuringEditing = false
+        self.tableView.reloadData()
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -41,7 +46,7 @@ class FavoritesTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true;
+        return true
     }
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
