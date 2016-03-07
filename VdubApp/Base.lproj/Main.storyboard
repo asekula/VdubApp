@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="lJg-FH-Cn0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="lJg-FH-Cn0">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -116,15 +116,26 @@
                                     <action selector="hallChange:" destination="lJg-FH-Cn0" eventType="valueChanged" id="tFq-Jp-PoM"/>
                                 </connections>
                             </segmentedControl>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ZPi-ra-wUK">
+                                <rect key="frame" x="142" y="265" width="37" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Mor-Ds-mgM"/>
+                                    <constraint firstAttribute="width" constant="40" id="UK7-j5-cS5"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="xqx-LJ-nXV"/>
+                                </constraints>
+                                <color key="color" red="0.49625151566993919" green="0.50701514653279178" blue="0.55398637820512819" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.37647058823529411" green="0.29019607843137252" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="ZPi-ra-wUK" firstAttribute="centerY" secondItem="cMZ-ls-Uh2" secondAttribute="centerY" id="1Zm-3J-8yS"/>
                             <constraint firstItem="2RD-eW-LYD" firstAttribute="top" secondItem="yzF-Lh-V8F" secondAttribute="bottom" id="88p-w7-mbM"/>
                             <constraint firstItem="2RD-eW-LYD" firstAttribute="top" secondItem="yzF-Lh-V8F" secondAttribute="bottom" id="Asp-zq-5lA"/>
                             <constraint firstItem="HZt-BU-umx" firstAttribute="centerX" secondItem="cMZ-ls-Uh2" secondAttribute="centerX" id="CgG-Gs-PyO"/>
                             <constraint firstItem="HZt-BU-umx" firstAttribute="top" secondItem="odZ-aZ-N9g" secondAttribute="bottom" constant="10" id="Goh-yV-TvJ"/>
                             <constraint firstItem="HZt-BU-umx" firstAttribute="width" secondItem="cMZ-ls-Uh2" secondAttribute="width" id="Iyu-FB-JMS"/>
                             <constraint firstItem="2RD-eW-LYD" firstAttribute="width" secondItem="cMZ-ls-Uh2" secondAttribute="width" id="Kay-rx-YHb"/>
+                            <constraint firstItem="ZPi-ra-wUK" firstAttribute="centerX" secondItem="cMZ-ls-Uh2" secondAttribute="centerX" id="KzZ-hg-gUm"/>
                             <constraint firstItem="xVm-CH-uAo" firstAttribute="top" secondItem="xOT-1H-NiU" secondAttribute="bottom" id="Mk8-nD-iW6"/>
                             <constraint firstItem="odZ-aZ-N9g" firstAttribute="centerX" secondItem="cMZ-ls-Uh2" secondAttribute="centerX" id="RFG-gy-5Bu"/>
                             <constraint firstItem="xOT-1H-NiU" firstAttribute="width" secondItem="cMZ-ls-Uh2" secondAttribute="width" id="WdQ-CW-Cqb"/>
@@ -141,6 +152,7 @@
                     <connections>
                         <outlet property="backButton" destination="xYG-Nf-o2v" id="UQt-rI-jXr"/>
                         <outlet property="forwardButton" destination="Mio-QY-vBO" id="qre-Ev-AlP"/>
+                        <outlet property="loadingIndicator" destination="ZPi-ra-wUK" id="EFv-cr-hTR"/>
                         <outlet property="navBar" destination="2RD-eW-LYD" id="grF-j2-NJZ"/>
                         <outlet property="segmentedControl" destination="odZ-aZ-N9g" id="JKe-1j-KJ6"/>
                         <outlet property="tabBar" destination="xOT-1H-NiU" id="joa-RB-ksn"/>
@@ -412,6 +424,7 @@
                                                 <constraint firstItem="QCE-Am-Yjh" firstAttribute="leading" secondItem="ehm-RO-m3v" secondAttribute="leadingMargin" id="jZv-9e-6D7"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration" identifier="reuseIdentifier"/>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -422,11 +435,17 @@
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="uYZ-Gq-8lT">
+                                <rect key="frame" x="142" y="233" width="37" height="37"/>
+                                <color key="color" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="5HZ-0u-GpL" firstAttribute="top" secondItem="zsA-wd-9ZL" secondAttribute="bottom" id="15i-2W-sln"/>
                             <constraint firstItem="zsA-wd-9ZL" firstAttribute="top" secondItem="TKj-Oi-AH5" secondAttribute="bottom" id="2KW-iX-NWH"/>
+                            <constraint firstItem="uYZ-Gq-8lT" firstAttribute="centerX" secondItem="Deo-6n-cJv" secondAttribute="centerX" id="5ds-C7-hDe"/>
+                            <constraint firstItem="uYZ-Gq-8lT" firstAttribute="centerY" secondItem="Deo-6n-cJv" secondAttribute="centerY" id="FuN-5n-9wG"/>
                             <constraint firstItem="5HZ-0u-GpL" firstAttribute="centerX" secondItem="Deo-6n-cJv" secondAttribute="centerX" id="HBM-BX-Vtf"/>
                             <constraint firstAttribute="bottom" secondItem="5HZ-0u-GpL" secondAttribute="bottom" id="Hrd-0d-igF"/>
                             <constraint firstItem="5HZ-0u-GpL" firstAttribute="width" secondItem="Deo-6n-cJv" secondAttribute="width" id="RSD-ZP-kx2"/>
@@ -436,6 +455,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Search" id="y1o-dC-L7r"/>
                     <connections>
+                        <outlet property="loadingIndicator" destination="uYZ-Gq-8lT" id="QvQ-TB-v6p"/>
                         <outlet property="searchBar" destination="zsA-wd-9ZL" id="4br-9b-2c3"/>
                         <outlet property="tableView" destination="5HZ-0u-GpL" id="pKA-da-G6G"/>
                     </connections>
