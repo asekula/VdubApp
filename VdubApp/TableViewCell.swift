@@ -26,7 +26,7 @@ class TableViewCell: UITableViewCell {
     }
     
     func loadItem(food: String, amount: Int, favorite:Bool) {
-        self.food.text = food.capitalizedString
+        self.food.text = food
         
         if favorite {
             self.food.font = UIFont.boldSystemFontOfSize(16.0)
