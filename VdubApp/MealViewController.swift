@@ -18,6 +18,15 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
     @IBOutlet weak var tabBar: UITabBar!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
+        
+        return refreshControl
+    }()
+    
     
     @IBAction func hallChange(sender: UISegmentedControl) {
         menuHandler.switchHall(sender.selectedSegmentIndex)
@@ -47,7 +56,7 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
             refresh()
             
             // multithreading
-            loadInBackground()
+            loadInBackground(false)
         }
     }
     
@@ -76,11 +85,14 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
         self.navBar.topItem?.title = menuHandler.dayOfWeek()
     }
     
+    func handleRefresh(refreshControl: UIRefreshControl) {
+        refresh()
+        refreshControl.endRefreshing()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("LOADING")
-        
+                
         // Tableview.
         //tableView.delegate = self
         //tableView.dataSource = self
@@ -142,10 +154,17 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
         self.view .addGestureRecognizer(back)
         
         
-        menuHandler.retrieveData() // Automaticall gets tomorrows data (offset = 1)
+        //menuHandler.retrieveData() // Automaticall gets tomorrows data (offset = 1)
         
-        // Should probably do this in the background.
-        menuHandler.retrieveFavorites() // sets menuHandler.favorites
+        // Display loading sign.
+        
+        tableView.addSubview(self.refreshControl)
+        
+        loadingIndicator.startAnimating()
+        
+        loadInBackground(true)
+        
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -155,7 +174,6 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
     }
     
     override func viewDidAppear(animated: Bool) {
-        loadInBackground()
     }
     
     //func viewWillUnload() {
@@ -163,15 +181,30 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
     //    menuHandler.pushFavoritesChanges()
     //}
     
-    func loadInBackground() {
-        print("loading \(menuHandler.retrievedIndex+1) in background")
+    func loadInBackground(first: Bool) {
+        //print("loading \(menuHandler.retrievedIndex+1) in background")
         let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
         dispatch_async(dispatch_get_global_queue(priority, 0)) {
             //print("getting data")
+            
             self.menuHandler.retrieveData()
+            
+            if first {
+                self.menuHandler.retrieveFavorites()
+            }
+            
             dispatch_async(dispatch_get_main_queue()) {
                 if self.menuHandler.canForward() {
                     self.forwardButton.enabled = true
+                }
+                if first {
+                    
+                    //disable loading sign.
+                    self.loadingIndicator.stopAnimating()
+                    self.loadingIndicator.hidden = true
+                    self.refresh()
+                    self.loadInBackground(false)
+                    
                 }
             }
         }

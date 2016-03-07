@@ -16,6 +16,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var favorites = [String]()
     var defaults = NSUserDefaults.standardUserDefaults()
     
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var searchBar: UISearchBar!
         
     override func viewDidLoad() {
@@ -25,8 +26,11 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             favorites = obj
         }
         
-        allFoods = AllFoodsRetriever.getAllFoods()
-        filtered = allFoods
+        loadingIndicator.startAnimating()
+        
+        loadInBackground()
+        
+        
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -41,7 +45,37 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         searchBar.autocapitalizationType = UITextAutocapitalizationType.None
         
+    
     }
+    
+    func loadInBackground() {
+        print("started loading all foods")
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            print("getting all foods")
+            
+            AllFoodsRetriever.getAllFoods()
+            //^might want to make sure this returns false.
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                self.allFoods = AllFoodsRetriever.allFoods
+                self.filtered = self.allFoods
+                self.loadingIndicator.stopAnimating()
+                
+                if let text = self.searchBar.text {
+                    self.searchForFood(text)
+
+                }
+                
+                self.tableView.reloadData()
+                
+                
+            }
+        }
+    }
+
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -61,7 +95,11 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         if let favs = defaults.objectForKey("favorite foods") as? [String] {
-            let text = filtered[indexPath.row]
+            
+            let text: String
+            
+            text = filtered[indexPath.row]
+            
             if favs.contains(text) {
                 let newFavorites = favs.filter { $0 != text }
                 defaults.setObject(newFavorites, forKey: "favorite foods")
@@ -82,6 +120,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        
+        
         cell.textLabel!.text = filtered[indexPath.row]
         
         if favorites.contains(filtered[indexPath.row]) {
@@ -96,11 +136,16 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        filtered = searchText.isEmpty ? allFoods : allFoods.filter({(dataString: String) -> Bool in
-            return dataString.rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil
+        searchForFood(searchText)
+    }
+    
+    func searchForFood(food: String) {
+        filtered = food.isEmpty ? allFoods : allFoods.filter({(dataString: String) -> Bool in
+            return dataString.rangeOfString(food, options: .CaseInsensitiveSearch) != nil
         })
         tableView.reloadData()
     }
+    
     
     /*
     // Override to support conditional editing of the table view.

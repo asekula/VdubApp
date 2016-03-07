@@ -45,12 +45,6 @@ class SearchTableViewCell: UITableViewCell {
                 }
             }
         }
-        
-        
-        
-        //if let text = food.text {
-        //    setFavOrNot(text)
-        //}
     }
     /*
     func setFavOrNot(item: String) {
