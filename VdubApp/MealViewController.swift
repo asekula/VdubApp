@@ -123,7 +123,7 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
             segmentedControl.selectedSegmentIndex = defaultHall
             menuHandler.switchHall(defaultHall)
         }
-        
+                
         // Tab Bar.
         tabBar.delegate = self
         

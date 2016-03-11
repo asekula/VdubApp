@@ -32,7 +32,7 @@ class MenuRetriever {
         let day = Date.getDayNumber(offset)
         let month = Date.getMonthNumber(offset)
  
-        var url = "&day=\(day-6)&month=\(month)"
+        var url = "&day=\(day)&month=\(month)"
         
         switch hall {
         case 0:
@@ -66,13 +66,13 @@ class MenuRetriever {
         var dinnerdict = [String:[String]]()
         
         
-        var modifiedData: [JSON] = data
+        /*var modifiedData: [JSON] = data
         if modifiedData.count == 3 {
             modifiedData.append([])
             modifiedData[2] = data[0]
             modifiedData[3] = data[1]
             modifiedData[0] = data[2]
-        }
+        }*/
         //modifiedData.insert([], atIndex: 0)
         
         for meal in 0..<data.count { // data.count: number of meals returned
@@ -94,7 +94,7 @@ class MenuRetriever {
             var tempdict = [String:[String]]()
             
             //print("\(actualmeal) accessing \(data.count) for \(hall)")
-            let dict = modifiedData[meal].dictionaryValue
+            let dict = data[meal].dictionaryValue
             for key in dict.keys {
                 let jsonMenuItems = dict[key]!.arrayValue
                 var stringArr = [String]()
