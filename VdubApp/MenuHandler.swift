@@ -89,7 +89,7 @@ class MenuHandler {
     }
     
     func retrieveFavorites() {
-        allFavorites["caprese"] = 100 // HERE IS WHERE YOU INITIALIZE ALLFAVORITES
+        //allFavorites["caprese"] = 100 // HERE IS WHERE YOU INITIALIZE ALLFAVORITES
     }
     
     func pushFavoritesChanges() {

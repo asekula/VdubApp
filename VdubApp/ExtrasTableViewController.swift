@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ExtrasTableViewController: UITableViewController{
+class ExtrasTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +18,7 @@ class ExtrasTableViewController: UITableViewController{
         let swipeToRemove:UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "returnToMenu:")
         swipeToRemove.direction = .Down
         self.view.addGestureRecognizer(swipeToRemove)
-        print("loaded thing")
+        print("loaded gesture recognizer")
 
     }
     

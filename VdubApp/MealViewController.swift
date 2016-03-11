@@ -99,7 +99,7 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
         let nib = UINib(nibName: "TableViewCell", bundle: nil)
         tableView.registerNib(nib, forCellReuseIdentifier: "reuseIdentifier")
         //self.tableView.registerClass(UITableViewCell().classForCoder, forCellReuseIdentifier: "reuseIdentifier")
-        //tableView.allowsSelection = false;
+        tableView.allowsSelection = false;
         //tableView.
         
         // Bar Button Items.
@@ -239,12 +239,12 @@ class MealViewController: UIViewController, UITabBarDelegate, UITableViewDelegat
         return menuHandler.sectionTitle(section)
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    /*func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let food = menuHandler.getItem(indexPath.section, row: indexPath.row)
         menuHandler.addFavorite(food)
         
         refresh()
-    }
+    }*/
     
     // THIS makes headers the right color pls don't touch
     func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {

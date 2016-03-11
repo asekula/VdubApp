@@ -32,7 +32,7 @@ class MenuRetriever {
         let day = Date.getDayNumber(offset)
         let month = Date.getMonthNumber(offset)
  
-        var url = "&day=\(day)&month=\(month)"
+        var url = "&day=\(day-6)&month=\(month)"
         
         switch hall {
         case 0:
@@ -61,8 +61,22 @@ class MenuRetriever {
         
         var meals = [[String:[String]](),[String:[String]](),[String:[String]]()]
         
-        for meal in 0...2 {
-            
+        var bfastdict = [String:[String]]()
+        var lunchdict = [String:[String]]()
+        var dinnerdict = [String:[String]]()
+        
+        
+        var modifiedData: [JSON] = data
+        if modifiedData.count == 3 {
+            modifiedData.append([])
+            modifiedData[2] = data[0]
+            modifiedData[3] = data[1]
+            modifiedData[0] = data[2]
+        }
+        //modifiedData.insert([], atIndex: 0)
+        
+        for meal in 0..<data.count { // data.count: number of meals returned
+            /*
             var actualmeal = meal
             if hall == 0 && meal > 0 {
                 actualmeal += 1
@@ -73,9 +87,14 @@ class MenuRetriever {
             
             if actualmeal == data.count {
                 print(data)
-            }
+            } */
+
+            var breakfast = false, lunch = false, dinner = false
+            
+            var tempdict = [String:[String]]()
+            
             //print("\(actualmeal) accessing \(data.count) for \(hall)")
-            let dict = data[actualmeal].dictionaryValue
+            let dict = modifiedData[meal].dictionaryValue
             for key in dict.keys {
                 let jsonMenuItems = dict[key]!.arrayValue
                 var stringArr = [String]()
@@ -84,11 +103,42 @@ class MenuRetriever {
                         stringArr.append(s)
                     }
                 }
+                
+                if key == "meal" {
+                    if let truemeal = dict[key]!.string {
+                        if truemeal == "breakfast" {
+                            breakfast = true
+                        } else if truemeal == "lunch" {
+                            lunch = true
+                        } else if truemeal == "dinner" {
+                            dinner = true
+                        } else if truemeal == "brunch" {
+                            print("BRUNCH")
+                            breakfast = true
+                            lunch = true
+                        }
+                    }
+                }
+                
                 if stringArr.count > 1 {
-                    meals[meal][key] = stringArr
+                    tempdict[key] = stringArr
                 }
             }
+            if breakfast {
+                bfastdict = tempdict
+            }
+            else if lunch {
+                lunchdict = tempdict
+            } else if dinner {
+                dinnerdict = tempdict
+            }
+            
+            if breakfast && lunch {
+                lunchdict = tempdict
+            }
         }
+        
+        meals = [bfastdict, lunchdict, dinnerdict]
         
         return meals
     }
