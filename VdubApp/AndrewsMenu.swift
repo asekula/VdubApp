@@ -13,8 +13,15 @@ import Foundation
 class AndrewsMenu {
     
     static let AndrewsClosed = "Andrews Commons opens at 11am."
+    static let IsSummer = true
     
     static func menu(offset: Int) -> [[String:[String]]] {
+        
+        let closedForSummer = ["Not this season": ["Andrews is closed for the summer."]]
+        if IsSummer {
+            return [closedForSummer, closedForSummer, closedForSummer]
+        }
+            
         let lunch:[String:[String]]
         let dinner:[String:[String]]
         var wok = [String]()

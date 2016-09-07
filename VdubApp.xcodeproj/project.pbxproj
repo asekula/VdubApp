@@ -10,6 +10,8 @@
 		3B7F9BBBADA6211CECBA0BD5 /* Pods_VdubApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F84F1E7E0FAB4EDAF1E9E01 /* Pods_VdubApp.framework */; };
 		CEF0B1061C6726F4003EA6A2 /* DiningHoursViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF0B1051C6726F4003EA6A2 /* DiningHoursViewController.swift */; };
 		CEF0B1081C672C73003EA6A2 /* home.html in Resources */ = {isa = PBXBuildFile; fileRef = CEF0B1071C672C73003EA6A2 /* home.html */; };
+		FA2B1A141D2334D2003BD448 /* ViewWebsiteOptionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2B1A131D2334D2003BD448 /* ViewWebsiteOptionsTableViewController.swift */; };
+		FA2B1A161D2336C8003BD448 /* WebsiteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2B1A151D2336C8003BD448 /* WebsiteViewController.swift */; };
 		FA2BCFD01C7EBFC0004759E9 /* AndrewsMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2BCFCF1C7EBFC0004759E9 /* AndrewsMenu.swift */; };
 		FA3F38071C8005A200B2D8CB /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3F38061C8005A200B2D8CB /* Reachability.swift */; };
 		FA5D7FED1C80BC5C00518D94 /* ExtrasTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5D7FEC1C80BC5C00518D94 /* ExtrasTableViewController.swift */; };
@@ -40,6 +42,8 @@
 		A6DD59B2476E03F3BC2B0F57 /* Pods-VdubApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VdubApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VdubApp/Pods-VdubApp.debug.xcconfig"; sourceTree = "<group>"; };
 		CEF0B1051C6726F4003EA6A2 /* DiningHoursViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiningHoursViewController.swift; sourceTree = "<group>"; };
 		CEF0B1071C672C73003EA6A2 /* home.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = home.html; sourceTree = "<group>"; };
+		FA2B1A131D2334D2003BD448 /* ViewWebsiteOptionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewWebsiteOptionsTableViewController.swift; sourceTree = "<group>"; };
+		FA2B1A151D2336C8003BD448 /* WebsiteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebsiteViewController.swift; sourceTree = "<group>"; };
 		FA2BCFCF1C7EBFC0004759E9 /* AndrewsMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AndrewsMenu.swift; sourceTree = "<group>"; };
 		FA3F38061C8005A200B2D8CB /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		FA5D7FEC1C80BC5C00518D94 /* ExtrasTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtrasTableViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +124,7 @@
 				CEF0B1051C6726F4003EA6A2 /* DiningHoursViewController.swift */,
 				FAE951151C66675400619760 /* AppDelegate.swift */,
 				FAE951191C66675500619760 /* Main.storyboard */,
+				FA2B1A131D2334D2003BD448 /* ViewWebsiteOptionsTableViewController.swift */,
 				FAE9511C1C66675500619760 /* Assets.xcassets */,
 				FAE9511E1C66675500619760 /* LaunchScreen.storyboard */,
 				FAE951211C66675500619760 /* Info.plist */,
@@ -141,6 +146,7 @@
 				FA8D699B1C87BA3E00513BE9 /* SearchTableViewCell.xib */,
 				FABDCC2B1C8CD84200378099 /* AllFoodsRetriever.swift */,
 				FA8D521F1C8D1A9300DB9EE2 /* AllFoodsNSURLSession.swift */,
+				FA2B1A151D2336C8003BD448 /* WebsiteViewController.swift */,
 			);
 			path = VdubApp;
 			sourceTree = "<group>";
@@ -271,7 +277,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA2B1A161D2336C8003BD448 /* WebsiteViewController.swift in Sources */,
 				FAE951361C6694EC00619760 /* ApiNSURLSession.swift in Sources */,
+				FA2B1A141D2334D2003BD448 /* ViewWebsiteOptionsTableViewController.swift in Sources */,
 				FABCF0B41C8553560003377C /* ChangesSingleton.swift in Sources */,
 				FAF0DA7B1C7E6B2A005669FF /* MenuRetriever.swift in Sources */,
 				FA9929BA1C83752500C22B20 /* SettingsViewController.swift in Sources */,
